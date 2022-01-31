@@ -4,32 +4,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/styles.css">
+    <script src="https://kit.fontawesome.com/e21a47bafe.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../scss/base.css">
     <title>FitYou</title>
 </head>
 <body>
+    <nav class="nav-desktop">
+        <h1 class="fs-800 ff-headers text-left text-contrast" style="padding: 0">FitYou</h1>
+        <ul role="list">
+            <li><a class="fs-500 text-dark" href="/src/html/index.html">Home</a></li>
+            <li><a class="fs-500 text-dark" href="/src/html/diary.html">Food</a></li>
+            <li><a class="fs-500 text-dark" href="/src/html/motivation.html">Motivation</a></li>
+        </ul>
+        <div id="user-profile" class="fs-300" style="line-height: 1.1;"><span>Common User</span><i class="fas fa-user-cog"></i></div>
+    </nav>
     <main id="main-home">
-        <nav class="nav-desktop">
-            <h1 class="fs-800 ff-headers text-left text-contrast" style="padding: 0">FitYou</h1>
-            <ul role="list">
-                <li><a class="nav-link fs-500 text-dark" href="/src/html/index.html">Home</a></li>
-                <li><a class="nav-link fs-500 text-dark" href="/src/html/diary.html">Food</a></li>
-                <li><a class="nav-link fs-500 text-dark" href="/src/html/motivation.html">Motivation</a></li>
-            </ul>
-            <div class="user-profile fs-300"><span>pawel</span></div>
-        </nav>
         <h2 class="fs-500 text-dark text-center">Your daily statistics</h2>
+        <fieldset id="choose-day">
+            <input type="radio" id="six-days-back" name="day">
+            <input type="radio" id="five-days-back" name="day">
+            <input type="radio" id="four-days-back" name="day">
+            <input type="radio" id="three-days-back" name="day">
+            <input type="radio" id="two-days-back" name="day">
+            <input type="radio" id="one-days-back" name="day">
+            <input type="radio" id="today" name="day">
+        </fieldset>
         <section id="daily-summary">
-            <div id="remain-kcal"><span>1983 </span>KCAL</div>
-            <div class="text-center" id="goal-kcal"><span>2200 </span>GOAL</div>
-            <div class="text-center" id="kcal"><span>582 </span>KCAL</div>
-            <div class="text-center" id="fat"><span>12 </span>FAT</div>
-            <div class="text-center" id="protein"><span>20 </span>PROTEIN</div>
-            <div class="text-center" id="carbohydrates"><span>75 </span>CARBO</div>
+            <div id="remain-kcal"><span>1983</span>KCAL</div>
+            <div id="goal-kcal" class="text-center"><span>2200 </span>GOAL</div>
+            <div id="kcal" class="text-center"><span>582</span>KCAL</div>
+            <div id="fat" class="text-center"><span>12</span>FAT</div>
+            <div id="protein" class="text-center" ><span>20</span>PROTEIN</div>
+            <div id="carbohydrates" class="text-center"><span>75</span>CARBO</div>
             <div id="pbar-container">
                 <div id="bar-progress"></div>
             </div>
         </section>
+        <form action="">
+            <input autocomplete="off" required type="text" placeholder="Search food">
+            <input type="submit" value="query">
+        </form>
     </main>
     <script src="../../dist/main.js"></script>
 </body>

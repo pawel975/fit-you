@@ -15,7 +15,7 @@
   \**********************/
 /***/ (() => {
 
-eval("const apiKey = \"MJrVBo73FerrxCNhXdvXdPtp9NWkzUgUTy5IdSNZ\";\r\nfetch(`https://api.nal.usda.gov/fdc/v1/foods/search?query=apple&pageSize=2&api_key=${apiKey}`).then(response => response.json()).then(data => console.log(data));\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("var form = document.querySelector(\"form\");\nvar apiKey = \"MJrVBo73FerrxCNhXdvXdPtp9NWkzUgUTy5IdSNZ\";\nvar state; // const baseURL = `https://api.nal.usda.gov/fdc/v1/foods/search?query=cheddar%20cheese&dataType=Branded&pageSize=20&pageNumber=1&sortBy=publishedDate&sortOrder=desc&api_key=${apiKey}`\n// fetch(baseURL).then(response => response.json()).then(data => {\n//     // Object.assign(state, data.foods);\n//     const {foods} = data;\n//     console.log(foods);\n// });\n// console.log(state);\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 
