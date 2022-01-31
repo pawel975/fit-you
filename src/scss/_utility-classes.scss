@@ -1,0 +1,70 @@
+@use "variables";
+
+.flex-row {
+    display: flex;
+  }
+  
+  .flex-col {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .text-left {
+    text-align: left;
+  }
+  
+  .text-right {
+    text-align: right;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .text-contrast {
+    color: variables.$clr-contrast;
+  }
+  
+  .text-dark {
+    color: variables.$clr-darkest;
+  }
+  
+  .text-light {
+    color: variables.$clr-light;
+  }
+  
+  .fs-900 {
+    font-size: variables.$fs-900;
+  }
+  
+  .fs-800 {
+    font-size: variables.$fs-800;
+  }
+  
+  .fs-700 {
+    font-size: variables.$fs-700;
+  }
+  
+  .fs-600 {
+    font-size: variables.$fs-600;
+  }
+  
+  .fs-500 {
+    font-size: variables.$fs-500;
+  }
+  
+  .fs-400 {
+    font-size: variables.$fs-400;
+  }
+  
+  .fs-300 {
+    font-size: variables.$fs-300;
+  }
+  
+  .fs-200 {
+    font-size: variables.$fs-200;
+  }
+  
+  .ff-headers {
+    font-family: variables.$ff-headers;
+  }

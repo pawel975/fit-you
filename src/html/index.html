@@ -21,13 +21,34 @@
     <main id="main-home">
         <h2 class="fs-500 text-dark text-center">Your daily statistics</h2>
         <fieldset id="choose-day">
-            <input type="radio" id="six-days-back" name="day">
-            <input type="radio" id="five-days-back" name="day">
-            <input type="radio" id="four-days-back" name="day">
-            <input type="radio" id="three-days-back" name="day">
-            <input type="radio" id="two-days-back" name="day">
-            <input type="radio" id="one-days-back" name="day">
-            <input type="radio" id="today" name="day">
+            <label class="radio-container">
+                <input type="radio" id="six-days-back" name="day">
+                <span class="choosed">25.01</span>
+            </label>
+            <label class="radio-container">
+                <input type="radio" id="five-days-back" name="day">
+                <span class="choosed">26.01</span>
+            </label>
+            <label class="radio-container">
+                <input type="radio" id="four-days-back" name="day">
+                <span class="choosed">27.01</span>
+            </label>
+            <label class="radio-container">
+                <input type="radio" id="three-days-back" name="day">
+                <span class="choosed">28.01</span>
+            </label>
+            <label class="radio-container">
+                <input type="radio" id="two-days-back" name="day">
+                <span class="choosed">29.01</span>
+            </label>
+            <label class="radio-container">
+                <input type="radio" id="one-day-back" name="day">
+                <span class="choosed">30.01</span>
+            </label>
+            <label class="radio-container">
+                <input type="radio" id="today" name="day">
+                <span class="choosed">Today</span>
+            </label>
         </fieldset>
         <section id="daily-summary">
             <div id="remain-kcal"><span>1983</span>KCAL</div>
@@ -39,11 +60,11 @@
             <div id="pbar-container">
                 <div id="bar-progress"></div>
             </div>
-        </section>
+        <!-- </section>
         <form action="">
             <input autocomplete="off" required type="text" placeholder="Search food">
             <input type="submit" value="query">
-        </form>
+        </form> -->
     </main>
     <script src="../../dist/main.js"></script>
 </body>

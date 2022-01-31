@@ -1,13 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap");
-/* --------- */
-/* Variables */
-/* --------- */
-/* colors */
-/* font sizes */
-/* font-families */
-/* --------- */
-/* CSS RESET */
-/* --------- */
 /* Box sizing rules */
 *,
 *::before,
@@ -90,9 +81,9 @@ select {
     scroll-behavior: auto !important;
   }
 }
-/* --------------- */
-/* UTILITY CLASSES */
-/* --------------- */
+/* colors */
+/* font sizes */
+/* font-families */
 .flex-row {
   display: flex;
 }
@@ -155,19 +146,54 @@ select {
 }
 
 .fs-200 {
-  font-size: --fs-200;
+  font-size: 0.875rem;
 }
 
 .ff-headers {
   font-family: "Dongle", sans-serif;
 }
 
+#choose-day {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+#choose-day .radio-container {
+  width: 6rem;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  position: relative;
+  cursor: pointer;
+  font-size: 1.5rem;
+  border-radius: 5rem;
+}
+#choose-day .radio-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+#choose-day .radio-container input:checked ~ .choosed {
+  background-color: #4D606E;
+  transition: 0.1s;
+}
+#choose-day .radio-container .choosed {
+  text-align: center;
+  color: #F5F5F5;
+  line-height: 200%;
+  position: absolute;
+  transform: translate(-50%);
+  left: 50%;
+  width: 5rem;
+  height: 3rem;
+  border-radius: 5rem;
+  background-color: #999999;
+}
+
 /* ---------- */
 /* COMPONENTS */
 /* ---------- */
-/*  {
-    outline: 2px solid red;
-} */
 body {
   display: flex;
   flex-direction: column;
@@ -243,6 +269,7 @@ body {
   border-right: 1px solid grey;
 }
 #main-home #daily-summary > *:first-child {
+  margin-top: 2rem;
   color: #999999;
   font-size: 2rem;
 }
@@ -265,7 +292,6 @@ body {
   display: block;
 }
 
-/* Select every stat excluding first two */
 #pbar-container {
   width: 100%;
   position: relative;
