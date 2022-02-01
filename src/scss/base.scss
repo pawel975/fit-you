@@ -2,6 +2,8 @@
 @use "variables";
 @use "utility-classes";
 @use "day-choose";
+@use "main-home";
+@use "main-settings";
 
 @import url('https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap');
 
@@ -16,8 +18,7 @@ body {
   margin-inline: auto;
   width: 100vw;
   min-height: 100vh;
-  background-color: variables.$clr-light;
-  gap: 1rem;
+  background-color: 1px bold variables.$clr-light;
 }
 
 .nav-desktop {
@@ -45,7 +46,7 @@ body {
         padding-block: 1rem;
 
         &:hover {
-          background-color: variables.$clr-darkest;
+          background-color: variables.$clr-contrast;
           color: variables.$clr-light;
           transition: 0.3s;
         }
@@ -58,78 +59,11 @@ body {
   display: flex; 
   white-space: nowrap;
   color: variables.$clr-darkest;
+  font-weight: 900;
 
-  span {
+  a {
+    text-decoration: none;
     color: variables.$clr-contrast;
     margin-right: 0.5rem;
   }
-}
-
-#main-home {
-  width: clamp(15rem, 80%, 80rem);
-  min-height: 40rem;
-  height: fit-content;
-  display: flex;
-  flex-direction: column;
-  // align-items: center;
-  gap: 1rem;
-
-  // Create another module for custome radio button
-  #choose-day {
-    border: none;
-  }
-  
-  #daily-summary {
-    width: clamp(1rem, 70%, 35rem);
-
-    #goal-kcal {
-      border-right: 1px solid grey;
-    }
-  }
-
-  #daily-summary > *:first-child {
-    margin-top: 2rem;
-    color:variables.$clr-dark;
-    font-size: variables.$fs-500;
-    
-    span {
-      font-size: variables.$fs-700;
-      color: variables.$clr-contrast;
-    }
-  }
-
-  #daily-summary > *:nth-child(1n + 2) {
-    display: inline-flex;
-    flex-direction: column;
-    padding-right: 1rem;
-    font-size: variables.$fs-300;
-    color: variables.$clr-dark;
-
-    span {
-      font-size: variables.$fs-600;
-      color: variables.$clr-darkest;
-    }
-  }
-
-  #daily-summary > *:last-child {
-    display: block;
-
-  }
-}
-
-#pbar-container {
-  width: 100%;
-  position: relative;
-  display: block;
-  background-color: variables.$clr-less-dark;
-  border-radius: 5rem;
-  overflow: hidden;
-  height: 1.25rem;
-  margin-block: 0.875rem;
-}
-
-#bar-progress {
-  width: 50%;
-  height: 100%;
-  background-color: variables.$clr-contrast;
 }

@@ -12,11 +12,11 @@
     <nav class="nav-desktop">
         <h1 class="fs-800 ff-headers text-left text-contrast" style="padding: 0">FitYou</h1>
         <ul role="list">
-            <li><a class="fs-500 text-dark" href="/src/html/index.html">Home</a></li>
-            <li><a class="fs-500 text-dark" href="/src/html/diary.html">Food</a></li>
-            <li><a class="fs-500 text-dark" href="/src/html/motivation.html">Motivation</a></li>
+            <li><a class="fs-400 text-dark" href="/src/html/index.html">Home</a></li>
+            <li><a class="fs-400 text-dark" href="#">Food</a></li>
+            <li><a class="fs-400 text-dark" href="#">Motivation</a></li>
         </ul>
-        <div id="user-profile" class="fs-300" style="line-height: 1.1;"><span>Common User</span><i class="fas fa-user-cog"></i></div>
+        <div id="user-profile" class="fs-300" style="line-height: 1.1;"><a href="/src/html/settings.html">Common User</a><i class="fas fa-user-cog"></i></div>
     </nav>
     <main id="main-home">
         <h2 class="fs-500 text-dark text-center">Your daily statistics</h2>
@@ -46,7 +46,7 @@
                 <span class="choosed">30.01</span>
             </label>
             <label class="radio-container">
-                <input type="radio" id="today" name="day">
+                <input type="radio" checked id="today" name="day">
                 <span class="choosed">Today</span>
             </label>
         </fieldset>
@@ -60,11 +60,7 @@
             <div id="pbar-container">
                 <div id="bar-progress"></div>
             </div>
-        <!-- </section>
-        <form action="">
-            <input autocomplete="off" required type="text" placeholder="Search food">
-            <input type="submit" value="query">
-        </form> -->
+        </section>
     </main>
     <script src="../../dist/main.js"></script>
 </body>

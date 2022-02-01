@@ -2,13 +2,14 @@
 // styles for radio buttons on day choose in daily summary
 
 #choose-day {
+    margin-bottom: 3rem;
     position: relative;
     width: 100%;
     display: flex;
     justify-content: center;
 
     .radio-container {
-        width: 6rem;
+        width: 7rem;
         height: fit-content;
         position: relative;
         cursor: pointer;
@@ -23,20 +24,22 @@
             &:checked ~ .choosed{
                 background-color: variables.$clr-darkest;
                 transition: 0.1s;
+                color: variables.$clr-light;
             }
         }
 
         .choosed {
             text-align: center;
-            color: variables.$clr-light;
+            color: variables.$clr-darkest;
             line-height: 200%;
             position: absolute;
             transform: translate(-50%);
             left: 50%;
-            width: 5rem;
-            height: 3rem;
+            width: 6rem;
+            height: 3.5rem;
             border-radius: 5rem;
-            background-color: variables.$clr-dark;
+            border: 2px solid variables.$clr-darkest;
+
         }
     }
 }

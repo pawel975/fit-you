@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/e21a47bafe.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../scss/base.css">
+    <title>FitYou</title>
+</head>
+<body>
+    <nav class="nav-desktop">
+        <h1 class="fs-800 ff-headers text-left text-contrast" style="padding: 0">FitYou</h1>
+        <ul role="list">
+            <li><a class="fs-400 text-dark" href="/src/html/index.html">Home</a></li>
+            <li><a class="fs-400 text-dark" href="/src/html/diary.html">Food</a></li>
+            <li><a class="fs-400 text-dark" href="/src/html/motivation.html">Motivation</a></li>
+        </ul>
+        <div id="user-profile" class="fs-300" style="line-height: 1.1;"><a href="/src/html/settings.html">Common User</a><i class="fas fa-user-cog"></i></div>
+    </nav>
+    <main id="main-settings">
+        <h2 class="fs-500 text-dark text-center">Your informations & goals</h2>
+        <div id="section-container">
+
+            <section id="set-params">
+                <form>
+                    <label for="name">Name</label>
+                    <input autocomplete="off" type="text" name="name" id="name">
+                    <label for="age">Age</label>
+                    <input autocomplete="off" type="number" name="age" id="age">
+                    <label for="height">Height</label>
+                    <input autocomplete="off" type="number" name="height" id="height">
+                    <label for="weight">Weight</label>
+                    <input autocomplete="off" type="number" name="weight" id="weight">
+                    <label for="goal">I want to:</label>
+                    <select id="goal">
+                        <option>Set goal</option>
+                        <option>Lose weight</option>
+                        <option>Maintain weight</option>
+                        <option>Gain weight</option>
+                    </select>
+                </form>
+            </section>
+            <section id="params-summary">
+    
+            </section>
+        </div>
+    </main>
+    <script src="../../dist/main.js"></script>
+</body>
+</html>
