@@ -1,8 +1,15 @@
 const form = document.querySelector("form");
+const btn = document.querySelectorAll(".add-food");
 
-const apiKey = process.env.API_KEY;
+btn.forEach(item => {
+    item.addEventListener("click", function(){
+        document.querySelector(".modal-wrapper").style.display = "initial";
+    })
+})
 
-let state;
+// const apiKey = process.env.API_KEY;
+
+// let state;
 
 // const baseURL = `https://api.nal.usda.gov/fdc/v1/foods/search?query=cheddar%20cheese&dataType=Branded&pageSize=20&pageNumber=1&sortBy=publishedDate&sortOrder=desc&api_key=${apiKey}`
 

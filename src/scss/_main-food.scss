@@ -1,0 +1,45 @@
+@use 'variables';
+@use 'utility-classes';
+
+#main-food {
+    width: clamp(15rem, 80%, 80rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h2 {
+        margin-top: 3rem;
+    }
+
+    form {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        input[type=submit] {
+            margin: 0;
+            margin-left: 1rem;
+            width: auto;
+            padding-inline: 2rem;
+        }
+    }
+
+    .empty-state-info {
+        margin-top: 3rem;
+        color: variables.$clr-contrast;
+        font-weight: 900;
+
+        .svg-inline--fa {
+            // outline: 2px solid red;
+            padding: 2rem;
+            margin:auto;
+            flex-grow: 1;
+            width: 60%;
+            height: 100%;
+          }
+    }
+    
+
+}
+

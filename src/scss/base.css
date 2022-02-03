@@ -106,15 +106,15 @@ select {
 }
 
 .text-contrast {
-  color: #52154e;
+  color: #44ac49;
 }
 
 .text-dark {
-  color: #1d1f72;
+  color: #29285f;
 }
 
 .text-light {
-  color: #f7f4f3;
+  color: #f8f7f7;
 }
 
 .fs-900 {
@@ -176,13 +176,13 @@ select {
   cursor: pointer;
 }
 #choose-day .radio-container input:checked ~ .choosed {
-  background-color: #1d1f72;
+  background-color: #29285f;
   transition: 0.1s;
-  color: #f7f4f3;
+  color: #f8f7f7;
 }
 #choose-day .radio-container .choosed {
   text-align: center;
-  color: #1d1f72;
+  color: #29285f;
   line-height: 200%;
   position: absolute;
   transform: translate(-50%);
@@ -190,7 +190,7 @@ select {
   width: 6rem;
   height: 3.5rem;
   border-radius: 5rem;
-  border: 2px solid #1d1f72;
+  border: 2px solid #29285f;
 }
 
 #main-home {
@@ -201,10 +201,9 @@ select {
   height: fit-content;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
 }
 #main-home h2 {
-  margin-top: 5rem;
+  margin-top: 3rem;
 }
 #main-home #choose-day {
   border: none;
@@ -216,13 +215,13 @@ select {
   border-right: 1px solid grey;
 }
 #main-home #daily-summary > *:first-child {
-  margin-top: 3rem;
+  margin-top: 2rem;
   color: #aaaaaa;
   font-size: 2rem;
 }
 #main-home #daily-summary > *:first-child span {
   font-size: 5.5rem;
-  color: #52154e;
+  color: #44ac49;
 }
 #main-home #daily-summary > *:nth-child(1n+2) {
   display: inline-flex;
@@ -233,7 +232,7 @@ select {
 }
 #main-home #daily-summary > *:nth-child(1n+2) span {
   font-size: 3rem;
-  color: #1d1f72;
+  color: #29285f;
 }
 #main-home #daily-summary > *:last-child {
   display: block;
@@ -253,56 +252,100 @@ select {
 #bar-progress {
   width: 50%;
   height: 100%;
-  background-color: #52154e;
+  background-color: #44ac49;
 }
 
 #main-settings {
   width: clamp(15rem, 80%, 80rem);
 }
 #main-settings h2 {
-  margin-top: 5rem;
-  margin-bottom: 3rem;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
 }
 #main-settings #section-container {
   width: 100%;
   display: flex;
   flex-direction: row;
-  margin-block: 5rem;
+  margin-block: 3rem;
   justify-content: space-around;
-  align-items: center;
+  align-items: stretch;
 }
-#main-settings #section-container #set-params form {
+#main-settings #section-container #user-params-container {
+  width: 100%;
+}
+#main-settings #section-container #user-params-container form {
+  margin: auto;
+  width: 50%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 1rem;
+  gap: 0.3rem;
 }
-#main-settings #section-container #set-params form label {
-  color: #52154e;
+#main-settings #section-container #user-params-container form label {
+  color: #29285f;
   font-size: 1.5rem;
 }
-#main-settings #section-container #set-params form input, #main-settings #section-container #set-params form #goal {
-  color: #52154e;
-  font-size: 1.25rem;
-  width: 20rem;
-  height: 3rem;
-  border-radius: 50rem;
-  border: 3px solid #52154e;
-  text-align: right;
-  padding-right: 1rem;
+#main-settings #section-container #params-summary-container {
+  width: 100%;
 }
-#main-settings #section-container #set-params form #goal select:hover {
-  background-color: #52154e;
-  color: #f7f4f3;
+#main-settings #section-container #params-summary-container div {
+  padding: 3em;
+  border-radius: 3rem;
+  display: grid;
+  place-items: center;
+  background-color: #29285f;
+  height: 100%;
 }
-#main-settings #section-container #params-summary {
-  background-color: #1d1f72;
-  height: 30rem;
-  width: 50px;
+#main-settings #section-container #params-summary-container div p {
+  font-family: "Dongle", sans-serif;
+  width: 100%;
+  text-align: center;
+  font-size: 4rem;
+  color: #f8f7f7;
+  line-height: 1.1;
+  font-weight: 900;
+}
+#main-settings #section-container #params-summary-container div span {
+  font-family: inherit;
+  color: #44ac49;
+}
+
+#main-food {
+  width: clamp(15rem, 80%, 80rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#main-food h2 {
+  margin-top: 3rem;
+}
+#main-food form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#main-food form input[type=submit] {
+  margin: 0;
+  margin-left: 1rem;
+  width: auto;
+  padding-inline: 2rem;
+}
+#main-food .empty-state-info {
+  margin-top: 3rem;
+  color: #44ac49;
+  font-weight: 900;
+}
+#main-food .empty-state-info .svg-inline--fa {
+  padding: 2rem;
+  margin: auto;
+  flex-grow: 1;
+  width: 60%;
+  height: 100%;
 }
 
 /* ---------- */
-/* COMPONENTS */
+/* Navigation */
 /* ---------- */
 body {
   display: flex;
@@ -311,7 +354,8 @@ body {
   margin-inline: auto;
   width: 100vw;
   min-height: 100vh;
-  background-color: 1px bold #f7f4f3;
+  background-color: #f8f7f7;
+  color: #29285f;
 }
 
 .nav-desktop {
@@ -337,25 +381,184 @@ body {
   height: fit-content;
 }
 .nav-desktop ul li a {
+  color: #29285f;
+  font-size: 1.5rem;
+  font-weight: 700;
   text-align: center;
   display: block;
   text-decoration: none;
   padding-block: 1rem;
 }
 .nav-desktop ul li a:hover {
-  background-color: #52154e;
-  color: #f7f4f3;
+  background-color: #29285f;
+  color: #f8f7f7;
   transition: 0.3s;
 }
 
 #user-profile {
   display: flex;
   white-space: nowrap;
-  color: #1d1f72;
+  color: #29285f;
   font-weight: 900;
 }
 #user-profile a {
   text-decoration: none;
-  color: #52154e;
+  color: #29285f;
   margin-right: 0.5rem;
+}
+
+/* ----------------- */
+/* Global components */
+/* ----------------- */
+input, .dropdown {
+  color: #29285f;
+  font-size: 1.25rem;
+  width: 20rem;
+  height: 3rem;
+  border-radius: 50rem;
+  border: 3px solid #29285f;
+  text-align: right;
+  padding-right: 1rem;
+  background-color: white;
+}
+
+input[type=submit] {
+  margin-top: 1rem;
+  text-align: center;
+  background-color: #29285f;
+  border-color: #29285f;
+  color: #f8f7f7;
+  font-family: "Dongle", sans-serif;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.dropdown select:hover {
+  background-color: #44ac49;
+  color: #f8f7f7;
+}
+
+.modal-wrapper {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+.modal-wrapper .modal-background {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+}
+.modal-wrapper .modal-section {
+  position: absolute;
+  width: clamp(15rem, 30%, 35rem);
+  min-height: 40rem;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  border-radius: 1rem;
+  background-color: white;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 20% 35% 1fr;
+  padding-inline: 2rem;
+  padding-bottom: 1rem;
+  gap: 0.5rem;
+}
+.modal-wrapper .modal-section form {
+  grid-row: 1/2;
+  grid-column: 1/3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.modal-wrapper .modal-section #matched-food {
+  grid-row: 2/3;
+  grid-column: 1/3;
+  width: 100%;
+  overflow-y: scroll;
+}
+.modal-wrapper .modal-section #matched-food .food-options {
+  width: 100%;
+}
+.modal-wrapper .modal-section #matched-food .food-options p {
+  padding-block: 0.25rem;
+  color: #29285f;
+  border-bottom: 1px solid #c8c8c8;
+  cursor: pointer;
+}
+.modal-wrapper .modal-section #matched-food .food-options p:hover {
+  background-color: #29285f;
+  color: white;
+  padding-left: 0.5rem;
+}
+.modal-wrapper .modal-section #food-details {
+  grid-row: 3/4;
+  grid-column: 1/3;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.modal-wrapper .modal-section #food-details #food-nutrition {
+  grid-row: 3/4;
+  grid-column: 1/2;
+  width: 100%;
+}
+.modal-wrapper .modal-section #food-details #add-food-form {
+  grid-row: 3/4;
+  grid-column: 2/3;
+  width: 100%;
+  height: 100%;
+}
+.modal-wrapper .modal-section #food-details #add-food-form input {
+  width: clamp(10rem, 70%, 14rem);
+  margin: 0;
+}
+.modal-wrapper .modal-section #food-details #add-food-form p {
+  font-size: 1.5rem;
+  margin: 1rem;
+}
+.modal-wrapper .modal-section #food-details #add-food-form p span {
+  margin-right: 0.2rem;
+}
+
+.empty-state-info {
+  width: clamp(15rem,80%,40rem);
+  height: 100%;
+  grid-column: 1/3;
+  grid-row: 2/4;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  color: #44ac49;
+  font-weight: 900;
+}
+.empty-state-info p {
+  font-size: 2rem;
+  text-align: center;
+}
+.empty-state-info .svg-inline--fa {
+  padding: 2rem;
+  margin: auto;
+  flex-grow: 1;
+  width: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e6e6e6;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #aaa;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #29285f;
 }/*# sourceMappingURL=base.css.map */

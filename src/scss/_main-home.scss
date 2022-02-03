@@ -7,10 +7,9 @@
     height: fit-content;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
   
     h2 {
-        margin-top: 5rem;
+        margin-top: 3rem;
     }
 
     #choose-day {
@@ -26,7 +25,7 @@
     }
   
     #daily-summary > *:first-child {
-      margin-top: 3rem;
+      margin-top: 2rem;
       color:variables.$clr-dark;
       font-size: variables.$fs-500;
       

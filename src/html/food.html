@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="daily summary of user's kcal summary">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/e21a47bafe.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../scss/base.css">
+    <title>FitYou</title>
+</head>
+<body>
+    <nav class="nav-desktop">
+        <a style="text-decoration: none;" href="/src/html/index.html"><h1 class="fs-800 ff-headers text-left text-contrast" style="padding: 0">FitYou</h1></a>
+        <ul role="list">
+            <li><a href="/src/html/index.html">Home</a></li>
+            <li><a href="/src/html/food.html">Food</a></li>
+            <li><a href="#">Motivation</a></li>
+        </ul>
+        <div id="user-profile" class="fs-300" style="line-height: 1.1;"><a href="/src/html/settings.html">Common User</a><i class="fas fa-user-cog"></i></div>
+    </nav>
+    <main id="main-food">
+        <h2 class="fs-700 ff-headers text-contrast text-center">Food diary</h2>
+        <input class="add-food" type="submit" value="Add food">
+        <div class="empty-state-info" style="display: flex;">
+            <p>There is no food to display</p>
+            <i class="fas fa-utensils"></i>
+        </div>
+    </main>
+    <div class="modal-wrapper" style="display: none;">
+        <div class="modal-background"></div>
+        <aside class="modal-section">
+            <form>
+                <input type="text" placeholder="Search food">
+            </form>
+            <div id="matched-food" style="display: flex;">
+                <div class="food-options">
+                    <p>
+                        <span id="name">Apple</span>, 
+                        <span id="serving">40g</span>, 
+                        <span id="calories">100 calories</span>
+                    </p>
+                    <p>
+                        <span id="name">Apple</span>, 
+                        <span id="serving">40g</span>, 
+                        <span id="calories">100 calories</span>
+                    </p>
+                    <p>
+                        <span id="name">Apple</span>, 
+                        <span id="serving">40g</span>, 
+                        <span id="calories">100 calories</span>
+                    </p>
+                    <p>
+                        <span id="name">Apple</span>, 
+                        <span id="serving">40g</span>, 
+                        <span id="calories">100 calories</span>
+                    </p>
+                    <p>
+                        <span id="name">Apple</span>, 
+                        <span id="serving">40g</span>, 
+                        <span id="calories">100 calories</span>
+                    </p>
+                    <p>
+                        <span id="name">Apple</span>, 
+                        <span id="serving">40g</span>, 
+                        <span id="calories">100 calories</span>
+                    </p>
+                    <p>
+                        <span id="name">Apple</span>, 
+                        <span id="serving">40g</span>, 
+                        <span id="calories">100 calories</span>
+                    </p>
+                    <p>
+                        <span id="name">Apple</span>, 
+                        <span id="serving">40g</span>, 
+                        <span id="calories">100 calories</span>
+                    </p>
+                    <p>
+                        <span id="name">Apple</span>, 
+                        <span id="serving">40g</span>, 
+                        <span id="calories">100 calories</span>
+                    </p>
+                    <p>
+                        <span id="name">Apple</span>, 
+                        <span id="serving">40g</span>, 
+                        <span id="calories">100 calories</span>
+                    </p>
+                    <p>
+                        <span id="name">Apple</span>, 
+                        <span id="serving">40g</span>, 
+                        <span id="calories">100 calories</span>
+                    </p>
+                    <p>
+                        <span id="name">Apple</span>, 
+                        <span id="serving">40g</span>, 
+                        <span id="calories">100 calories</span>
+                    </p>
+                </div>
+            </div>
+            <div id="food-details" style="display: flex;">
+                <table id="food-nutrition">
+                    <tr>
+                        <td>Calories</td>
+                        <td>150</td>
+                    </tr>
+                    <tr>
+                        <td>Fat</td>
+                        <td><span>40</span>g</td>
+                    </tr>
+                    <tr>
+                        <td>Carbohydrates</td>
+                        <td><span>76</span>g</td>
+                    </tr>
+                    <tr>
+                        <td>Protein</td>
+                        <td><span>23</span>g</td>
+                    </tr>
+                </table>
+                <form id="add-food-form">
+                    <input type="number" placeholder="Serving count">
+                    <p>Total: <strong><span>150</span></strong>g</p>
+                    <input type="submit" value="Add food">
+                </form>    
+            </div>
+            <div class="empty-state-info" style="display: none;">
+                <p>There is no food to display</p>
+                <i class="fas fa-utensils"></i>
+            </div>
+        </aside>
+    </div>
+    
+    <script src="../../dist/main.js"></script>
+</body>
+</html>
