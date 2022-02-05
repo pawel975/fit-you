@@ -14,7 +14,11 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"]
+        use: ["style-loader", "css-loader"] // this loaders order must preserved. First css must be loaded and then style-loader injects <style> tag into html. So they're in reversed order.
+      },
+      {
+        test: /\.(gif|png|jpg|jpeg|svg)$/i,
+        type: "asset/resource",
       }
     ]
   },
