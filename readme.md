@@ -9,4 +9,5 @@ Run `npm install` to install all dependencies
 
 ## How to run
 
-Run `npm run dev` to run application in development mode and serve at localhost
+Run `npm run build` to build app in production mode, and serve at Localhost
+Run `npm run dev` to build app in development mode, and serve at Localhost
