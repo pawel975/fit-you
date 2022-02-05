@@ -6,6 +6,7 @@
   "devDependencies": {
     "dotenv-webpack": "^7.1.0",
     "html-webpack-plugin": "^5.5.0",
+    "node-sass": "^7.0.1",
     "sass": "^1.49.7",
     "sass-loader": "^12.4.0",
     "webpack": "^5.68.0",

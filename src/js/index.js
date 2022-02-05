@@ -1,5 +1,5 @@
 import settings from './settings';
-import "../scss/base.css";
+import "../scss/base.scss";
 
 // const btn = document.querySelectorAll(".add-food");
 

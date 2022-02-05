@@ -13,8 +13,12 @@ module.exports = {
         }
       },
       {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"] // this loaders order must preserved. First css must be loaded and then style-loader injects <style> tag into html. So they're in reversed order.
+        test: /\.scss$/,
+        use: [
+          "style-loader", // 3. Injects styles into DOM
+          "css-loader", // 2. Turns css into commonjs
+          "sass-loader" // 1. Turns sass into css
+        ]
       },
       {
         test: /\.(gif|png|jpg|jpeg|svg)$/i,
@@ -25,7 +29,7 @@ module.exports = {
   entry: './src/js/index.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, './'),
+    path: path.resolve(__dirname, 'dist'),
   },
   // serves server for project in current directory
   devServer: {
