@@ -21,7 +21,7 @@ import settings from './js/settings';
             
 const userParamsForm = document.querySelector('#main-settings');
 
-console.log(userParamsForm);
+console.log("AAAA");
 // randomFunction();
 let state;
 // console.log(state);
