@@ -31,6 +31,7 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
+  mode: 'development',
   // serves server for project in current directory
   devServer: {
     static: './',
