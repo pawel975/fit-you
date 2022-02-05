@@ -1,4 +1,4 @@
-import settings from './js/settings';
+import settings from './settings';
 
 // const btn = document.querySelectorAll(".add-food");
 
