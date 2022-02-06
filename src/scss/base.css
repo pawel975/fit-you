@@ -422,7 +422,7 @@ input, .dropdown {
   background-color: white;
 }
 
-input[type=submit] {
+input[type=submit], button {
   margin-top: 1rem;
   text-align: center;
   background-color: #29285f;
@@ -481,16 +481,16 @@ input[type=submit] {
   width: 100%;
   overflow-y: scroll;
 }
-.modal-wrapper .modal-section #matched-food .food-options {
+.modal-wrapper .modal-section #matched-food #food-options {
   width: 100%;
 }
-.modal-wrapper .modal-section #matched-food .food-options p {
+.modal-wrapper .modal-section #matched-food #food-options p {
   padding-block: 0.25rem;
   color: #29285f;
   border-bottom: 1px solid #c8c8c8;
   cursor: pointer;
 }
-.modal-wrapper .modal-section #matched-food .food-options p:hover {
+.modal-wrapper .modal-section #matched-food #food-options p:hover {
   background-color: #29285f;
   color: white;
   padding-left: 0.5rem;
@@ -523,6 +523,9 @@ input[type=submit] {
 }
 .modal-wrapper .modal-section #food-details #add-food-form p span {
   margin-right: 0.2rem;
+}
+.modal-wrapper .modal-section #food-details #add-food-form #finish-adding:disabled {
+  opacity: 0.5;
 }
 
 .empty-state-info {

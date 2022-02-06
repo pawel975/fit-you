@@ -3,13 +3,13 @@ export const state = {
     userParams: {},
 }
 
-export const updateState = (property, value) => {
-    state[property] = value;
+export const updateState = (stateProperty, value) => {
+    state[stateProperty] = value;
     window.localStorage.setItem("state", JSON.stringify(state));
 }
 
-export const getState = () => {
-    let data = JSON.parse(localStorage.getItem("state"));
-    console.log(data)
+export const getState = (stateProperty) => {
+    let receivedData = JSON.parse(localStorage.getItem("state"));
+    let data = receivedData[stateProperty]
     return data;
 }

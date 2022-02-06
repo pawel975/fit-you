@@ -27,10 +27,11 @@ module.exports = {
     ]
   },
   entry: [
-    './src/js/base.js',
+    // './src/js/base.js',
     './src/js/index.js',
     './src/js/settings.js',
-    './src/js/state.js',
+    // './src/js/state.js',
+    './src/js/food.js',
   ],
   output: {
     filename: 'bundle.js',

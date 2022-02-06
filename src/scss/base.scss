@@ -90,7 +90,7 @@ input, .dropdown{
   background-color: white;
 }
 
-input[type=submit] {
+input[type=submit], button {
   margin-top: 1rem;
   text-align: center;
   background-color: variables.$clr-darkest;
@@ -152,7 +152,7 @@ input[type=submit] {
       width: 100%;
       overflow-y: scroll;
 
-      .food-options {
+      #food-options {
         width: 100%;
         p {
           padding-block: 0.25rem;
@@ -201,8 +201,11 @@ input[type=submit] {
             margin-right: 0.2rem;
           }
         }
-      }
 
+        #finish-adding:disabled {
+          opacity: 0.5;
+        }
+      }
     }
 
   }

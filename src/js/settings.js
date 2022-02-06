@@ -1,61 +1,84 @@
 import { DOMelements } from "./base";
 import { getState, updateState } from "./state";
 
-const {userGender, userAge, userHeight, userWeight, userGoal, userParamsForm,  summaryContainer} = DOMelements
+window.addEventListener("load" , () => {
 
-let user = {};
-
-// Fetching user params from local storage and fill form with data
-userGender.value = getState().userParams.gender,
-userAge.value = getState().userParams.age,
-userHeight.value = getState().userParams.height,
-userWeight.value = getState().userParams.weight,
-userGoal.value = getState().userParams.goal,
-// updateState("userParams", user);
-
-// Change user params
-userParamsForm.addEventListener("submit", (e) => {
-    e.preventDefault();
+    const {userGender, userAge, userHeight, userWeight, userGoal, userParamsForm,  summaryContainer} = DOMelements
     
-    user = {
-        gender: userGender.value,
-        age: userAge.value,
-        height: userHeight.value,
-        weight: userWeight.value,
-        goal: userGoal.value,
-    }
+    let user = {};
     
-    updateSummary(user);
-})
-
-// Update user params summary
-const updateSummary = (paramsObject) => {
+    // Fetching user params from local storage and fill form with data
+    userGender.value = getState("userParams").gender,
+    userAge.value = getState("userParams").age,
+    userHeight.value = getState("userParams").height,
+    userWeight.value = getState("userParams").weight,
+    userGoal.value = getState("userParams").goal
     
-    const {gender, age, height, weight, goal} = paramsObject;
-    let dailyBMR;
+    // Update user params summary
+    const updateSummary = (paramsObject) => {
+        
+        const {gender, age, height, weight, goal} = paramsObject;
+        let dailyBMR;
     
-    if (gender === "woman") {
-        dailyBMR = ((9.99 * weight) + (6.25 * height) - (4.92 * age) - 161) * 1.3;
-    } else {
-        dailyBMR = ((9.99 * weight) + (6.25 * height) - (4.92 * age) + 5) * 1.3
-    }
-    
-    //  Conditional rendering of users summary field
-    for (const param in paramsObject) {
-        if (paramsObject[param] === "" || paramsObject[param] === undefined) {
-            summaryContainer.innerHTML = 
-            `<div>
-            <p>Fill all fields to see your daily BMR</p>
-            </div>`;
-            return
+        if (gender === "Female") {
+            dailyBMR = Math.round(((9.99 * weight) + (6.25 * height) - (4.92 * age) - 161 + 400));
         } else {
-            summaryContainer.innerHTML =
-            `<div>
-            <p>To <span id="goal">${goal}</span>, your daily calories limit is <span id="calories">${dailyBMR}</span> kcal</p>
-            </div>`;
+            dailyBMR = Math.round((9.99 * weight) + (6.25 * height) - (4.92 * age) + 5 + 400);
+        }
+    
+        // Change users calories demand base on goal
+        switch(goal){
+            case "lose weight, 0.5kg weekly":
+                dailyBMR -= (3500/7);
+                break;
+            case "lose weight, 1kg weekly":
+                dailyBMR -= (7000/7);
+                break;
+            case "gain weight, 0.5kg weekly":
+                dailyBMR += (3500/7);
+                break;
+            case "gain weight, 1kg weekly":
+                dailyBMR += (7000/7);
+                break;
+        }
+        
+        // Rendering user's summary field
+        for (const param in paramsObject) {
+            if (paramsObject[param] === "" || paramsObject[param] === undefined) {
+                summaryContainer.innerHTML = 
+                `<div>
+                <p>Fill all fields to see your daily caloric demand</p>
+                </div>`;
+                return
+            } else {
+                summaryContainer.innerHTML =
+                `<div>
+                <p>To <span id="goal">${goal}</span>, your daily calories demand is <span id="calories">${dailyBMR}</span> kcal</p>
+                </div>`;
+            }
         }
     }
-}
-updateSummary(user);
+    
+    // initialize summary base on users params
+    updateSummary(getState("userParams"));
+    
+    // Change user params
+    userParamsForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        
+        user = {
+            gender: userGender.value,
+            age: userAge.value,
+            height: userHeight.value,
+            weight: userWeight.value,
+            goal: userGoal.value,
+        }
+        
+        updateState("userParams", user);
+        updateSummary(getState("userParams"));
+    })
+})
+
+
 
     
