@@ -22,9 +22,9 @@
         <h2 class="fs-700 ff-headers text-contrast text-center">Your informations & goals</h2>
         <div id="section-container">
             <section id="user-params-container">
-                <form>
-                    <label for="name">Gender</label>
-                    <select class="dropdown">
+                <form id="user-params">
+                    <label for="gender">Gender</label>
+                    <select id="gender" class="dropdown">
                         <option selected disabled>Set gender</option>
                         <option>Female</option>
                         <option>Male</option>
@@ -57,20 +57,20 @@
                         min="30"
                         max="250">
                     <label for="goal">I want to:</label>
-                    <select class="dropdown">
+                    <select id="goal" class="dropdown">
                         <option disabled selected>Set goal</option>
-                        <option>Lose weight - 0.5kg weekly</option>
-                        <option>Lose weight - 1kg weekly</option>
-                        <option>Maintain weight</option>
-                        <option>Gain weight - 0.5kg weekly</option>
-                        <option>Gain weight - 1kg weekly</option>
+                        <option>lose weight, 0.5kg weekly</option>
+                        <option>lose weight, 1kg weekly</option>
+                        <option>maintain weight</option>
+                        <option>gain weight, 0.5kg weekly</option>
+                        <option>gain weight, 1kg weekly</option>
                     </select>
                     <input type="submit" value="Calculate" name="calculate" id="calculate">
                 </form>
             </section>
             <section id="params-summary-container">
                 <div>
-                    <p>To <span>lose weight</span>, <span>0.5</span>kg per week, your daily calories limit is <span>2300</span> kcal</p>
+                    <p>Fill all fields to see your daily BMR</p>
                 </div>
             </section>
         </div>

@@ -26,7 +26,12 @@ module.exports = {
       }
     ]
   },
-  entry: './src/js/index.js',
+  entry: [
+    './src/js/base.js',
+    './src/js/index.js',
+    './src/js/settings.js',
+    './src/js/state.js',
+  ],
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
