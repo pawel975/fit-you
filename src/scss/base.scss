@@ -191,6 +191,17 @@ input[type=submit], button {
         grid-row: 3/4;
         grid-column: 1/2;
         width: 100%;
+
+        tr {
+          td {
+            &:first-child {
+              text-align: left;
+            }
+            &:nth-child(2) {
+              text-align: right;
+            }
+          }
+        }
       }
 
       #add-food-form {

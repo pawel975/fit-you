@@ -12,7 +12,6 @@ export default class FoodOption {
     }
 
     createMatch(){        
-
         const singleOption = document.createElement("p");
         singleOption.setAttribute("id", `${this.id}`);
 
@@ -22,15 +21,15 @@ export default class FoodOption {
         
         const foodBrand = document.createElement("span");
         foodBrand.setAttribute("id", "brand");
-        foodBrand.innerHTML = `${this.brand}, `;
+        foodBrand.innerHTML = `${String(this.brand).toUpperCase()}, `;
         
         const foodServing = document.createElement("span");
         foodServing.setAttribute("id", "serving");
-        foodServing.innerHTML = `${this.serving}, `;
+        foodServing.innerHTML = `${this.serving}g, `;
 
         const foodCalories = document.createElement("span");
         foodCalories.setAttribute("id", "calories");
-        foodCalories.innerHTML = `${this.calories}`;
+        foodCalories.innerHTML = `${this.calories}kcal`;
 
         singleOption.appendChild(foodName);
         singleOption.appendChild(foodName);
@@ -40,4 +39,8 @@ export default class FoodOption {
         
         return singleOption;
     }
+
+    // createMatchTable(){
+
+    // } 
 }

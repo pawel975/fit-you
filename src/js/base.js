@@ -13,8 +13,9 @@ export const DOMelements = {
     addFoodBtn: document.querySelectorAll(".add-food"),
     addFoodModal: document.querySelector("#search-food-modal"),
     addFoodSearch: document.querySelector("#search-food"),
-    addFoodMatches: document.querySelector("#food-options"),
+    addFoodMatchesArea: document.querySelector("#food-options"),
     addFoodFinish: document.querySelector("#finish-adding"),
     addFoodModalClose: document.querySelector("#modal-close-container"),
     addFoodModalBackground: document.querySelector(".modal-background"),
+    addFoodMatchesOptions: document.querySelector("#food-options"),
 }

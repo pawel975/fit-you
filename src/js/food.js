@@ -1,45 +1,39 @@
 import { DOMelements } from "./base";
 import FoodOption from "./foodOption";
-import { state } from "./state";
 
 window.addEventListener("load", () => {
 
-    const {addFoodBtn, addFoodMatches, addFoodModal, addFoodSearch, addFoodFinish, addFoodModalClose, addFoodModalBackground} = DOMelements;
+    const {addFoodBtn, addFoodMatchesArea, addFoodMatchesOptions, addFoodModal, addFoodSearch, addFoodFinish, addFoodModalClose, addFoodModalBackground} = DOMelements;
 
-    const controller = new AbortController();
-    const {signal} = controller;
-
-    let fetchTimeout;
     let fetchedMatches = [];
     let matchedFood = [];
+    let choosedFood;
             
     const fetchFoodData = () => {
-        
         let searchedFood = addFoodSearch.value.replace(/\s+/g, '%20');
-        console.log(searchedFood)
-
+            
         const baseURL = `https://api.nal.usda.gov/fdc/v1/foods/search?query=${searchedFood}&dataType=Branded&pageSize=30&pageNumber=1&sortBy=dataType.keyword&sortOrder=desc&api_key=${process.env.API_KEY}`
-
-        fetch(baseURL, {signal})
-            .then(response => response.json())
-            .then(data => {
-                const {foods} = data;
-                fetchedMatches = foods;
-                console.log(fetchedMatches)
-            })
-            .catch(error => console.log(error));
+        
+        fetch(baseURL)
+        .then(response => response.json())
+        .then(data => {
+            const {foods} = data;
+            fetchedMatches = foods;
+            console.log(foods)
+        })
+        .catch(error => console.log(error));
     }
-
+    
     const createFoodComponent = (fetchedMatches, matchedFood) => {
         fetchedMatches.forEach(match => {
             const {fdcId, lowercaseDescription, brandName, servingSize, foodNutrients} = match
     
-            const fat = foodNutrients.filter(nutrient => nutrient.nutrientId === 1004).value
-            const proteins = foodNutrients.filter(nutrient => nutrient.nutrientId === 1003).value
-            const carbs = foodNutrients.filter(nutrient => nutrient.nutrientId === 1005).value
-            const calories = foodNutrients.filter(nutrient => nutrient.nutrientId === 1008).value
+            const fat = foodNutrients.filter(nutrient => nutrient.nutrientId === 1004)[0].value.toFixed(1)
+            const proteins = foodNutrients.filter(nutrient => nutrient.nutrientId === 1003)[0].value.toFixed(1)
+            const carbs = foodNutrients.filter(nutrient => nutrient.nutrientId === 1005)[0].value.toFixed(1)
+            const calories = foodNutrients.filter(nutrient => nutrient.nutrientId === 1008)[0].value
 
-            matchedFood.push(new FoodOption(fdcId, lowercaseDescription, brandName, servingSize, calories, fat, proteins, carbs, addFoodMatches))
+            matchedFood.push(new FoodOption(fdcId, lowercaseDescription, brandName, servingSize, calories, fat, proteins, carbs, addFoodMatchesArea))
         })
     }
 
@@ -53,7 +47,7 @@ window.addEventListener("load", () => {
     // Handle modal search and fetch data
     addFoodSearch.addEventListener("input", (e) => {
         e.preventDefault();
-        controller.abort();
+
         // If search field is empty, disable finish adding button
         if ((addFoodSearch.value).length === 0) {
             addFoodFinish.disabled = true;
@@ -62,16 +56,23 @@ window.addEventListener("load", () => {
         }
 
         // Clear matches food area 
-        addFoodMatches.innerHTML = "";
+        addFoodMatchesArea.innerHTML = "";
         matchedFood = [];
 
         // Creates delay on request to prevent fetching on every typed letter
-        clearTimeout(fetchTimeout);
-        fetchTimeout = setTimeout(fetchFoodData, 0);
+        fetchFoodData();
 
         // Creates new record on food matches area
         createFoodComponent(fetchedMatches, matchedFood);
-        matchedFood.forEach(food => addFoodMatches.appendChild(food.createMatch()))
+        matchedFood.forEach(food => addFoodMatchesArea.appendChild(food.createMatch()))
+
+        // Set food meant to be saved to diary (state)
+        addFoodMatchesOptions.childNodes.forEach(option => {
+            option.addEventListener("click", () => {
+                choosedFood = matchedFood.filter(match => match.id === Number(option.id))[0];
+                console.log(choosedFood)
+            })
+        })
     }) 
 
     // Handle add food finish
@@ -88,6 +89,4 @@ window.addEventListener("load", () => {
     addFoodModalBackground.addEventListener('click', () => {
         addFoodModal.style.display = "none";
     })
-    
-    console.log(addFoodMatches)
 })
