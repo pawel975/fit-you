@@ -18,4 +18,5 @@ export const DOMelements = {
     addFoodModalClose: document.querySelector("#modal-close-container"),
     addFoodModalBackground: document.querySelector(".modal-background"),
     addFoodMatchesOptions: document.querySelector("#food-options"),
+    addFoodMatchTable: document.querySelector("#food-details"),
 }

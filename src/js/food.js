@@ -3,7 +3,7 @@ import FoodOption from "./foodOption";
 
 window.addEventListener("load", () => {
 
-    const {addFoodBtn, addFoodMatchesArea, addFoodMatchesOptions, addFoodModal, addFoodSearch, addFoodFinish, addFoodModalClose, addFoodModalBackground} = DOMelements;
+    const {addFoodBtn, addFoodMatchesArea, addFoodMatchesOptions, addFoodModal, addFoodSearch, addFoodFinish, addFoodModalClose, addFoodModalBackground, addFoodMatchTable} = DOMelements;
 
     let fetchedMatches = [];
     let matchedFood = [];
@@ -24,7 +24,7 @@ window.addEventListener("load", () => {
         .catch(error => console.log(error));
     }
     
-    const createFoodComponent = (fetchedMatches, matchedFood) => {
+    const createFoodOption = (fetchedMatches, matchedFood) => {
         fetchedMatches.forEach(match => {
             const {fdcId, lowercaseDescription, brandName, servingSize, foodNutrients} = match
     
@@ -59,18 +59,18 @@ window.addEventListener("load", () => {
         addFoodMatchesArea.innerHTML = "";
         matchedFood = [];
 
-        // Creates delay on request to prevent fetching on every typed letter
         fetchFoodData();
 
         // Creates new record on food matches area
-        createFoodComponent(fetchedMatches, matchedFood);
+        createFoodOption(fetchedMatches, matchedFood);
         matchedFood.forEach(food => addFoodMatchesArea.appendChild(food.createMatch()))
 
         // Set food meant to be saved to diary (state)
         addFoodMatchesOptions.childNodes.forEach(option => {
             option.addEventListener("click", () => {
                 choosedFood = matchedFood.filter(match => match.id === Number(option.id))[0];
-                console.log(choosedFood)
+                addFoodMatchTable.insertBefore(choosedFood.createMatchTable(),addFoodMatchTable.childNodes[2]);
+                addFoodMatchTable.removeChild(addFoodMatchTable.childNodes[1]);
             })
         })
     }) 

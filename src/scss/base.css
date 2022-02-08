@@ -522,9 +522,6 @@ input[type=submit], button {
 .modal-wrapper .modal-section #food-details #food-nutrition tr td:first-child {
   text-align: left;
 }
-.modal-wrapper .modal-section #food-details #food-nutrition tr td:nth-child(2) {
-  text-align: right;
-}
 .modal-wrapper .modal-section #food-details #add-food-form {
   grid-row: 3/4;
   grid-column: 2/3;

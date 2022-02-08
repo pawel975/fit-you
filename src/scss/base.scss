@@ -197,9 +197,9 @@ input[type=submit], button {
             &:first-child {
               text-align: left;
             }
-            &:nth-child(2) {
-              text-align: right;
-            }
+            // &:nth-child(2) {
+            //   text-align: right;
+            // }
           }
         }
       }
