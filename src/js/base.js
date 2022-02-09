@@ -19,4 +19,5 @@ export const DOMelements = {
     addFoodModalBackground: document.querySelector(".modal-background"),
     addFoodMatchesOptions: document.querySelector("#food-options"),
     addFoodMatchTable: document.querySelector("#food-details"),
+    addFoodServingCount: document.querySelector("#serving-count"),
 }

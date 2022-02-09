@@ -122,6 +122,7 @@ input[type=submit], button {
   }
 
   .modal-section {
+
     position: absolute;
     width: clamp(15rem, 30%, 35rem);
     min-height: 40rem;
@@ -131,7 +132,7 @@ input[type=submit], button {
     border-radius: 1rem;
     background-color: variables.$clr-very-light;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 50% 50%;
     grid-template-rows: 20% 18rem 1fr;
     padding-inline: 2rem;
     padding-bottom: 1rem;
@@ -197,9 +198,6 @@ input[type=submit], button {
             &:first-child {
               text-align: left;
             }
-            // &:nth-child(2) {
-            //   text-align: right;
-            // }
           }
         }
       }

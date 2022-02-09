@@ -54,7 +54,7 @@ export default class FoodOption {
         const table = document.createElement("table");
         table.setAttribute("id", "food-nutrition")
 
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < Object.keys(categories).length; i++) {
             const row = document.createElement("tr");
             const nameCol = document.createElement("td");
             const dataCol = document.createElement("td");
@@ -62,9 +62,9 @@ export default class FoodOption {
             dataCol.textContent = `${categories[Object.keys(categories)[i]] + (Object.keys(categories)[i] === "calories" ? "kcal" : "g")}`;
             row.appendChild(nameCol);
             row.appendChild(dataCol);
-
             table.appendChild(row);
         }
+
         return table;
 
     } 
