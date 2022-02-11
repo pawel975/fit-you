@@ -4,20 +4,30 @@ import { clearStateProp, getState, updateState } from './state';
 
 window.addEventListener("load", () => {
 
-    let diaryDate;
+    // updateState("userHistory", []);
 
-    if (getState("userHistory") === undefined) {
-        const date = getCurrentDate()
-        const diaryDay = [{[date]: {}}]
-        updateState("userHistory", diaryDay);
-        // clearStateProp("userHistory");
+    const currentDate = getCurrentDate();
+    let userDiary = getState("userHistory");
+
+    // Create userDiary new day record
+    if (!getDayData(date)) {
+        createDayData(date);
+        updateState("userHistory", date);
     }
-    else if (getState("userHistory")){
-        
+
+    // Get record from user's history in particular day
+    const getDayData = (date) => {
+        let dayData = getState("userHistory").filter(day => day.date === date)[0];
+        return dayData
     }
-    // const updatedHistory = getState("userHistory");
-    // console.log(getState("userHistory"))
-    // updateState("userHistory", {...user})
+
+    const createDayData = (date) => {
+        userDiary.push({date: date});
+    }
+
+    const modifyDayData = (date, propertyToChange, value) => {
+        getDayData(date)[propertyToChange] = value;
+    }
 
 })
 
