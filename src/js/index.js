@@ -4,6 +4,10 @@ import { clearStateProp, getState, updateState } from './state';
 
 window.addEventListener("load", () => {
 
+// FoodOption object will be stored in state, on day record in array for eaten food records
+
+
+
     // updateState("userHistory", []);
 
     const currentDate = getCurrentDate();
