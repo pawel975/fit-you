@@ -48,9 +48,6 @@ export default class FoodOption {
             Carbohydrates: this.carbohydrates,
             Protein: this.proteins
         }
-
-        console.log(Object.keys(categories)[1])
-
         const table = document.createElement("table");
         table.setAttribute("id", "food-nutrition")
 
@@ -64,33 +61,29 @@ export default class FoodOption {
             row.appendChild(dataCol);
             table.appendChild(row);
         }
-
         return table;
     } 
 
     createDiaryTable(){
-
         const headers = {
-            Name: this.name, 
-            Kcal: this.calories, 
-            Protein: this.proteins,
-            Carbohydrates: this.carbohydrates,
-            Fat: this.fat, 
+            calories: this.calories, 
+            protein: this.proteins,
+            carbohydydrates: this.carbohydrates,
+            fat: this.fat, 
         }
 
-        const table = document.createElement("table");
-        const thead = document.createElement("thead");
-        const headRow = document.createElement("tr");
-        const tbody = document.createElement("tbody");
         const bodyRow = document.createElement("tr");
 
-        table.appendChild(thead);
-        table.appendChild(tbody);
+        let td = document.createElement("td");
+        bodyRow.appendChild(td);
+        td.textContent = this.name;
 
         for (let i = 0; i < Object.keys(headers).length; i++) {
-            thead.appendChild()
+            let td = document.createElement("td");
+            td.setAttribute("class", Object.keys(headers)[i]);
+            td.textContent = `${headers[Object.keys(headers)[i]] + (Object.keys(headers)[i] === "calories" ? "kcal" : "g")}`
+            bodyRow.appendChild(td);
         }
-        return table
-
+        return bodyRow
     }
 }

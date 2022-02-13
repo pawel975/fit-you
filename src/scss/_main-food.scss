@@ -65,9 +65,19 @@
             thead {
                 background-color: variables.$clr-darkest;
                 color: variables.$clr-very-light;
-                font-weight: 900;
-                
+                font-weight: 900;   
             }
+
+            tbody{
+
+                tr:last-child {
+                    td:first-child{
+                        background-color: variables.$clr-darkest;
+                        color: variables.$clr-very-light;
+                    }
+                }
+            }
+
         }
     }
 }

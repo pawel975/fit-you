@@ -9,7 +9,7 @@ window.addEventListener("load", () => {
     // clear state in development
     // updateState("userHistory", []);
 
-    const {addFoodBtn, addFoodDiaryTable ,addFoodMatchesArea, addFoodModal, addFoodSearch, addFoodFinish, addFoodModalClose, addFoodModalBackground, addFoodMatchTable} = DOMelements;
+    const {addFoodBtn, addFoodDiaryTableBody, addFoodTableSummary,addFoodMatchesArea, addFoodModal, addFoodSearch, addFoodFinish, addFoodModalClose, addFoodModalBackground, addFoodMatchTable} = DOMelements;
 
     // Get record from user's history in particular day
     const currentDate = getCurrentDate();
@@ -74,6 +74,10 @@ window.addEventListener("load", () => {
         updateState("userHistory", userDiary);
     }
 
+    // const countTableTotals = () => {
+
+    // }
+
     // const modifyDayData = (date, propertyToChange, value) => {
     //     let modifiedData = getDayData(date);
     //     modifiedData[propertyToChange] = value;
@@ -130,6 +134,12 @@ window.addEventListener("load", () => {
         e.preventDefault();
         if (choosedFood) {
             createFoodStateRecord(currentDate, choosedFood);
+            // addFoodDiaryTableBody.insertBefore(choosedFood.createDiaryTable(), addFoodTableSummary)
+            let foodRecords = getDayData(currentDate).eatenFood;
+            // console.log(foodRecords);
+            foodRecords.forEach(record => {
+                addFoodDiaryTableBody.appendChild(record.createDiaryTable());
+            })
             addFoodModal.style.display = "none";
         }
     })
