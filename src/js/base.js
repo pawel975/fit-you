@@ -11,6 +11,7 @@ export const DOMelements = {
     summaryContainer: document.querySelector("#params-summary-container"),
     // food.html
     addFoodBtn: document.querySelectorAll(".add-food"),
+    addFoodDiaryTable: document.querySelector("#diary-table"),
     addFoodModal: document.querySelector("#search-food-modal"),
     addFoodSearch: document.querySelector("#search-food"),
     addFoodMatchesArea: document.querySelector("#food-options"),

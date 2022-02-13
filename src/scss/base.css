@@ -343,6 +343,30 @@ select {
   width: 60%;
   height: 100%;
 }
+#main-food #diary-table {
+  margin: 2rem;
+  width: 60%;
+  background-color: white;
+  border: 1px solid #c8c8c8;
+  text-align: center;
+}
+#main-food #diary-table table {
+  width: 100%;
+}
+#main-food #diary-table table td {
+  width: 16.25%;
+}
+#main-food #diary-table table td:first-child {
+  width: 35%;
+}
+#main-food #diary-table table td {
+  border: 1px solid #c8c8c8;
+}
+#main-food #diary-table table thead {
+  background-color: #29285f;
+  color: white;
+  font-weight: 900;
+}
 
 /* ---------- */
 /* Navigation */
@@ -461,7 +485,7 @@ input[type=submit], button {
   border-radius: 1rem;
   background-color: white;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 50% 50%;
   grid-template-rows: 20% 18rem 1fr;
   padding-inline: 2rem;
   padding-bottom: 1rem;

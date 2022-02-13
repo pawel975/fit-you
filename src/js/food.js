@@ -1,12 +1,23 @@
 import { DOMelements } from "./base";
+import { getCurrentDate } from "./date";
 import FoodOption from "./foodOption";
+import { clearStateProp, getState, updateState } from "./state";
+
 
 window.addEventListener("load", () => {
+    
+    // clear state in development
+    // updateState("userHistory", []);
 
-    const {addFoodBtn, addFoodMatchesArea, addFoodMatchesOptions, addFoodModal, addFoodSearch, addFoodFinish, addFoodModalClose, addFoodModalBackground, addFoodMatchTable} = DOMelements;
+    const {addFoodBtn, addFoodDiaryTable ,addFoodMatchesArea, addFoodModal, addFoodSearch, addFoodFinish, addFoodModalClose, addFoodModalBackground, addFoodMatchTable} = DOMelements;
 
+    // Get record from user's history in particular day
+    const currentDate = getCurrentDate();
+    let userDiary = getState("userHistory");
+    
     let fetchedMatches = [];
     let matchedFood = [];
+    // Food chosen in search area
     let choosedFood;
             
     const fetchFoodData = () => {
@@ -21,7 +32,7 @@ window.addEventListener("load", () => {
             fetchedMatches = foods;
             console.log(foods)
         })
-        .catch(error => console.log(error));
+        .catch(error => console.error(error));
     }
     
     const createFoodOption = (fetchedMatches, matchedFood) => {
@@ -33,12 +44,51 @@ window.addEventListener("load", () => {
             const carbs = foodNutrients.filter(nutrient => nutrient.nutrientId === 1005)[0].value.toFixed(1)
             const calories = foodNutrients.filter(nutrient => nutrient.nutrientId === 1008)[0].value
 
+            // Push data fetched from API to array in form of FoodOption instances
             matchedFood.push(new FoodOption(fdcId, lowercaseDescription, brandName, servingSize, calories, fat, proteins, carbs, addFoodMatchesArea))
         })
     }
 
+    // Get single date records
+    const getDayData = (date) => {
+        let dayData = getState("userHistory").filter(day => day.date === date)[0];
+        return dayData
+    }
+
+    // Create date in user diary
+    const createDayData = (date) => {
+        userDiary.push({
+            date: date,
+            eatenFood: [],
+        });
+        updateState("userHistory", userDiary);
+    }
+
+    // Create food record in particular day
+    const createFoodStateRecord = (date, food) => {
+        let tmpData = getDayData(date);
+        tmpData.eatenFood.push(food);
+        userDiary.forEach(day => {
+            if (day.date === date) day.eatenFood = tmpData.eatenFood;
+        })
+        updateState("userHistory", userDiary);
+    }
+
+    // const modifyDayData = (date, propertyToChange, value) => {
+    //     let modifiedData = getDayData(date);
+    //     modifiedData[propertyToChange] = value;
+    //     userDiary[date] = modifiedData;
+    // }
+
+    // Create userDiary new day record
+    if (!getDayData(currentDate)) {
+        createDayData(currentDate);
+        updateState("userHistory", userDiary);
+    }
+
     // Handle modal open
     addFoodBtn.forEach(button => {
+        choosedFood = undefined;
         button.addEventListener("click", () => {
             addFoodModal.style.display = "initial";
         })
@@ -66,7 +116,7 @@ window.addEventListener("load", () => {
         matchedFood.forEach(food => addFoodMatchesArea.appendChild(food.createMatch()))
 
         // Set food meant to be saved to diary (state)
-        addFoodMatchesOptions.childNodes.forEach(option => {
+        addFoodMatchesArea.childNodes.forEach(option => {
             option.addEventListener("click", () => {
                 choosedFood = matchedFood.filter(match => match.id === Number(option.id))[0];
                 addFoodMatchTable.insertBefore(choosedFood.createMatchTable(),addFoodMatchTable.childNodes[2]);
@@ -76,8 +126,12 @@ window.addEventListener("load", () => {
     }) 
 
     // Handle add food finish
-    addFoodFinish.addEventListener("click", () => {
-        addFoodModal.style.display = "none";
+    addFoodFinish.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (choosedFood) {
+            createFoodStateRecord(currentDate, choosedFood);
+            addFoodModal.style.display = "none";
+        }
     })
 
     // Handle modal close (cross button)

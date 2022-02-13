@@ -66,6 +66,31 @@ export default class FoodOption {
         }
 
         return table;
-
     } 
+
+    createDiaryTable(){
+
+        const headers = {
+            Name: this.name, 
+            Kcal: this.calories, 
+            Protein: this.proteins,
+            Carbohydrates: this.carbohydrates,
+            Fat: this.fat, 
+        }
+
+        const table = document.createElement("table");
+        const thead = document.createElement("thead");
+        const headRow = document.createElement("tr");
+        const tbody = document.createElement("tbody");
+        const bodyRow = document.createElement("tr");
+
+        table.appendChild(thead);
+        table.appendChild(tbody);
+
+        for (let i = 0; i < Object.keys(headers).length; i++) {
+            thead.appendChild()
+        }
+        return table
+
+    }
 }

@@ -39,5 +39,36 @@
             height: 100%;
           }
     }
+
+    #diary-table {
+        margin: 2rem;
+        width: 60%;
+        background-color: variables.$clr-very-light;
+        border: 1px solid variables.$clr-less-dark;
+        text-align: center;
+        
+        table {
+            width: 100%;
+            
+            td {
+                width: 16.25%;
+            }
+
+            td:first-child{
+                width: 35%;
+            }
+                
+            td {
+                border: 1px solid variables.$clr-less-dark;
+            }
+            
+            thead {
+                background-color: variables.$clr-darkest;
+                color: variables.$clr-very-light;
+                font-weight: 900;
+                
+            }
+        }
+    }
 }
 
