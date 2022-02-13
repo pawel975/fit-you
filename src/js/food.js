@@ -1,5 +1,6 @@
 import { DOMelements } from "./base";
 import { getCurrentDate } from "./date";
+import { createDiaryTable } from "./diaryTable";
 import FoodOption from "./foodOption";
 import { clearStateProp, getState, updateState } from "./state";
 
@@ -74,6 +75,7 @@ window.addEventListener("load", () => {
         updateState("userHistory", userDiary);
     }
 
+
     // const countTableTotals = () => {
 
     // }
@@ -134,11 +136,9 @@ window.addEventListener("load", () => {
         e.preventDefault();
         if (choosedFood) {
             createFoodStateRecord(currentDate, choosedFood);
-            // addFoodDiaryTableBody.insertBefore(choosedFood.createDiaryTable(), addFoodTableSummary)
             let foodRecords = getDayData(currentDate).eatenFood;
-            // console.log(foodRecords);
             foodRecords.forEach(record => {
-                addFoodDiaryTableBody.appendChild(record.createDiaryTable());
+                addFoodDiaryTableBody.insertBefore(createDiaryTable(record), addFoodDiaryTableBody.firstChild);
             })
             addFoodModal.style.display = "none";
         }
