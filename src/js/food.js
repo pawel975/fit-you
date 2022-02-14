@@ -1,6 +1,6 @@
 import { DOMelements } from "./base";
 import { getCurrentDate } from "./date";
-import { createDiaryTable } from "./diaryTable";
+import { createDiaryRecords, createTableHeaders, createTableSummary } from "./diaryTable";
 import FoodOption from "./foodOption";
 import { clearStateProp, getState, updateState } from "./state";
 
@@ -10,7 +10,7 @@ window.addEventListener("load", () => {
     // clear state in development
     // updateState("userHistory", []);
 
-    const {addFoodBtn, addFoodDiaryTableBody, addFoodTableSummary,addFoodMatchesArea, addFoodModal, addFoodSearch, addFoodFinish, addFoodModalClose, addFoodModalBackground, addFoodMatchTable} = DOMelements;
+    const {addFoodBtn, addFoodDiaryTable, addFoodDiaryTableBody, addFoodMatchesArea, addFoodModal, addFoodSearch, addFoodFinish, addFoodModalClose, addFoodModalBackground, addFoodMatchTable} = DOMelements;
 
     // Get record from user's history in particular day
     const currentDate = getCurrentDate();
@@ -75,6 +75,26 @@ window.addEventListener("load", () => {
         updateState("userHistory", userDiary);
     }
 
+    const renderTable = (date) => {
+        // Remove existing table
+        addFoodDiaryTable.textContent = "";
+
+        // Create basic structure of table
+        const table = document.createElement("table");
+        const thead = document.createElement("thead");
+        const tbody = document.createElement("tbody");
+        table.appendChild(thead);
+        table.appendChild(tbody);
+        addFoodDiaryTable.appendChild(table);
+
+        // Fill table with headers and records
+        createTableHeaders();
+        let foodRecords = getDayData(date).eatenFood;
+        foodRecords.forEach(record => {
+            addFoodDiaryTableBody.appendChild(createDiaryRecords(record));
+        })
+        createTableSummary();
+    }
 
     // const countTableTotals = () => {
 
@@ -136,10 +156,7 @@ window.addEventListener("load", () => {
         e.preventDefault();
         if (choosedFood) {
             createFoodStateRecord(currentDate, choosedFood);
-            let foodRecords = getDayData(currentDate).eatenFood;
-            foodRecords.forEach(record => {
-                addFoodDiaryTableBody.insertBefore(createDiaryTable(record), addFoodDiaryTableBody.firstChild);
-            })
+            renderTable(currentDate);
             addFoodModal.style.display = "none";
         }
     })

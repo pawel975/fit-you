@@ -11,8 +11,9 @@ export const DOMelements = {
     summaryContainer: document.querySelector("#params-summary-container"),
     // food.html
     addFoodBtn: document.querySelectorAll(".add-food"),
+    addFoodDiaryTable: document.querySelector("#diary-table"),
     addFoodDiaryTableBody: document.querySelector("#diary-table table tbody"),
-    addFoodTableSummary: document.querySelector("#diary-table table tbody #table-summary"),
+    addFoodDiaryTableSummary: document.querySelector("#diary-table table tbody #table-summary"),
     addFoodTableKcalTotal: document.querySelector("#table-summary #kcal-total"),
     addFoodTableProteinTotal: document.querySelector("#table-summary #protein-total"),
     addFoodTableCarboTotal: document.querySelector("#table-summary #carbohydrates-total"),
