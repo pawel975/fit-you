@@ -75,25 +75,16 @@ window.addEventListener("load", () => {
         updateState("userHistory", userDiary);
     }
 
-    const renderTable = (date) => {
+    const renderTableBody = (date) => {
         // Remove existing table
-        addFoodDiaryTable.textContent = "";
+        addFoodDiaryTableBody.textContent = ""
 
-        // Create basic structure of table
-        const table = document.createElement("table");
-        const thead = document.createElement("thead");
-        const tbody = document.createElement("tbody");
-        table.appendChild(thead);
-        table.appendChild(tbody);
-        addFoodDiaryTable.appendChild(table);
-
-        // Fill table with headers and records
-        createTableHeaders();
+        // Fill table with records
         let foodRecords = getDayData(date).eatenFood;
         foodRecords.forEach(record => {
             addFoodDiaryTableBody.appendChild(createDiaryRecords(record));
         })
-        createTableSummary();
+        addFoodDiaryTableBody.appendChild(createTableSummary());
     }
 
     // const countTableTotals = () => {
@@ -156,7 +147,7 @@ window.addEventListener("load", () => {
         e.preventDefault();
         if (choosedFood) {
             createFoodStateRecord(currentDate, choosedFood);
-            renderTable(currentDate);
+            renderTableBody(currentDate);
             addFoodModal.style.display = "none";
         }
     })

@@ -1,19 +1,4 @@
 
-// Creates headers in table body 
-export const createTableHeaders = () => {
-    
-    const headRow = document.createElement("tr");
-
-    const headers = ["Name", "Kcal", "Carbohydrates", "Proteins", "Fat"];
-
-    for (let i = 0; i < headers.length; i++) {
-        const td = document.createElement("td");
-        td.textContent = headers[i];
-        headRow.appendChild(td);
-    }
-    return headRow;
-}
-
 // Creates records in table body
 export const createDiaryRecords = (record) => {
 
