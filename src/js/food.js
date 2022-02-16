@@ -1,17 +1,17 @@
 import { DOMelements } from "./base";
 import { getCurrentDate } from "./date";
-import { createDiaryRecords, createTableHeaders, createTableSummary } from "./diaryTable";
+import { createDiaryTable} from "./diaryTable";
 import FoodOption from "./foodOption";
-import { clearStateProp, getState, updateState } from "./state";
+import {getState, updateState } from "./state";
 
 
 window.addEventListener("load", () => {
     
     // clear state in development
     // updateState("userHistory", []);
-
-    const {addFoodBtn, addFoodDiaryTable, addFoodDiaryTableBody, addFoodMatchesArea, addFoodModal, addFoodSearch, addFoodFinish, addFoodModalClose, addFoodModalBackground, addFoodMatchTable} = DOMelements;
-
+    
+    const {addFoodBtn, addFoodDiaryTableContainer, addFoodDiaryTableBody, addFoodMatchesArea, addFoodModal, addFoodSearch, addFoodFinish, addFoodModalClose, addFoodModalBackground, addFoodMatchTable} = DOMelements;
+    
     // Get record from user's history in particular day
     const currentDate = getCurrentDate();
     let userDiary = getState("userHistory");
@@ -20,7 +20,7 @@ window.addEventListener("load", () => {
     let matchedFood = [];
     // Food chosen in search area
     let choosedFood;
-            
+    
     const fetchFoodData = () => {
         let searchedFood = addFoodSearch.value.replace(/\s+/g, '%20');
             
@@ -38,7 +38,7 @@ window.addEventListener("load", () => {
     
     const createFoodOption = (fetchedMatches, matchedFood) => {
         fetchedMatches.forEach(match => {
-            const {fdcId, lowercaseDescription, brandName, servingSize, foodNutrients} = match
+            const {fdcId, description, brandName, servingSize, foodNutrients} = match
     
             const fat = foodNutrients.filter(nutrient => nutrient.nutrientId === 1004)[0].value.toFixed(1)
             const proteins = foodNutrients.filter(nutrient => nutrient.nutrientId === 1003)[0].value.toFixed(1)
@@ -46,7 +46,7 @@ window.addEventListener("load", () => {
             const calories = foodNutrients.filter(nutrient => nutrient.nutrientId === 1008)[0].value
 
             // Push data fetched from API to array in form of FoodOption instances
-            matchedFood.push(new FoodOption(fdcId, lowercaseDescription, brandName, servingSize, calories, fat, proteins, carbs, addFoodMatchesArea))
+            matchedFood.push(new FoodOption(fdcId, description, brandName, servingSize, calories, fat, proteins, carbs, addFoodMatchesArea))
         })
     }
 
@@ -75,21 +75,17 @@ window.addEventListener("load", () => {
         updateState("userHistory", userDiary);
     }
 
-    const renderTableBody = (date) => {
+    const renderTable = (date) => {
         // Remove existing table
-        addFoodDiaryTableBody.textContent = ""
+        addFoodDiaryTableContainer.textContent = ""
 
         // Fill table with records
         let foodRecords = getDayData(date).eatenFood;
-        foodRecords.forEach(record => {
-            addFoodDiaryTableBody.appendChild(createDiaryRecords(record));
-        })
-        addFoodDiaryTableBody.appendChild(createTableSummary());
+        addFoodDiaryTableContainer.appendChild(createDiaryTable(foodRecords));
     }
 
-    // const countTableTotals = () => {
-
-    // }
+    // initalize table on load
+    renderTable(currentDate);
 
     // const modifyDayData = (date, propertyToChange, value) => {
     //     let modifiedData = getDayData(date);
@@ -147,7 +143,7 @@ window.addEventListener("load", () => {
         e.preventDefault();
         if (choosedFood) {
             createFoodStateRecord(currentDate, choosedFood);
-            renderTableBody(currentDate);
+            renderTable(currentDate);
             addFoodModal.style.display = "none";
         }
     })

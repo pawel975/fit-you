@@ -71,6 +71,8 @@
             tbody{
 
                 tr:last-child {
+                    background-color: variables.$clr-less-dark;
+                    font-weight: bold;
                     td:first-child{
                         background-color: variables.$clr-darkest;
                         color: variables.$clr-very-light;
