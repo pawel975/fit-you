@@ -10,7 +10,7 @@ window.addEventListener("load", () => {
     // clear state in development
     // updateState("userHistory", []);
     
-    const {addFoodBtn, addFoodDiaryTableContainer, addFoodDiaryTableBody, addFoodMatchesArea, addFoodModal, addFoodSearch, addFoodFinish, addFoodModalClose, addFoodModalBackground, addFoodMatchTable} = DOMelements;
+    const {addFoodBtn, addFoodDiaryTableContainer, addFoodServingCount, addFoodMatchesArea, addFoodModal, addFoodSearch, addFoodFinish, addFoodModalClose, addFoodModalBackground, addFoodMatchTable} = DOMelements;
     
     // Get record from user's history in particular day
     const currentDate = getCurrentDate();
@@ -66,7 +66,8 @@ window.addEventListener("load", () => {
     }
 
     // Create food record in particular day
-    const createFoodStateRecord = (date, food) => {
+    const createFoodStateRecord = (date, food, servingCount) => {
+        food.servingCount = servingCount;
         let tmpData = getDayData(date);
         tmpData.eatenFood.push(food);
         userDiary.forEach(day => {
@@ -84,9 +85,6 @@ window.addEventListener("load", () => {
         addFoodDiaryTableContainer.appendChild(createDiaryTable(foodRecords));
     }
 
-    // initalize table on load
-    renderTable(currentDate);
-
     // const modifyDayData = (date, propertyToChange, value) => {
     //     let modifiedData = getDayData(date);
     //     modifiedData[propertyToChange] = value;
@@ -98,6 +96,9 @@ window.addEventListener("load", () => {
         createDayData(currentDate);
         updateState("userHistory", userDiary);
     }
+
+    // initalize table on load
+    renderTable(currentDate);
 
     // Handle modal open
     addFoodBtn.forEach(button => {
@@ -142,7 +143,7 @@ window.addEventListener("load", () => {
     addFoodFinish.addEventListener("click", (e) => {
         e.preventDefault();
         if (choosedFood) {
-            createFoodStateRecord(currentDate, choosedFood);
+            createFoodStateRecord(currentDate, choosedFood, addFoodServingCount.value);
             renderTable(currentDate);
             addFoodModal.style.display = "none";
         }

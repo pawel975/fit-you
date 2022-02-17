@@ -1,6 +1,6 @@
 
 export default class FoodOption {
-    constructor(id, name, brand, serving, calories, fat, proteins, carbohydrates){
+    constructor(id, name, brand, serving, calories, fat, proteins, carbohydrates, servingCount){
         this.id = id
         this.name = name
         this.brand = brand
@@ -9,6 +9,7 @@ export default class FoodOption {
         this.fat = fat
         this.proteins = proteins
         this.carbohydrates = carbohydrates
+        this.servingCount = servingCount
     }
 
     createMatch(){        
@@ -42,7 +43,7 @@ export default class FoodOption {
 
     createMatchTable(){
         const categories = {
-            Serving: this.serving, 
+            Serving: this.serving * this.servingCount, 
             Calories: this.calories, 
             Fat: this.fat, 
             Carbohydrates: this.carbohydrates,

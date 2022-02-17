@@ -26,46 +26,7 @@
             <i class="fas fa-utensils"></i>
         </div>
         <div id="diary-table">
-            <table>
-                <thead>
-                    <tr>
-                        <td>
-                            Name
-                        </td>
-                        <td>
-                            Kcal
-                        </td>
-                        <td>
-                            Carbohydrates
-                        </td>
-                        <td>
-                            Proteins
-                        </td>
-                        <td>
-                            Fat
-                        </td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr id="table-summary">
-                        <td>
-                            Summary
-                        </td>
-                        <td id="kcal-total">
-                            100
-                        </td>
-                        <td id="carbohydrates-total">
-                            1
-                        </td>
-                        <td id="protein-total">
-                            21
-                        </td>
-                        <td id="fat-total">
-                            0
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <!-- Here will be generated table -->
         </div>
     </main>
     <div id="search-food-modal" class="modal-wrapper" style="display: none;">
@@ -106,7 +67,7 @@
                     </tr>
                 </table>
                 <form id="add-food-form">
-                    <input type="number" id="serving-count" min="0" autocomplete="off" required placeholder="Serv. count">
+                    <input type="number" id="serving-count" min="0.01" autocomplete="off" required placeholder="Serv. count">
                     <p>Total: <strong><span>150</span></strong>g</p>
                     <input disabled id="finish-adding" type="submit" value="Add food">
                 </form>    

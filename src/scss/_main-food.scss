@@ -35,7 +35,7 @@
             padding: 2rem;
             margin:auto;
             flex-grow: 1;
-            width: 60%;
+            width: 70%;
             height: 100%;
           }
     }
@@ -51,15 +51,16 @@
             width: 100%;
             
             td {
-                width: 16.25%;
+                min-width: 5rem;
+                flex: 1;
             }
 
-            td:first-child{
-                width: 35%;
-            }
+            // td:first-child{
+            //     width: 35%;
+            // }
                 
             td {
-                border: 1px solid variables.$clr-less-dark;
+                border-bottom: 1px solid variables.$clr-less-dark;
             }
             
             thead {
@@ -71,7 +72,7 @@
             tbody{
 
                 tr:last-child {
-                    background-color: variables.$clr-less-dark;
+                    border: none;
                     font-weight: bold;
                     td:first-child{
                         background-color: variables.$clr-darkest;

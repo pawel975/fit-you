@@ -340,7 +340,7 @@ select {
   padding: 2rem;
   margin: auto;
   flex-grow: 1;
-  width: 60%;
+  width: 70%;
   height: 100%;
 }
 #main-food #diary-table {
@@ -354,18 +354,24 @@ select {
   width: 100%;
 }
 #main-food #diary-table table td {
-  width: 16.25%;
-}
-#main-food #diary-table table td:first-child {
-  width: 35%;
+  min-width: 5rem;
+  flex: 1;
 }
 #main-food #diary-table table td {
-  border: 1px solid #c8c8c8;
+  border-bottom: 1px solid #c8c8c8;
 }
 #main-food #diary-table table thead {
   background-color: #29285f;
   color: white;
   font-weight: 900;
+}
+#main-food #diary-table table tbody tr:last-child {
+  border: none;
+  font-weight: bold;
+}
+#main-food #diary-table table tbody tr:last-child td:first-child {
+  background-color: #29285f;
+  color: white;
 }
 
 /* ---------- */
