@@ -28,7 +28,7 @@ export const createDiaryTable = (foodRecords) => {
     // Populate table body with records
     foodRecords.forEach(record => {
         const categories = {
-            serving: record.serving * this.servingCount,
+            serving: record.serving,
             calories: record.calories, 
             carbohydrates: record.carbohydrates,
             proteins: record.proteins,

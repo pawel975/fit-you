@@ -46,9 +46,10 @@ window.addEventListener("load", () => {
             const calories = foodNutrients.filter(nutrient => nutrient.nutrientId === 1008)[0].value
 
             // Push data fetched from API to array in form of FoodOption instances
-            matchedFood.push(new FoodOption(fdcId, description, brandName, servingSize, calories, fat, proteins, carbs, addFoodMatchesArea))
+            matchedFood.push(new FoodOption(fdcId, description, brandName, servingSize, calories, fat, proteins, carbs, Number (addFoodServingCount.value)))
         })
     }
+
 
     // Get single date records
     const getDayData = (date) => {
@@ -85,6 +86,27 @@ window.addEventListener("load", () => {
         addFoodDiaryTableContainer.appendChild(createDiaryTable(foodRecords));
     }
 
+    const renderMatches = () => {
+        // Clear matches food area 
+        addFoodMatchesArea.textContent = "";
+        matchedFood = [];
+
+        fetchFoodData();
+
+        // Creates new record on food matches area
+        createFoodOption(fetchedMatches, matchedFood);
+        matchedFood.forEach(food => addFoodMatchesArea.appendChild(food.createMatch()))
+
+        // Set food meant to be saved to diary (state)
+        addFoodMatchesArea.childNodes.forEach(option => {
+            option.addEventListener("click", () => {
+                choosedFood = matchedFood.filter(match => match.id === Number(option.id))[0];
+                addFoodMatchTable.insertBefore(choosedFood.createMatchTable(),addFoodMatchTable.childNodes[2]);
+                addFoodMatchTable.removeChild(addFoodMatchTable.childNodes[1]);
+            })
+        })
+    }
+
     // const modifyDayData = (date, propertyToChange, value) => {
     //     let modifiedData = getDayData(date);
     //     modifiedData[propertyToChange] = value;
@@ -119,25 +141,13 @@ window.addEventListener("load", () => {
             addFoodFinish.disabled = false;
         }
 
-        // Clear matches food area 
-        addFoodMatchesArea.innerHTML = "";
-        matchedFood = [];
-
-        fetchFoodData();
-
-        // Creates new record on food matches area
-        createFoodOption(fetchedMatches, matchedFood);
-        matchedFood.forEach(food => addFoodMatchesArea.appendChild(food.createMatch()))
-
-        // Set food meant to be saved to diary (state)
-        addFoodMatchesArea.childNodes.forEach(option => {
-            option.addEventListener("click", () => {
-                choosedFood = matchedFood.filter(match => match.id === Number(option.id))[0];
-                addFoodMatchTable.insertBefore(choosedFood.createMatchTable(),addFoodMatchTable.childNodes[2]);
-                addFoodMatchTable.removeChild(addFoodMatchTable.childNodes[1]);
-            })
-        })
+        renderMatches();
     }) 
+
+    addFoodServingCount.addEventListener("input", (e) => {
+        e.preventDefault();
+        renderMatches();
+    })
 
     // Handle add food finish
     addFoodFinish.addEventListener("click", (e) => {

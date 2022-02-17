@@ -46,6 +46,10 @@
             <div id="food-details">
                 <table id="food-nutrition">
                     <tr>
+                        <td>Portions</td>
+                        <td>--g</td>
+                    </tr>
+                    <tr>
                         <td>Serving</td>
                         <td>--g</td>
                     </tr>
@@ -67,7 +71,7 @@
                     </tr>
                 </table>
                 <form id="add-food-form">
-                    <input type="number" id="serving-count" min="0.01" autocomplete="off" required placeholder="Serv. count">
+                    <input type="number" id="serving-count" min="0.01" autocomplete="off" required placeholder="Serv. count" value="1">
                     <p>Total: <strong><span>150</span></strong>g</p>
                     <input disabled id="finish-adding" type="submit" value="Add food">
                 </form>    

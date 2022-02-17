@@ -43,6 +43,7 @@ export default class FoodOption {
 
     createMatchTable(){
         const categories = {
+            Portions: this.servingCount,
             Serving: this.serving * this.servingCount, 
             Calories: this.calories, 
             Fat: this.fat, 
