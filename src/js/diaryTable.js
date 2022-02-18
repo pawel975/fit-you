@@ -15,7 +15,7 @@ export const createDiaryTable = (foodRecords) => {
     const tbody = document.createElement("tbody");
 
     // Create table headers
-    const headers = ["Name", "Serving", "Kcal", "Carbs", "Proteins", "Fat"];
+    const headers = ["Name", "Weight", "Kcal", "Carbs", "Proteins", "Fat"];
     const headRow = document.createElement("tr");
 
     for (let i = 0; i < headers.length; i++) {
@@ -28,14 +28,13 @@ export const createDiaryTable = (foodRecords) => {
     // Populate table body with records
     foodRecords.forEach(record => {
         const categories = {
-            serving: record.serving,
+            weight: record.serving * record.servingCount,
             calories: record.calories, 
             carbohydrates: record.carbohydrates,
             proteins: record.proteins,
             fat: record.fat, 
         }
 
-        summaryNutritions.serving += Number(categories.serving);
         summaryNutritions.calories += Number(categories.calories);
         summaryNutritions.carbohydrates += Number(categories.carbohydrates);
         summaryNutritions.proteins += Number(categories.proteins);
@@ -49,7 +48,7 @@ export const createDiaryTable = (foodRecords) => {
         for (let i = 0; i < Object.keys(categories).length; i++) {
             let td = document.createElement("td");
             td.setAttribute("class", Object.keys(categories)[i]);
-            let summaryValue = Number(categories[Object.keys(categories)[i]]).toFixed() + (Object.keys(categories)[i] === "calories" ? "kcal" : "g")
+            let summaryValue = Number(categories[Object.keys(categories)[i]]).toFixed() + sufix(Object.keys(categories)[i]);
             td.textContent = `${summaryValue}`
             bodyRow.appendChild(td);
         }
@@ -64,18 +63,25 @@ export const createDiaryTable = (foodRecords) => {
     td.setAttribute("id", "table-summary");
     td.textContent = "Summary";
 
+    // Remove this after finishing table 
+    const td2 = document.createElement("td");
+    bodyRow.appendChild(td2);
+    td2.setAttribute("id", "weight-total");
+    td2.textContent = "---";
+    // Remove this after finishing table 
+
     const summaryIds = {
-        serving: "serving-total",
+        weight: "weight-total",
         calories: "kcal-total", 
         carbohydrates: "carbohydrates-total", 
         proteins: "protein-total", 
         fat: "fat-total",
     };
 
-    for (let i = 0; i < Object.keys(summaryIds).length; i++) {
+    for (let i = 1; i < Object.keys(summaryIds).length; i++) {
         const td = document.createElement("td");
         td.setAttribute("id", Object.keys(summaryIds)[i]);
-        td.textContent = `${summaryNutritions[Object.keys(summaryNutritions)[i]].toFixed() + (Object.keys(summaryNutritions)[i] === "calories" ? "kcal" : "g")}`
+        td.textContent = `${summaryNutritions[Object.keys(summaryNutritions)[i]].toFixed() + sufix(Object.keys(summaryNutritions)[i])}`
         bodyRow.appendChild(td);
     }
 
@@ -85,5 +91,23 @@ export const createDiaryTable = (foodRecords) => {
     table.appendChild(thead);
     table.appendChild(tbody);
 
+    // document.querySelector("#portions-total").textContent = "XD";
+
     return table
+}
+
+const sufix = (nutritionType) => {
+    let sufix;
+    switch(nutritionType){
+        case "calories":
+            sufix = "kcal";
+            break
+        case "portions":
+            sufix = "";
+            break
+        default:
+            sufix = "g";
+    }
+
+    return sufix;
 }

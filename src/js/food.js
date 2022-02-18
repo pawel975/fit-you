@@ -106,7 +106,6 @@ window.addEventListener("load", () => {
             option.setAttribute("aria-pressed", "false");
             option.addEventListener("click", () => {
                 choosedFood = matchedFood.filter(match => match.id === Number(option.id))[0];
-                console.log(option)
                 addFoodMatchesArea.childNodes.forEach(option => {
                     option.setAttribute("aria-pressed", "false");
                 });
@@ -162,7 +161,9 @@ window.addEventListener("load", () => {
         } else {
             addFoodFinish.disabled = false;
         }
-        choosedFood.servingCount = addFoodServingCount.value;
+        matchedFood.forEach(food => {
+            food.servingCount = addFoodServingCount.value;
+        }) 
         renderMatchDetailsTable(choosedFood);
     })
 

@@ -46,11 +46,11 @@ export default class FoodOption {
     createMatchDetailsTable(){
         const categories = {
             Portions: this.servingCount,
-            Serving: this.serving * this.servingCount, 
-            Calories: this.calories * this.servingCount, 
-            Fat: this.fat * this.servingCount, 
-            Carbohydrates: this.carbohydrates * this.servingCount,
-            Protein: this.proteins * this.servingCount
+            Serving: (this.serving * this.servingCount).toFixed(1), 
+            Calories: (this.calories * this.servingCount).toFixed(1), 
+            Fat: (this.fat * this.servingCount).toFixed(1), 
+            Carbohydrates: (this.carbohydrates * this.servingCount).toFixed(1),
+            Protein: (this.proteins * this.servingCount).toFixed(1)
         }
         const table = document.createElement("table");
         table.setAttribute("id", "food-nutrition")
@@ -60,11 +60,27 @@ export default class FoodOption {
             const nameCol = document.createElement("td");
             const dataCol = document.createElement("td");
             nameCol.textContent = Object.keys(categories)[i];
-            dataCol.textContent = `${categories[Object.keys(categories)[i]] + (Object.keys(categories)[i] === "calories" ? "kcal" : "g")}`;
+            dataCol.textContent = `${categories[Object.keys(categories)[i]] + sufix(Object.keys(categories)[i])}`;
             row.appendChild(nameCol);
             row.appendChild(dataCol);
             table.appendChild(row);
         }
         return table;
     } 
+}
+
+const sufix = (nutritionType) => {
+    let sufix;
+    switch(nutritionType){
+        case "Calories":
+            sufix = "kcal";
+            break
+        case "Portions":
+            sufix = "";
+            break
+        default:
+            sufix = "g";
+    }
+
+    return sufix;
 }
