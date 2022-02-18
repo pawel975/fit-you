@@ -122,7 +122,6 @@ input[type=submit], button {
   }
 
   .modal-section {
-
     position: absolute;
     width: clamp(15rem, 30%, 35rem);
     min-height: 40rem;
@@ -173,6 +172,12 @@ input[type=submit], button {
           cursor: pointer;
 
           &:hover {
+            background-color: variables.$clr-less-dark;
+            color:variables.$clr-darkest;
+            padding-left: 0.5rem;
+          }
+
+          &[aria-pressed=true] {
             background-color: variables.$clr-darkest;
             color:variables.$clr-very-light;
             padding-left: 0.5rem;

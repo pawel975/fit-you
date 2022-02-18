@@ -40,16 +40,15 @@ window.addEventListener("load", () => {
         fetchedMatches.forEach(match => {
             const {fdcId, description, brandName, servingSize, foodNutrients} = match
     
-            const fat = foodNutrients.filter(nutrient => nutrient.nutrientId === 1004)[0].value.toFixed(1)
-            const proteins = foodNutrients.filter(nutrient => nutrient.nutrientId === 1003)[0].value.toFixed(1)
-            const carbs = foodNutrients.filter(nutrient => nutrient.nutrientId === 1005)[0].value.toFixed(1)
+            const fat = foodNutrients.filter(nutrient => nutrient.nutrientId === 1004)[0].value
+            const proteins = foodNutrients.filter(nutrient => nutrient.nutrientId === 1003)[0].value
+            const carbs = foodNutrients.filter(nutrient => nutrient.nutrientId === 1005)[0].value
             const calories = foodNutrients.filter(nutrient => nutrient.nutrientId === 1008)[0].value
 
             // Push data fetched from API to array in form of FoodOption instances
             matchedFood.push(new FoodOption(fdcId, description, brandName, servingSize, calories, fat, proteins, carbs, Number (addFoodServingCount.value)))
         })
     }
-
 
     // Get single date records
     const getDayData = (date) => {
@@ -86,6 +85,11 @@ window.addEventListener("load", () => {
         addFoodDiaryTableContainer.appendChild(createDiaryTable(foodRecords));
     }
 
+    const renderMatchDetailsTable = (choosedFood) => {
+        addFoodMatchTable.insertBefore(choosedFood.createMatchDetailsTable(),addFoodMatchTable.childNodes[2]);
+        addFoodMatchTable.removeChild(addFoodMatchTable.childNodes[1])
+    }
+
     const renderMatches = () => {
         // Clear matches food area 
         addFoodMatchesArea.textContent = "";
@@ -99,10 +103,15 @@ window.addEventListener("load", () => {
 
         // Set food meant to be saved to diary (state)
         addFoodMatchesArea.childNodes.forEach(option => {
+            option.setAttribute("aria-pressed", "false");
             option.addEventListener("click", () => {
                 choosedFood = matchedFood.filter(match => match.id === Number(option.id))[0];
-                addFoodMatchTable.insertBefore(choosedFood.createMatchTable(),addFoodMatchTable.childNodes[2]);
-                addFoodMatchTable.removeChild(addFoodMatchTable.childNodes[1]);
+                console.log(option)
+                addFoodMatchesArea.childNodes.forEach(option => {
+                    option.setAttribute("aria-pressed", "false");
+                });
+                option.setAttribute("aria-pressed", "true");
+                renderMatchDetailsTable(choosedFood);
             })
         })
     }
@@ -146,7 +155,15 @@ window.addEventListener("load", () => {
 
     addFoodServingCount.addEventListener("input", (e) => {
         e.preventDefault();
-        renderMatches();
+
+        // If servings field is empty or less than 1, disable finish adding button
+        if ((addFoodServingCount.value).length === 0 || addFoodServingCount.value < 1) {
+            addFoodFinish.disabled = true;
+        } else {
+            addFoodFinish.disabled = false;
+        }
+        choosedFood.servingCount = addFoodServingCount.value;
+        renderMatchDetailsTable(choosedFood);
     })
 
     // Handle add food finish

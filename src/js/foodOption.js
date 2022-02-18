@@ -15,6 +15,8 @@ export default class FoodOption {
     createMatch(){        
         const singleOption = document.createElement("p");
         singleOption.setAttribute("id", `${this.id}`);
+        singleOption.setAttribute("role", "button");
+        singleOption.setAttribute("aria-pressed", "false");
 
         const foodName = document.createElement("span");
         foodName.setAttribute("id", "name");
@@ -41,14 +43,14 @@ export default class FoodOption {
         return singleOption;
     }
 
-    createMatchTable(){
+    createMatchDetailsTable(){
         const categories = {
             Portions: this.servingCount,
             Serving: this.serving * this.servingCount, 
-            Calories: this.calories, 
-            Fat: this.fat, 
-            Carbohydrates: this.carbohydrates,
-            Protein: this.proteins
+            Calories: this.calories * this.servingCount, 
+            Fat: this.fat * this.servingCount, 
+            Carbohydrates: this.carbohydrates * this.servingCount,
+            Protein: this.proteins * this.servingCount
         }
         const table = document.createElement("table");
         table.setAttribute("id", "food-nutrition")
