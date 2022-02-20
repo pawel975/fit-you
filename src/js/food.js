@@ -2,11 +2,11 @@ import { DOMelements } from "./base";
 import { getCurrentDate } from "./date";
 import { createDiaryTable} from "./diaryTable";
 import FoodOption from "./foodOption";
-import {getState, updateState } from "./state";
+import {getState, updateState, state} from "./state";
 
 
 window.addEventListener("load", () => {
-    
+
     // clear state in development
     // updateState("userHistory", []);
     

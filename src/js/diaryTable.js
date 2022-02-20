@@ -29,10 +29,10 @@ export const createDiaryTable = (foodRecords) => {
     foodRecords.forEach(record => {
         const categories = {
             weight: record.serving * record.servingCount,
-            calories: record.calories, 
-            carbohydrates: record.carbohydrates,
-            proteins: record.proteins,
-            fat: record.fat, 
+            calories: record.calories * record.servingCount, 
+            carbohydrates: record.carbohydrates * record.servingCount,
+            proteins: record.proteins * record.servingCount,
+            fat: record.fat * record.servingCount, 
         }
 
         summaryNutritions.calories += Number(categories.calories);

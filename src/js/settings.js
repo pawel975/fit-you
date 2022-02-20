@@ -1,7 +1,7 @@
 import { DOMelements } from "./base";
 import { getState, updateState } from "./state";
 
-window.addEventListener("load" , () => {
+window.addEventListener("load", () => {
 
     const {userGender, userAge, userHeight, userWeight, userGoal, userParamsForm,  summaryContainer} = DOMelements
     
