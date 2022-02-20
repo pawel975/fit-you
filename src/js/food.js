@@ -1,9 +1,9 @@
+import { getDayData } from ".";
 import { DOMelements } from "./base";
 import { getCurrentDate } from "./date";
 import { createDiaryTable} from "./diaryTable";
 import FoodOption from "./foodOption";
-import {getState, updateState, state} from "./state";
-
+import {getState, updateState} from "./state";
 
 window.addEventListener("load", () => {
 
@@ -12,9 +12,7 @@ window.addEventListener("load", () => {
     
     const {addFoodBtn, addFoodDiaryTableContainer, addFoodServingCount, addFoodMatchesArea, addFoodModal, addFoodSearch, addFoodFinish, addFoodModalClose, addFoodModalBackground, addFoodMatchTable} = DOMelements;
     
-    // Get record from user's history in particular day
     const currentDate = getCurrentDate();
-    let userDiary = getState("userHistory");
     
     let fetchedMatches = [];
     let matchedFood = [];
@@ -50,25 +48,11 @@ window.addEventListener("load", () => {
         })
     }
 
-    // Get single date records
-    const getDayData = (date) => {
-        let dayData = getState("userHistory").filter(day => day.date === date)[0];
-        return dayData
-    }
-
-    // Create date in user diary
-    const createDayData = (date) => {
-        userDiary.push({
-            date: date,
-            eatenFood: [],
-        });
-        updateState("userHistory", userDiary);
-    }
-
     // Create food record in particular day
     const createFoodStateRecord = (date, food, servingCount) => {
-        food.servingCount = servingCount;
+        let userDiary = getState("userHistory");
         let tmpData = getDayData(date);
+        food.servingCount = servingCount;
         tmpData.eatenFood.push(food);
         userDiary.forEach(day => {
             if (day.date === date) day.eatenFood = tmpData.eatenFood;
@@ -80,7 +64,7 @@ window.addEventListener("load", () => {
         // Remove existing table
         addFoodDiaryTableContainer.textContent = ""
 
-        // Fill table with records
+        // Fill table with records of particular date
         let foodRecords = getDayData(date).eatenFood;
         addFoodDiaryTableContainer.appendChild(createDiaryTable(foodRecords));
     }
@@ -120,12 +104,6 @@ window.addEventListener("load", () => {
     //     modifiedData[propertyToChange] = value;
     //     userDiary[date] = modifiedData;
     // }
-
-    // Create userDiary new day record
-    if (!getDayData(currentDate)) {
-        createDayData(currentDate);
-        updateState("userHistory", userDiary);
-    }
 
     // initalize table on load
     renderTable(currentDate);

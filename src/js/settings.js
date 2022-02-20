@@ -6,6 +6,7 @@ window.addEventListener("load", () => {
     const {userGender, userAge, userHeight, userWeight, userGoal, userParamsForm,  summaryContainer} = DOMelements
     
     let user = {};
+    let dailyBMR = 0;
     
     // Fetching user params from local storage and fill form with data
     userGender.value = getState("userParams").gender,
@@ -18,14 +19,13 @@ window.addEventListener("load", () => {
     const updateSummary = (paramsObject) => {
         
         const {gender, age, height, weight, goal} = paramsObject;
-        let dailyBMR;
     
         if (gender === "Female") {
             dailyBMR = Math.round(((9.99 * weight) + (6.25 * height) - (4.92 * age) - 161 + 400));
         } else {
             dailyBMR = Math.round((9.99 * weight) + (6.25 * height) - (4.92 * age) + 5 + 400);
         }
-    
+
         // Change users calories demand base on goal
         switch(goal){
             case "lose weight, 0.5kg weekly":
@@ -41,7 +41,7 @@ window.addEventListener("load", () => {
                 dailyBMR += (7000/7);
                 break;
         }
-        
+
         // Rendering user's summary field
         for (const param in paramsObject) {
             if (paramsObject[param] === "" || paramsObject[param] === undefined) {
@@ -68,14 +68,16 @@ window.addEventListener("load", () => {
         
         user = {
             gender: userGender.value,
-            age: userAge.value,
-            height: userHeight.value,
-            weight: userWeight.value,
+            age: Number(userAge.value),
+            height: Number(userHeight.value),
+            weight: Number(userWeight.value),
             goal: userGoal.value,
+            goalKcal: Number(dailyBMR),
         }
         
         updateState("userParams", user);
         updateSummary(getState("userParams"));
+
     })
 })
 

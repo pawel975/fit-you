@@ -1,10 +1,12 @@
 
 export let state = JSON.parse(localStorage.getItem("state"));
 
+// Initialize state object if it doesn't exist
 export const initState = () => {
     let initState = {
         userHistory: [],
-        userParams: {}
+        userParams: {},
+        activeDate: "20.02.2022",
     }
 
     window.localStorage.setItem("state", JSON.stringify(initState));

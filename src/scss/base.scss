@@ -212,10 +212,12 @@ input[type=submit], button {
         grid-column: 2/3;
         width: 100%;
         height: 100%;
+        justify-content: center;
 
         input {
           width: clamp(10rem, 70%, 14rem);
           margin: 0;
+          margin-bottom: 1rem;
         }
 
         p {

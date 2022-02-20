@@ -32,7 +32,7 @@ export default class FoodOption {
 
         const foodCalories = document.createElement("span");
         foodCalories.setAttribute("id", "calories");
-        foodCalories.textContent = `${this.calories}kcal`;
+        foodCalories.textContent = `${this.calories}kcal/100g`;
 
         singleOption.appendChild(foodName);
         singleOption.appendChild(foodName);
@@ -46,11 +46,11 @@ export default class FoodOption {
     createMatchDetailsTable(){
         const categories = {
             Portions: this.servingCount,
-            Serving: (this.serving * this.servingCount).toFixed(1), 
-            Calories: (this.calories * this.servingCount).toFixed(1), 
-            Fat: (this.fat * this.servingCount).toFixed(1), 
-            Carbohydrates: (this.carbohydrates * this.servingCount).toFixed(1),
-            Protein: (this.proteins * this.servingCount).toFixed(1)
+            Serving: (this.serving).toFixed(1), 
+            Calories: (this.calories * (this.serving/100) * this.servingCount).toFixed(1), 
+            Carbohydrates: (this.carbohydrates * (this.serving/100) * this.servingCount).toFixed(1),
+            Protein: (this.proteins * (this.serving/100) * this.servingCount).toFixed(1),
+            Fat: (this.fat * (this.serving/100) * this.servingCount).toFixed(1) 
         }
         const table = document.createElement("table");
         table.setAttribute("id", "food-nutrition")

@@ -9,7 +9,7 @@ export const DOMelements = {
     userWeight: document.querySelector("#user-params #weight"),
     userGoal: document.querySelector("#user-params #goal"),
     summaryContainer: document.querySelector("#params-summary-container"),
-    // food.html
+    // food.html - modal
     addFoodBtn: document.querySelectorAll(".add-food"),
     addFoodDiaryTableContainer: document.querySelector("#diary-table"),
     addFoodTableKcalTotal: document.querySelector("#table-summary #kcal-total"),
@@ -25,6 +25,11 @@ export const DOMelements = {
     addFoodModalBackground: document.querySelector(".modal-background"),
     addFoodMatchesOptions: document.querySelector("#food-options"),
     addFoodMatchTable: document.querySelector("#food-details"),
+    // food.html - table
+    tableTotalKcal: document.querySelector("#kcal-total"),
+    tableTotalCarbo: document.querySelector("#carbo-total"),
+    tableTotalProteins: document.querySelector("#proteins-total"),
+    tableTotalFat: document.querySelector("#fat-total"),
     // index.html
     homeChooseDay: document.querySelector("#choose-day"),
     homeRemainKcal: document.querySelector("#daily-summary #remain-kcal span"),
@@ -32,5 +37,5 @@ export const DOMelements = {
     homeKcal: document.querySelector("#daily-summary #kcal span"),
     homeFat: document.querySelector("#daily-summary #fat span"),
     homeProteins: document.querySelector("#daily-summary #proteins span"),
-    homeCarbohydrates: document.querySelector("#daily-summary #carbohydrates span"),
+    homeCarbo: document.querySelector("#daily-summary #carbohydrates span"),
 }
