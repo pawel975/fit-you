@@ -25,12 +25,8 @@ export const DOMelements = {
     addFoodModalBackground: document.querySelector(".modal-background"),
     addFoodMatchesOptions: document.querySelector("#food-options"),
     addFoodMatchTable: document.querySelector("#food-details"),
-    // food.html - table
-    tableTotalKcal: document.querySelector("#kcal-total"),
-    tableTotalCarbo: document.querySelector("#carbo-total"),
-    tableTotalProteins: document.querySelector("#proteins-total"),
-    tableTotalFat: document.querySelector("#fat-total"),
     // index.html
+    homeProgressBarValue: document.querySelector("#bar-progress"),
     homeChooseDay: document.querySelector("#choose-day"),
     homeRemainKcal: document.querySelector("#daily-summary #remain-kcal span"),
     homeGoalKcal: document.querySelector("#daily-summary #goal-kcal span"),

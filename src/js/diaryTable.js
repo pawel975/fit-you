@@ -1,3 +1,5 @@
+import { getDayData } from ".";
+import { getState, updateState } from "./state";
 
 export const createDiaryTable = (foodRecords) => {
 
@@ -80,10 +82,11 @@ export const createDiaryTable = (foodRecords) => {
     }
 
     tbody.appendChild(bodyRow);
-
-    // Add head and body to table
     table.appendChild(thead);
     table.appendChild(tbody);
+
+    // Save table's nutritions summary to state
+    saveSummaryToState(summaryNutritions);
 
     return table
 }
@@ -105,4 +108,25 @@ const sufix = (nutritionType) => {
     }
 
     return sufix;
+}
+
+const saveSummaryToState = (nutritionSummaryObject) => {
+
+    let diary = getState("userHistory");
+    let dayData = getDayData(getState("activeDate"));
+
+    // Assign table summary data to day data in state
+    const {summary} = dayData;
+    summary.kcal = nutritionSummaryObject.calories.toFixed();
+    summary.carbo = nutritionSummaryObject.carbo.toFixed();
+    summary.proteins = nutritionSummaryObject.proteins.toFixed();
+    summary.fat = nutritionSummaryObject.fat.toFixed();
+
+    diary.forEach(day => {
+        if (day.date === getState("activeDate")) {
+            day.summary = dayData.summary
+        }
+    })
+    
+    updateState("userHistory", diary);
 }

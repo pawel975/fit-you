@@ -40,36 +40,19 @@ window.addEventListener("load", () => {
         updateState("userHistory", userDiary);
     }
 
-    const {homeChooseDay, homeRemainKcal, homeGoalKcal, homeKcal, homeFat, homeProteins, homeCarbo, tableTotalKcal, tableTotalCarbo, tableTotalProteins, tableTotalFat} = DOMelements;
+    const {homeChooseDay, homeRemainKcal, homeGoalKcal, homeKcal, homeFat, homeProteins, homeCarbo, homeProgressBarValue} = DOMelements;
 
-    const updateSummary = (date) => {
+    const updateSummary = () => {
 
-        let data = getState("userHistory");
-        console.log(data);
-        data.forEach(day => {
-            if (day.date === date) {
-                let summary = day.summary;
-                summary.kcal = document.querySelector("#kcal-total").textContent;
-                summary.carbo = document.querySelector("#carbo-total").textContent;
-                summary.proteins = document.querySelector("#proteins-total").textContent;
-                summary.fat = document.querySelector("#fat-total").textContent;
-            }
-        })
-        console.log(data);
-        // console.log(homeRemainKcal);
-
-        console.log(getState("userHistory").filter(day => day.date === newData.date))
-        const arr = ["A","B"];
-        console.log(indexOf("A"))
-
-        homeGoalKcal.textContent = getState("userParams").goalKcal
-        homeKcal.textContent = data.kcal;
-        homeCarbo.textContent = data.carbo;
-        homeProteins.textContent = data.proteins;
-        homeFat.textContent = data.fat;
-        homeRemainKcal = homeGoalKcal - homeKcal;
+        homeGoalKcal.textContent = getState("userParams").goalKcal;
+        homeKcal.textContent = getDayData(getState("activeDate")).summary.kcal;
+        homeCarbo.textContent = getDayData(getState("activeDate")).summary.carbo;
+        homeProteins.textContent = getDayData(getState("activeDate")).summary.proteins;
+        homeFat.textContent = getDayData(getState("activeDate")).summary.fat;
+        homeRemainKcal.textContent = homeGoalKcal.textContent - homeKcal.textContent;
+        homeProgressBarValue.style.width = `${((homeKcal.textContent/homeGoalKcal.textContent)) * 100}%`
     }
 
-    updateSummary(currentDate);
+    updateSummary();
 })
 

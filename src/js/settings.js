@@ -7,7 +7,7 @@ window.addEventListener("load", () => {
     
     let user = {};
     let dailyBMR = 0;
-    
+
     // Fetching user params from local storage and fill form with data
     userGender.value = getState("userParams").gender,
     userAge.value = getState("userParams").age,
@@ -16,8 +16,16 @@ window.addEventListener("load", () => {
     userGoal.value = getState("userParams").goal
     
     // Update user params summary
-    const updateSummary = (paramsObject) => {
-        
+    const updateSummary = () => {
+
+        let paramsObject = {
+            gender: userGender.value,
+            age: userAge.value,
+            height: userHeight.value,
+            weight: userWeight.value,
+            goal: userGoal.value,
+        }
+
         const {gender, age, height, weight, goal} = paramsObject;
     
         if (gender === "Female") {
@@ -44,7 +52,11 @@ window.addEventListener("load", () => {
 
         // Rendering user's summary field
         for (const param in paramsObject) {
-            if (paramsObject[param] === "" || paramsObject[param] === undefined) {
+            if (paramsObject[param] === "" || 
+                paramsObject[param] === undefined ||
+                gender === "Set gender" ||
+                goal === "Set goal"
+            ){
                 summaryContainer.innerHTML = 
                 `<div>
                 <p>Fill all fields to see your daily caloric demand</p>
@@ -57,15 +69,7 @@ window.addEventListener("load", () => {
                 </div>`;
             }
         }
-    }
-    
-    // initialize summary base on users params
-    updateSummary(getState("userParams"));
-    
-    // Change user params
-    userParamsForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        
+
         user = {
             gender: userGender.value,
             age: Number(userAge.value),
@@ -74,10 +78,16 @@ window.addEventListener("load", () => {
             goal: userGoal.value,
             goalKcal: Number(dailyBMR),
         }
-        
         updateState("userParams", user);
-        updateSummary(getState("userParams"));
-
+    }
+    
+    // initialize summary base on users params
+    updateSummary();
+    
+    // Change user params
+    userParamsForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        updateSummary();
     })
 })
 
