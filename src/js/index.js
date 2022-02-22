@@ -1,6 +1,6 @@
 import "../scss/base.scss";
 import { DOMelements } from "./base";
-import { getCurrentDate } from "./date";
+import { getCurrentDate, getLastWeek } from "./date";
 import { getState, state, updateState, initState } from './state';
 
 // Get single date records  
@@ -17,6 +17,8 @@ window.addEventListener("load", () => {
     }
 
     const currentDate = getCurrentDate();
+    updateState("activeDate", currentDate);
+    console.log(getState("activeDate"))
 
     // Create date in user diary
     const createDayData = (date) => {
@@ -40,19 +42,40 @@ window.addEventListener("load", () => {
         updateState("userHistory", userDiary);
     }
 
-    const {homeChooseDay, homeRemainKcal, homeGoalKcal, homeKcal, homeFat, homeProteins, homeCarbo, homeProgressBarValue} = DOMelements;
+    const {homeChooseDayArea, homeSingleDaysArray, homeProgressBarContainer, homeProgressCrossedLimit, homeRemainKcal, homeGoalKcal, homeFat, homeProteins, homeCarbo, homeProgressBarValue} = DOMelements;
 
     const updateSummary = () => {
 
+        homeRemainKcal.textContent = getDayData(getState("activeDate")).summary.kcal;
         homeGoalKcal.textContent = getState("userParams").goalKcal;
-        homeKcal.textContent = getDayData(getState("activeDate")).summary.kcal;
         homeCarbo.textContent = getDayData(getState("activeDate")).summary.carbo;
         homeProteins.textContent = getDayData(getState("activeDate")).summary.proteins;
         homeFat.textContent = getDayData(getState("activeDate")).summary.fat;
-        homeRemainKcal.textContent = homeGoalKcal.textContent - homeKcal.textContent;
-        homeProgressBarValue.style.width = `${((homeKcal.textContent/homeGoalKcal.textContent)) * 100}%`
+
+        // Set % of progress bar
+        let progressBarLvl = (homeRemainKcal.textContent/homeGoalKcal.textContent) * 100
+        homeProgressBarValue.style.width = `${progressBarLvl > 100 ? 100 : progressBarLvl}%`
+        
+        // Set % of goal kcal overplus
+        if (progressBarLvl > 100) {
+            let progressBarCrossedLvl = progressBarLvl > 200 ? 200 : progressBarLvl - 100;
+            homeProgressCrossedLimit.style.width = `${progressBarCrossedLvl}%`;
+            homeProgressCrossedLimit.style.display = `initial`;
+        }
     }
 
+    // const renderChooseDayArea = (date) => {
+
+    // }
+    
+    let lastWeek = getLastWeek().reverse();
+    console.log(lastWeek)
+    homeSingleDaysArray.forEach((day, index) => {
+        day.textContent = lastWeek[index].slice(0,5);
+    })
+    console.log(homeSingleDaysArray);
+
     updateSummary();
+    
 })
 

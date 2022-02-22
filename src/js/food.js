@@ -13,6 +13,8 @@ window.addEventListener("load", () => {
     const {addFoodBtn, addFoodDiaryTableContainer, addFoodServingCount, addFoodMatchesArea, addFoodModal, addFoodSearch, addFoodFinish, addFoodModalClose, addFoodModalBackground, addFoodMatchTable} = DOMelements;
     
     const currentDate = getCurrentDate();
+    updateState("activeDate", currentDate);
+    console.log(getState("activeDate"))
     
     let fetchedMatches = [];
     let matchedFood = [];

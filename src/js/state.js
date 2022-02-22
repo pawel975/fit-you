@@ -6,7 +6,7 @@ export const initState = () => {
     let initState = {
         userHistory: [],
         userParams: {},
-        activeDate: "21.02.2022",
+        activeDate: "",
     }
 
     window.localStorage.setItem("state", JSON.stringify(initState));
