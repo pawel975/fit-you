@@ -17,7 +17,7 @@ export const getLastWeek = () => {
     
     for (let i = 0; i < 7; i++) {
 
-        const timestamp = new Date().getTime();
+        const timestamp = new Date().getTime() + 24*3600*1000;
         const previousTimestamp = timestamp - (i * 24*60*60*1000);
         const previousDate = new Date(previousTimestamp);
 

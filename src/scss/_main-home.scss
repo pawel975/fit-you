@@ -2,26 +2,31 @@
 @use 'utility-classes';
 
 #main-home {
-    width: clamp(15rem, 80%, 80rem);
-    min-height: 40rem;
-    height: fit-content;
+  width: clamp(15rem, 80%, 80rem);
+  min-height: 40rem;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+
+  h2 {
+      margin-top: 3rem;
+  }
+
+  #choose-day {
+    border: none;
+  }
+
+  #summary-container {
+    margin-top: 4rem;
     display: flex;
-    flex-direction: column;
-  
-    h2 {
-        margin-top: 3rem;
-    }
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
 
-    #choose-day {
-      border: none;
-    }
-  
     #daily-summary {
-
       width: clamp(1rem, 70%, 35rem);
 
       div:first-child {
-        margin-top: 2rem;
         color:variables.$clr-dark;
         font-size: variables.$fs-500;    
             
@@ -80,5 +85,10 @@
         }
       }
     }
+
+    #history-chart {
+      width: 50%;
+    }
   }
+}
   

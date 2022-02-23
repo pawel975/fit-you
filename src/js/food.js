@@ -10,8 +10,6 @@ window.addEventListener("load", () => {
     const {addFoodBtn, addFoodDiaryTableContainer, addFoodServingCount, addFoodMatchesArea, addFoodModal, addFoodSearch, addFoodFinish, addFoodModalClose, addFoodModalBackground, addFoodMatchTable} = DOMelements;
     
     const activeDate = getState("activeDate");
-    // updateState("activeDate", activeDate);
-    // console.log(getState("activeDate"))
     
     let fetchedMatches = [];
     let matchedFood = [];
@@ -21,14 +19,13 @@ window.addEventListener("load", () => {
     const fetchFoodData = () => {
         let searchedFood = addFoodSearch.value.replace(/\s+/g, '%20');
             
-        const baseURL = `https://api.nal.usda.gov/fdc/v1/foods/search?query=${searchedFood}&dataType=Branded&pageSize=30&pageNumber=1&sortBy=dataType.keyword&sortOrder=desc&api_key=${process.env.API_KEY}`
+        const baseURL = `https://api.nal.usda.gov/fdc/v1/foods/search?query=${searchedFood}&dataType=&pageSize=30&pageNumber=1&sortBy=dataType.keyword&sortOrder=desc&api_key=${process.env.API_KEY}`
         
         fetch(baseURL)
         .then(response => response.json())
         .then(data => {
             const {foods} = data;
             fetchedMatches = foods;
-            console.log(foods)
         })
         .catch(error => console.error(error));
     }
@@ -43,7 +40,7 @@ window.addEventListener("load", () => {
             const calories = foodNutrients.filter(nutrient => nutrient.nutrientId === 1008)[0].value
 
             // Push data fetched from API to array in form of FoodOption instances
-            matchedFood.push(new FoodOption(fdcId, description, brandName, servingSize, calories, fat, proteins, carbs, Number (addFoodServingCount.value)))
+            matchedFood.push(new FoodOption(fdcId, description, brandName, servingSize, calories, fat, proteins, carbs, Number(addFoodServingCount.value)))
         })
     }
 
@@ -98,12 +95,6 @@ window.addEventListener("load", () => {
         })
     }
 
-    // const modifyDayData = (date, propertyToChange, value) => {
-    //     let modifiedData = getDayData(date);
-    //     modifiedData[propertyToChange] = value;
-    //     userDiary[date] = modifiedData;
-    // }
-
     // initalize table on load
     renderTable(getState("activeDate"));
 
@@ -118,7 +109,7 @@ window.addEventListener("load", () => {
     // Handle modal search and fetch data
     addFoodSearch.addEventListener("input", (e) => {
         e.preventDefault();
-
+        matchedFood = [];
         // If search field is empty, disable finish adding button
         if ((addFoodSearch.value).length === 0) {
             addFoodFinish.disabled = true;

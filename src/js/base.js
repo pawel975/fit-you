@@ -27,8 +27,6 @@ export const DOMelements = {
     addFoodMatchTable: document.querySelector("#food-details"),
     // index.html
     homeSingleDaysArray: document.querySelectorAll(".radio-container span"),
-    homeChooseDayArea: document.querySelector("#choose-day"),
-    homeProgressBarContainer: document.querySelector("#pbar-container"),
     homeProgressBarValue: document.querySelector("#bar-progress"),
     homeProgressCrossedLimit: document.querySelector("#bar-progress-crossed-limit"),
     homeRemainKcal: document.querySelector("#daily-summary div #remain-kcal"),
@@ -36,4 +34,5 @@ export const DOMelements = {
     homeCarbo: document.querySelector("#daily-summary #carbohydrates span"),
     homeProteins: document.querySelector("#daily-summary #proteins span"),
     homeFat: document.querySelector("#daily-summary #fat span"),
+    chartCtx: document.getElementById("myChart"),
 }

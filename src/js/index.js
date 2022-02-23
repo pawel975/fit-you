@@ -1,7 +1,9 @@
 import "../scss/base.scss";
 import { DOMelements } from "./base";
-import { getactiveDate, getLastWeek } from "./date";
+import { getLastWeek } from "./date";
+import { renderHistoryChart } from "./historyChart";
 import { getState, state, updateState, initState } from './state';
+
 
 // Get single date records  
 export const getDayData = (date) => {
@@ -36,7 +38,7 @@ window.addEventListener("load", () => {
         updateState("userHistory", userDiary);
     }
 
-    const {homeChooseDayArea, homeSingleDaysArray, homeProgressBarContainer, homeProgressCrossedLimit, homeRemainKcal, homeGoalKcal, homeFat, homeProteins, homeCarbo, homeProgressBarValue} = DOMelements;
+    const {homeSingleDaysArray, homeProgressCrossedLimit, homeRemainKcal, homeGoalKcal, homeFat, homeProteins, homeCarbo, homeProgressBarValue} = DOMelements;
 
     const updateSummary = () => {
 
@@ -85,6 +87,7 @@ window.addEventListener("load", () => {
     })
 
     updateSummary();
+    renderHistoryChart();
     
 })
 
