@@ -1,6 +1,6 @@
 import "../scss/base.scss";
 import { DOMelements } from "./base";
-import { getCurrentDate, getLastWeek } from "./date";
+import { getactiveDate, getLastWeek } from "./date";
 import { getState, state, updateState, initState } from './state';
 
 // Get single date records  
@@ -16,9 +16,9 @@ window.addEventListener("load", () => {
         initState();
     }
 
-    const currentDate = getCurrentDate();
-    updateState("activeDate", currentDate);
-    console.log(getState("activeDate"))
+    let lastWeek = getLastWeek();
+
+    const activeDate = getState("activeDate");
 
     // Create date in user diary
     const createDayData = (date) => {
@@ -33,12 +33,6 @@ window.addEventListener("load", () => {
                 fat: 0,
             }
         });
-        updateState("userHistory", userDiary);
-    }
-
-    // Create userDiary new day record
-    if (!getDayData(currentDate)) {
-        createDayData(currentDate);
         updateState("userHistory", userDiary);
     }
 
@@ -64,16 +58,31 @@ window.addEventListener("load", () => {
         }
     }
 
-    // const renderChooseDayArea = (date) => {
+    const renderDayData = (e) => {
+        updateState("activeDate", e.target.getAttribute("data-date"))
+        console.log(getState("activeDate"));
+        updateSummary();
+    }
 
-    // }
-    
-    let lastWeek = getLastWeek().reverse();
-    console.log(lastWeek)
-    homeSingleDaysArray.forEach((day, index) => {
-        day.textContent = lastWeek[index].slice(0,5);
+    homeSingleDaysArray.forEach((day, i) => {
+        // Fill choose day buttons field with dates
+        day.textContent = lastWeek[i].slice(0,5);
+        day.setAttribute("data-date", lastWeek[i]);
+        const date = day.getAttribute("data-date");
+
+        // Create day in userHistory if doesn't exist
+        if (!getDayData(date)) {
+            createDayData(date);
+        }
+        
+        // Set choosed day radio button as checked
+        if (activeDate === date) {
+            day.parentNode.childNodes[1].setAttribute("checked", true);
+        }
+
+        day.addEventListener("click", renderDayData);
+
     })
-    console.log(homeSingleDaysArray);
 
     updateSummary();
     

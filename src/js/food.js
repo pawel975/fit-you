@@ -6,15 +6,12 @@ import FoodOption from "./foodOption";
 import {getState, updateState} from "./state";
 
 window.addEventListener("load", () => {
-
-    // clear state in development
-    // updateState("userHistory", []);
     
     const {addFoodBtn, addFoodDiaryTableContainer, addFoodServingCount, addFoodMatchesArea, addFoodModal, addFoodSearch, addFoodFinish, addFoodModalClose, addFoodModalBackground, addFoodMatchTable} = DOMelements;
     
-    const currentDate = getCurrentDate();
-    updateState("activeDate", currentDate);
-    console.log(getState("activeDate"))
+    const activeDate = getState("activeDate");
+    // updateState("activeDate", activeDate);
+    // console.log(getState("activeDate"))
     
     let fetchedMatches = [];
     let matchedFood = [];
@@ -108,7 +105,7 @@ window.addEventListener("load", () => {
     // }
 
     // initalize table on load
-    renderTable(currentDate);
+    renderTable(getState("activeDate"));
 
     // Handle modal open
     addFoodBtn.forEach(button => {
@@ -151,8 +148,8 @@ window.addEventListener("load", () => {
     addFoodFinish.addEventListener("click", (e) => {
         e.preventDefault();
         if (choosedFood) {
-            createFoodStateRecord(currentDate, choosedFood, addFoodServingCount.value);
-            renderTable(currentDate);
+            createFoodStateRecord(activeDate, choosedFood, addFoodServingCount.value);
+            renderTable(activeDate);
             addFoodModal.style.display = "none";
         }
     })
