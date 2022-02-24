@@ -17,7 +17,7 @@ export const getLastWeek = () => {
     
     for (let i = 0; i < 7; i++) {
 
-        const timestamp = new Date().getTime() + 24*3600*1000;
+        const timestamp = new Date().getTime();
         const previousTimestamp = timestamp - (i * 24*60*60*1000);
         const previousDate = new Date(previousTimestamp);
 
@@ -33,4 +33,11 @@ export const getLastWeek = () => {
     days.reverse();
 
     return days;
+}
+
+export const dateToTimestamp = (date) => {
+    let dateElements = date.split(".");
+    let timestamp = new Date(dateElements[2], dateElements[1] - 1, dateElements[0]).getTime();
+    
+    return timestamp;
 }

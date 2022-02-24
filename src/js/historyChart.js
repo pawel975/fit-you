@@ -2,21 +2,21 @@ import { DOMelements } from './base';
 import { getState, state } from './state';
 import Chart from 'chart.js/auto';
 
-const {chartCtx} = DOMelements;
-
-const chartLabels = [];
-const chartData = [];
-
-const userHistory = getState("userHistory");
-
-if (state !== null) {
-    userHistory.forEach(day => {
-        chartLabels.push(day.date.slice(0,5));
-        chartData.push(day.summary.kcal);
-    })
-}
-
 export const renderHistoryChart = () => {
+
+    const {chartCtx} = DOMelements;
+
+    let chartLabels = [];
+    let chartData = [];
+
+    const userHistory = getState("userHistory");
+
+    if (state !== null) {
+        userHistory.forEach(day => {
+            chartLabels.push(day.date.slice(0,5));
+            chartData.push(day.summary.kcal);
+        })
+    }
 
     const chart = new Chart(chartCtx, {
         type: 'line',

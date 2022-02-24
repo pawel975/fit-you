@@ -1,21 +1,17 @@
 import { getDayData } from ".";
 import { DOMelements } from "./base";
-import { getCurrentDate } from "./date";
 import { createDiaryTable} from "./diaryTable";
 import FoodOption from "./foodOption";
 import {getState, updateState} from "./state";
 
 window.addEventListener("load", () => {
-    
     const {addFoodBtn, addFoodDiaryTableContainer, addFoodServingCount, addFoodMatchesArea, addFoodModal, addFoodSearch, addFoodFinish, addFoodModalClose, addFoodModalBackground, addFoodMatchTable} = DOMelements;
-    
-    const activeDate = getState("activeDate");
-    
+
     let fetchedMatches = [];
     let matchedFood = [];
     // Food chosen in search area
     let choosedFood;
-    
+
     const fetchFoodData = () => {
         let searchedFood = addFoodSearch.value.replace(/\s+/g, '%20');
             
@@ -29,11 +25,11 @@ window.addEventListener("load", () => {
         })
         .catch(error => console.error(error));
     }
-    
+
     const createFoodOption = (fetchedMatches, matchedFood) => {
         fetchedMatches.forEach(match => {
             const {fdcId, description, brandName, servingSize, foodNutrients} = match
-    
+
             const fat = foodNutrients.filter(nutrient => nutrient.nutrientId === 1004)[0].value
             const proteins = foodNutrients.filter(nutrient => nutrient.nutrientId === 1003)[0].value
             const carbs = foodNutrients.filter(nutrient => nutrient.nutrientId === 1005)[0].value
@@ -95,17 +91,19 @@ window.addEventListener("load", () => {
         })
     }
 
+    const activeDate = getState("activeDate");
+
     // initalize table on load
     renderTable(getState("activeDate"));
-
+    
     // Handle modal open
     addFoodBtn.forEach(button => {
-        choosedFood = undefined;
         button.addEventListener("click", () => {
+            choosedFood = undefined; 
             addFoodModal.style.display = "initial";
         })
     })
-
+    
     // Handle modal search and fetch data
     addFoodSearch.addEventListener("input", (e) => {
         e.preventDefault();
@@ -116,13 +114,13 @@ window.addEventListener("load", () => {
         } else {
             addFoodFinish.disabled = false;
         }
-
+    
         renderMatches();
     }) 
-
+    
     addFoodServingCount.addEventListener("input", (e) => {
         e.preventDefault();
-
+    
         // If servings field is empty or less than 1, disable finish adding button
         if ((addFoodServingCount.value).length === 0 || addFoodServingCount.value < 1) {
             addFoodFinish.disabled = true;
@@ -134,7 +132,7 @@ window.addEventListener("load", () => {
         }) 
         renderMatchDetailsTable(choosedFood);
     })
-
+    
     // Handle add food finish
     addFoodFinish.addEventListener("click", (e) => {
         e.preventDefault();
@@ -144,14 +142,15 @@ window.addEventListener("load", () => {
             addFoodModal.style.display = "none";
         }
     })
-
+    
     // Handle modal close (cross button)
     addFoodModalClose.addEventListener("click", () => {
         addFoodModal.style.display = "none";
     })
-
+    
     // Handle modal close (click outside modal)
     addFoodModalBackground.addEventListener('click', () => {
         addFoodModal.style.display = "none";
     })
+
 })

@@ -4,7 +4,7 @@ import { getState, updateState } from "./state";
 window.addEventListener("load", () => {
 
     const {userGender, userAge, userHeight, userWeight, userGoal, userParamsForm,  summaryContainer} = DOMelements
-    
+
     let user = {};
     let dailyBMR = 0;
 
@@ -14,7 +14,7 @@ window.addEventListener("load", () => {
     userHeight.value = getState("userParams").height,
     userWeight.value = getState("userParams").weight,
     userGoal.value = getState("userParams").goal
-    
+
     // Update user params summary
     const updateSummary = () => {
 
@@ -27,7 +27,7 @@ window.addEventListener("load", () => {
         }
 
         const {gender, age, height, weight, goal} = paramsObject;
-    
+
         if (gender === "Female") {
             dailyBMR = Math.round(((9.99 * weight) + (6.25 * height) - (4.92 * age) - 161 + 400));
         } else {
@@ -80,7 +80,8 @@ window.addEventListener("load", () => {
         }
         updateState("userParams", user);
     }
-    
+
+        
     // initialize summary base on users params
     updateSummary();
     
