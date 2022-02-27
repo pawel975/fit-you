@@ -1,5 +1,5 @@
 import { DOMelements } from './base';
-import { getState, state } from './state';
+import { getState } from './state';
 import Chart from 'chart.js/auto';
 
 export const renderHistoryChart = () => {
@@ -11,7 +11,7 @@ export const renderHistoryChart = () => {
 
     const userHistory = getState("userHistory");
 
-    if (state !== null) {
+    if (JSON.parse(localStorage.getItem("state")) !== null) {
         userHistory.forEach(day => {
             chartLabels.push(day.date.slice(0,5));
             chartData.push(day.summary.kcal);

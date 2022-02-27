@@ -1,4 +1,4 @@
-import { getDayData } from ".";
+import { getDayData } from "./home";
 import { getState, updateState } from "./state";
 
 export const createDiaryTable = (foodRecords) => {

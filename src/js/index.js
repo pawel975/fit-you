@@ -1,102 +1,87 @@
-import "../scss/base.scss";
-import { DOMelements } from "./base";
-import { getCurrentDate, getLastWeek } from "./date";
-import { renderHistoryChart } from "./historyChart";
-import { getState, updateState, initState, state } from './state';
-
-// Get single date records  
-export const getDayData = (date) => {
-    let dayData = getState("userHistory").filter(day => day.date === date)[0];
-    return dayData
-}
+import { updateHomePage } from "./home";
+import {getState, initState, updateState} from './state'
+import {getCurrentDate} from "./date"
+import { updateSettingsPage } from "./settings";
+import { updateFoodPage } from "./food";
 
 window.addEventListener("load", () => {
-    const {homeSingleDaysArray, homeProgressCrossedLimit, homeRemainKcal, homeGoalKcal, homeFat, homeProteins, homeCarbo, homeProgressBarValue} = DOMelements;
-
-    let lastWeek = getLastWeek();
-
-    // Create date in user diary
-    const createDayData = (date) => {
-        let userDiary = getState("userHistory");
-        userDiary.push({
-            date: date,
-            eatenFood: [],
-            summary: {
-                kcal: 0,
-                carbo: 0,
-                proteins: 0,
-                fat: 0,
-            }
-        });
-        updateState("userHistory", userDiary);
-    }
-
-    const updateSummary = () => {
-        
-        homeRemainKcal.textContent = getDayData(getState("activeDate")).summary.kcal;
-        homeGoalKcal.textContent = getState("userParams").goalKcal;
-        homeCarbo.textContent = getDayData(getState("activeDate")).summary.carbo;
-        homeProteins.textContent = getDayData(getState("activeDate")).summary.proteins;
-        homeFat.textContent = getDayData(getState("activeDate")).summary.fat;
-        
-        // Set % of progress bar
-        let progressBarLvl = (homeRemainKcal.textContent/homeGoalKcal.textContent) * 100
-        homeProgressBarValue.style.width = `${progressBarLvl > 100 ? 100 : progressBarLvl}%`
-        
-        // Set % of goal kcal overplus
-        if (progressBarLvl > 100) {
-            let progressBarCrossedLvl = progressBarLvl > 200 ? 200 : progressBarLvl - 100;
-            homeProgressCrossedLimit.style.width = `${progressBarCrossedLvl}%`;
-            homeProgressCrossedLimit.style.display = `initial`;
-        }
-    }
-
-    const renderDayData = (e) => {
-        updateState("activeDate", e.target.getAttribute("data-date"))
-        updateSummary();
-    }
 
     // Creates state object if it doesn't exist 
-    if (state === null) {
+    if (getState() === null) {
         initState();
     } 
 
-    if (!getState("activeDate")) {
+    // Checks if there is any actual date in state
+    if (getState("activeDate") === "") {
         updateState("activeDate", getCurrentDate());
     }
 
-    let activeDate = getState("activeDate");
+    updateHomePage();
+    updateSettingsPage();
+    updateFoodPage();
 
-    homeSingleDaysArray.forEach((day, i) => {
-        // Fill choose day buttons field with dates
-        day.textContent = lastWeek[i].slice(0,5);
-        day.setAttribute("data-date", lastWeek[i]);
-        const date = day.getAttribute("data-date");
-
-        // Create day in userHistory if doesn't exist
-        if (!getDayData(date)) {
-            createDayData(date);
-        }
-        
-        // Set choosed day radio button as checked
-        if (activeDate === date) {
-            day.parentNode.childNodes[1].setAttribute("checked", true);
-        }
-
-        day.addEventListener("click", renderDayData);
-    
-    })
-    
-    // let lastWeekHistory = getState("userHistory");
-    // let sortedHistory = [];
-    // lastWeekHistory = lastWeekHistory.forEach(day => {
-    //     let index = lastWeek.indexOf(day.date);
-    //     if (index > -1) sortedHistory[index] = day;
-    // })     
-    // updateState("userHistory", lastWeekHistory);
-
-    updateSummary();
-    renderHistoryChart();
-    
 })
 
+// Change user params
+userParamsForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    updateParamsSummary();
+})
+
+// Handle modal open
+addFoodBtn.forEach(button => {
+    button.addEventListener("click", () => {
+        choosedFood = undefined; 
+        addFoodModal.style.display = "initial";
+    })
+})
+
+// Handle modal search and fetch data
+addFoodSearch.addEventListener("input", (e) => {
+    e.preventDefault();
+    matchedFood = [];
+    // If search field is empty, disable finish adding button
+    if ((addFoodSearch.value).length === 0) {
+        addFoodFinish.disabled = true;
+    } else {
+        addFoodFinish.disabled = false;
+    }
+
+    renderMatches();
+}) 
+
+addFoodServingCount.addEventListener("input", (e) => {
+    e.preventDefault();
+
+    // If servings field is empty or less than 1, disable finish adding button
+    if ((addFoodServingCount.value).length === 0 || addFoodServingCount.value < 1) {
+        addFoodFinish.disabled = true;
+    } else {
+        addFoodFinish.disabled = false;
+    }
+    matchedFood.forEach(food => {
+        food.servingCount = addFoodServingCount.value;
+    }) 
+    renderMatchDetailsTable(choosedFood);
+})
+
+// Handle add food finish
+addFoodFinish.addEventListener("click", (e) => {
+    e.preventDefault();
+    const activeDate = getState("activeDate");
+    if (choosedFood) {
+        createFoodStateRecord(activeDate, choosedFood, addFoodServingCount.value);
+        renderTable(activeDate);
+        addFoodModal.style.display = "none";
+    }
+})
+
+// Handle modal close (cross button)
+addFoodModalClose.addEventListener("click", () => {
+    addFoodModal.style.display = "none";
+})
+
+// Handle modal close (click outside modal)
+addFoodModalBackground.addEventListener('click', () => {
+    addFoodModal.style.display = "none";
+})
