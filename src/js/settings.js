@@ -1,6 +1,6 @@
 import { DOMelements } from "./base";
 import { getState, updateState } from "./state";
-import { initBasicData} from "./index";
+import { initBasicData} from "./home";
 
 const {userGender, userAge, userHeight, userWeight, userGoal, userParamsForm,  summaryContainer} = DOMelements
 

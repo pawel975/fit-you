@@ -10,14 +10,17 @@
 </head>
 <body>
     <nav class="nav-desktop">
-        <a style="text-decoration: none;" href="./index.html"><h1 class="fs-800 ff-headers text-left text-contrast" style="padding: 0">FitYou</h1></a>
+        <h1 id="fit-you-logo" class="fs-800 ff-headers text-left text-contrast" style="padding: 0">FitYou</h1>
         <ul role="list">
-            <li><a href="./index.html">Home</a></li>
-            <li><a href="./food.html">Food</a></li>
-            <li><a href="./settings.html">Motivation</a></li>
+            <li id="nav-home">Home</li>
+            <li id="nav-food">Food</li>
+            <li id="nav-motivation">Motivation</li>
         </ul>
-        <div id="user-profile" class="fs-300" style="line-height: 1.1;"><a href="./settings.html">Settings</a><i class="fas fa-user-cog"></i></div>
+        <div id="nav-user-profile" class="fs-300" style="line-height: 1.1;">Settings<i class="fas fa-user-cog"></i></div>
     </nav>
+
+    <!-- Main home -->
+
     <main id="main-home">
         <h2 class="fs-700 ff-headers text-contrast text-center">Your daily statistics</h2>
         <fieldset id="choose-day">
@@ -70,5 +73,138 @@
             </section>
         </div>
     </main>
+
+    <!-- Main food -->
+
+    <main id="main-food">
+        <h2 class="fs-700 ff-headers text-contrast text-center">Food diary</h2>
+        <input class="add-food" type="submit" value="Add food">
+        <div class="empty-state-info" style="display: none;">
+            <p>There is no food to display</p>
+            <i class="fas fa-utensils"></i>
+        </div>
+        <div id="diary-table">
+            <!-- Here will be generated table -->
+        </div>
+    </main>
+    <div id="search-food-modal" class="modal-wrapper" style="display: none;">
+        <div class="modal-background"></div>
+        <aside class="modal-section">
+            <div id="modal-close-container">
+                <i class="fas fa-window-close"></i>
+            </div>
+            <form>
+                <input autocomplete="off" id="search-food" required type="text" placeholder="Search food">
+            </form>
+            <div id="matched-food" style="display: flex;">
+                <div id="food-options">
+                    <!-- Here will be created food matches from search form -->
+                </div>
+            </div>
+            <div id="food-details">
+                <table id="food-nutrition">
+                    <tr>
+                        <td>Portions</td>
+                        <td>--</td>
+                    </tr>
+                    <tr>
+                        <td>Serving</td>
+                        <td>--g</td>
+                    </tr>
+                    <tr>
+                        <td>Calories</td>
+                        <td>--kcal</td>
+                    </tr>
+                    <tr>
+                        <td>Carbo</td>
+                        <td>--g</td>
+                    </tr>
+                    <tr>
+                        <td>Proteins</td>
+                        <td>--g</td>
+                    </tr>
+                    <tr>
+                        <td>Fat</td>
+                        <td>--g</td>
+                    </tr>
+                </table>
+                <form id="add-food-form">
+                    <input type="number" id="serving-count" min="0,1" autocomplete="off" required placeholder="Serv. count" value="1">
+                    <input disabled id="finish-adding" type="submit" value="Add food">
+                </form>    
+            </div>
+            <div class="empty-state-info" style="display: none;">
+                <p>There is no food to display</p>
+                <i class="fas fa-utensils"></i>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Main settings -->
+
+    <main id="main-motivation"> 
+        <h2 class="fs-700 ff-headers text-contrast text-center">Motivation</h2>
+    </main>
+    <main id="main-settings">
+        <h2 class="fs-700 ff-headers text-contrast text-center">Your informations & goals</h2>
+        <div id="section-container">
+            <section id="user-params-container">
+                <form id="user-params">
+                    <label for="gender">Gender</label>
+                    <select id="gender" class="dropdown" >
+                        <option disabled selected>Set gender</option>
+                        <option>Female</option>
+                        <option>Male</option>
+                    </select>
+                    <label for="age">Age</label>
+                    <input 
+                        autocomplete="off" 
+                        type="number" 
+                        name="age" 
+                        id="age" 
+                        placeholder="Age in years"
+                        min="10"
+                        max="140"
+                        >
+                    <label for="height">Height</label>
+                    <input 
+                        autocomplete="off" 
+                        type="number" 
+                        name="height" 
+                        id="height" 
+                        placeholder="Height in cm"
+                        min="100"
+                        max="250"
+                        >
+                    <label for="weight">Weight</label>
+                    <input 
+                        autocomplete="off" 
+                        type="number" 
+                        name="weight" 
+                        id="weight" 
+                        placeholder="Weight in kg"
+                        min="30"
+                        max="250"
+                        >
+                    <label for="goal">I want to:</label>
+                    <select id="goal" class="dropdown" >
+                        <option disabled selected>Set goal</option>
+                        <option>lose weight, 0.5kg weekly</option>
+                        <option>lose weight, 1kg weekly</option>
+                        <option>maintain weight</option>
+                        <option>gain weight, 0.5kg weekly</option>
+                        <option>gain weight, 1kg weekly</option>
+                    </select>
+                    <input type="submit" value="Calculate" name="calculate" id="calculate">
+                </form>
+            </section>
+            <section id="params-summary-container">
+                <div>
+                    <p>Fill all fields to see your daily BMR</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
 </body>
 </html>

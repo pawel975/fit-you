@@ -1,7 +1,17 @@
 // Containes all DOM elements and classes into variables
 
 export const DOMelements = {
-    // settings.html 
+    // index
+    navLogo: document.querySelector("#fit-you-logo"),
+    navHome: document.querySelector("#nav-home"),
+    navFood: document.querySelector("#nav-food"),
+    navMotivation: document.querySelector("#nav-motivation"),
+    navSettings: document.querySelector("#nav-user-profile"),
+    mainHome: document.querySelector("#main-home"),
+    mainFood: document.querySelector("#main-food"),
+    mainMotivation: document.querySelector("#main-motivation"),
+    mainSettings: document.querySelector("#main-settings"),
+    // settings
     userParamsForm: document.querySelector("#user-params"),
     userGender: document.querySelector("#user-params #gender"),
     userAge: document.querySelector("#user-params #age"),
@@ -9,7 +19,7 @@ export const DOMelements = {
     userWeight: document.querySelector("#user-params #weight"),
     userGoal: document.querySelector("#user-params #goal"),
     summaryContainer: document.querySelector("#params-summary-container"),
-    // food.html - modal
+    // food
     addFoodBtn: document.querySelectorAll(".add-food"),
     addFoodDiaryTableContainer: document.querySelector("#diary-table"),
     addFoodTableKcalTotal: document.querySelector("#table-summary #kcal-total"),
@@ -25,7 +35,7 @@ export const DOMelements = {
     addFoodModalBackground: document.querySelector(".modal-background"),
     addFoodMatchesOptions: document.querySelector("#food-options"),
     addFoodMatchTable: document.querySelector("#food-details"),
-    // index.html
+    // home
     homeSingleDaysArray: document.querySelectorAll(".radio-container span"),
     homeProgressBarValue: document.querySelector("#bar-progress"),
     homeProgressCrossedLimit: document.querySelector("#bar-progress-crossed-limit"),

@@ -1,0 +1,6 @@
+@use 'variables';
+@use 'utility-classes';
+
+#main_motivation {
+    width: clamp(15rem, 80%, 80rem);
+}

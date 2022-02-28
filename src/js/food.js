@@ -1,4 +1,4 @@
-import { getDayData, initBasicData } from "./index";
+import { getDayData, initBasicData } from "./home";
 import { DOMelements } from "./base";
 import { createDiaryTable} from "./diaryTable";
 import FoodOption from "./foodOption";

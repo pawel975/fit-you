@@ -53,15 +53,5 @@ module.exports = {
         filename: 'index.html',
         inject: 'body',
       }),
-      new HtmlWebpackPlugin({
-        template: './src/html/settings.html',
-        filename: 'settings.html',
-        inject: 'body',
-      }),
-      new HtmlWebpackPlugin({
-        template: './src/html/food.html',
-        filename: 'food.html',
-        inject: 'body',
-      }),
     ]
   };
