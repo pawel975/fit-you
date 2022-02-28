@@ -1,5 +1,6 @@
 import { DOMelements } from "./base";
 import { getState, updateState } from "./state";
+import { initBasicData} from "./index";
 
 const {userGender, userAge, userHeight, userWeight, userGoal, userParamsForm,  summaryContainer} = DOMelements
 
@@ -7,7 +8,7 @@ let user = {};
 let dailyBMR = 0;
 
 // Update user params summary
-export const updateParamsSummary = () => {
+const updateParamsSummary = () => {
 
     let paramsObject = {
         gender: userGender.value,
@@ -72,7 +73,9 @@ export const updateParamsSummary = () => {
     updateState("userParams", user);
 }
 
-export const updateSettingsPage = () => {
+window.addEventListener("load", ()=> {
+    
+    initBasicData();
 
     // Fetching user params from local storage and fill form with data
     userGender.value = getState("userParams").gender,
@@ -83,13 +86,10 @@ export const updateSettingsPage = () => {
     // initialize summary base on users params
     updateParamsSummary();
     
-}
-
-window.addEventListener("load", ()=> {
-
     // Change user params
     userParamsForm.addEventListener("submit", (e) => {
         e.preventDefault();
         updateParamsSummary();
     })
+
 })

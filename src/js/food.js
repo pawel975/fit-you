@@ -1,4 +1,4 @@
-import { getDayData } from "./home";
+import { getDayData, initBasicData } from "./index";
 import { DOMelements } from "./base";
 import { createDiaryTable} from "./diaryTable";
 import FoodOption from "./foodOption";
@@ -92,67 +92,70 @@ const renderMatches = () => {
     })
 }
 
-export const updateFoodPage = () => {
+window.addEventListener("load", ()=> {
+
+    initBasicData();
     
     // initalize table on load
     renderTable(getState("activeDate"));
     
-}
-
-// Handle modal open
-addFoodBtn.forEach(button => {
-    button.addEventListener("click", () => {
-        choosedFood = undefined; 
-        addFoodModal.style.display = "initial";
+    // Handle modal open
+    addFoodBtn.forEach(button => {
+        button.addEventListener("click", () => {
+            choosedFood = undefined; 
+            addFoodModal.style.display = "initial";
+        })
     })
-})
-
-// Handle modal search and fetch data
-addFoodSearch.addEventListener("input", (e) => {
-    e.preventDefault();
-    matchedFood = [];
-    // If search field is empty, disable finish adding button
-    if ((addFoodSearch.value).length === 0) {
-        addFoodFinish.disabled = true;
-    } else {
-        addFoodFinish.disabled = false;
-    }
-
-    renderMatches();
-}) 
-
-addFoodServingCount.addEventListener("input", (e) => {
-    e.preventDefault();
-
-    // If servings field is empty or less than 1, disable finish adding button
-    if ((addFoodServingCount.value).length === 0 || addFoodServingCount.value < 1) {
-        addFoodFinish.disabled = true;
-    } else {
-        addFoodFinish.disabled = false;
-    }
-    matchedFood.forEach(food => {
-        food.servingCount = addFoodServingCount.value;
+    
+    // Handle modal search and fetch data
+    addFoodSearch.addEventListener("input", (e) => {
+        e.preventDefault();
+        matchedFood = [];
+        // If search field is empty, disable finish adding button
+        if ((addFoodSearch.value).length === 0) {
+            addFoodFinish.disabled = true;
+        } else {
+            addFoodFinish.disabled = false;
+        }
+    
+        renderMatches();
     }) 
-    renderMatchDetailsTable(choosedFood);
-})
-
-// Handle add food finish
-addFoodFinish.addEventListener("click", (e) => {
-    e.preventDefault();
-    const activeDate = getState("activeDate");
-    if (choosedFood) {
-        createFoodStateRecord(activeDate, choosedFood, addFoodServingCount.value);
-        renderTable(activeDate);
+    
+    addFoodServingCount.addEventListener("input", (e) => {
+        e.preventDefault();
+    
+        // If servings field is empty or less than 1, disable finish adding button
+        if ((addFoodServingCount.value).length === 0 || addFoodServingCount.value < 1) {
+            addFoodFinish.disabled = true;
+        } else {
+            addFoodFinish.disabled = false;
+        }
+        matchedFood.forEach(food => {
+            food.servingCount = addFoodServingCount.value;
+        }) 
+        renderMatchDetailsTable(choosedFood);
+    })
+    
+    // Handle add food finish
+    addFoodFinish.addEventListener("click", (e) => {
+        e.preventDefault();
+        const activeDate = getState("activeDate");
+        if (choosedFood) {
+            createFoodStateRecord(activeDate, choosedFood, addFoodServingCount.value);
+            renderTable(activeDate);
+            addFoodModal.style.display = "none";
+        }
+    })
+    
+    // Handle modal close (cross button)
+    addFoodModalClose.addEventListener("click", () => {
         addFoodModal.style.display = "none";
-    }
+    })
+    
+    // Handle modal close (click outside modal)
+    addFoodModalBackground.addEventListener('click', () => {
+        addFoodModal.style.display = "none";
+    })
+    
 })
 
-// Handle modal close (cross button)
-addFoodModalClose.addEventListener("click", () => {
-    addFoodModal.style.display = "none";
-})
-
-// Handle modal close (click outside modal)
-addFoodModalBackground.addEventListener('click', () => {
-    addFoodModal.style.display = "none";
-})

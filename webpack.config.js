@@ -1,7 +1,6 @@
 const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require("path");
-const { webpack } = require('webpack');
 
 module.exports = {
   module: {
@@ -34,7 +33,6 @@ module.exports = {
     './src/js/state.js',
     './src/js/food.js',
     './src/js/date.js',
-    './src/js/home.js',
   ],
   output: {
     filename: 'bundle.js',

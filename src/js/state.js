@@ -5,7 +5,7 @@ export const initState = () => {
         userHistory: [],
         userParams: {},
         activeDate: "",
-        isUserParamsReady: false,
+        areUserParamsReady: false,
     }
 
     window.localStorage.setItem("state", JSON.stringify(initState));
