@@ -39,6 +39,7 @@ body {
     padding: 0;
   
     li {
+      cursor: pointer;
       width: 100%;
       height: fit-content;
       color: variables.$clr-darkest;
@@ -59,7 +60,12 @@ body {
   }
 }
 
+#fit-you-logo {
+  cursor: pointer;
+}
+
 #nav-user-profile {
+  cursor: pointer;
   display: flex; 
   white-space: nowrap;
   color: variables.$clr-darkest;

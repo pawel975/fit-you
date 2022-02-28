@@ -2,9 +2,16 @@ import { DOMelements } from './base';
 import { getState } from './state';
 import Chart from 'chart.js/auto';
 
+const {chartCtxContainer} = DOMelements;
+
 export const renderHistoryChart = () => {
 
-    const {chartCtx} = DOMelements;
+    // Erase previous chart and create new one
+    chartCtxContainer.textContent = "";
+    const chartCtx = document.createElement("canvas");
+    chartCtx.setAttribute("aria-label", "history-diary-label");
+    chartCtx.setAttribute("role", "img");
+    chartCtxContainer.appendChild(chartCtx);
 
     let chartLabels = [];
     let chartData = [];

@@ -1,4 +1,4 @@
-import { getDayData, initBasicData } from "./home";
+import { getDayData } from "./home";
 import { DOMelements } from "./base";
 import { createDiaryTable} from "./diaryTable";
 import FoodOption from "./foodOption";
@@ -10,6 +10,12 @@ let fetchedMatches = [];
 let matchedFood = [];
 // Food chosen in search area
 let choosedFood;
+
+export const updateFoodPage = () => {
+
+    // initalize table on load
+    renderTable(getState("activeDate"));
+}
 
 const fetchFoodData = () => {
     let searchedFood = addFoodSearch.value.replace(/\s+/g, '%20');
@@ -92,12 +98,10 @@ const renderMatches = () => {
     })
 }
 
-window.addEventListener("load", ()=> {
 
-    initBasicData();
+window.addEventListener("load", ()=> {
     
-    // initalize table on load
-    renderTable(getState("activeDate"));
+    updateFoodPage();
     
     // Handle modal open
     addFoodBtn.forEach(button => {

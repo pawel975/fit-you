@@ -33,6 +33,7 @@ module.exports = {
     './src/js/state.js',
     './src/js/food.js',
     './src/js/date.js',
+    './src/js/home.js',
   ],
   output: {
     filename: 'bundle.js',

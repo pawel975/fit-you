@@ -1,11 +1,21 @@
 import { DOMelements } from "./base";
 import { getState, updateState } from "./state";
-import { initBasicData} from "./home";
 
 const {userGender, userAge, userHeight, userWeight, userGoal, userParamsForm,  summaryContainer} = DOMelements
 
 let user = {};
 let dailyBMR = 0;
+
+export const updateSettingsPage = () => {
+    // Fetching user params from local storage and fill form with data
+    userGender.value = getState("userParams").gender,
+    userAge.value = getState("userParams").age,
+    userHeight.value = getState("userParams").height,
+    userWeight.value = getState("userParams").weight,
+    userGoal.value = getState("userParams").goal
+    // initialize summary base on users params
+    updateParamsSummary();
+}
 
 // Update user params summary
 const updateParamsSummary = () => {
@@ -70,22 +80,16 @@ const updateParamsSummary = () => {
         goal: userGoal.value,
         goalKcal: Number(dailyBMR),
     }
+
+    if (user.goalKcal !== null) updateState("areUserParamsReady", true);
     updateState("userParams", user);
 }
 
-window.addEventListener("load", ()=> {
-    
-    initBasicData();
 
-    // Fetching user params from local storage and fill form with data
-    userGender.value = getState("userParams").gender,
-    userAge.value = getState("userParams").age,
-    userHeight.value = getState("userParams").height,
-    userWeight.value = getState("userParams").weight,
-    userGoal.value = getState("userParams").goal
-    // initialize summary base on users params
-    updateParamsSummary();
-    
+window.addEventListener("load", ()=> {
+
+    updateSettingsPage();
+
     // Change user params
     userParamsForm.addEventListener("submit", (e) => {
         e.preventDefault();

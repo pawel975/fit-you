@@ -25,16 +25,16 @@
         }
     }
 
-    .empty-state-info {
+    #empty-state-info {
         margin-top: 3rem;
         color: variables.$clr-contrast;
         font-weight: 900;
-
+        
         .svg-inline--fa {
-            padding: 2rem;
+            display: flex;
+            // outline: 2px solid red;
             margin:auto;
-            flex-grow: 1;
-            width: 70%;
+            width: 50%;
             height: 100%;
           }
     }

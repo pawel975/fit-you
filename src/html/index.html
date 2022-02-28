@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="daily summary of user's kcal summary">
+    <meta name="description" content="app to track daily eaten kcal">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/e21a47bafe.js" crossorigin="anonymous"></script>
@@ -69,7 +69,7 @@
                 <div id="fat" class="text-center"><span>12</span>FAT</div>
             </section>
             <section id="history-chart">
-                <canvas id="myChart" aria-label="history-diary-label" role="img"></canvas>
+                <canvas id="#summary-chart" aria-label="history-diary-label" role="img"></canvas>
             </section>
         </div>
     </main>
@@ -79,8 +79,8 @@
     <main id="main-food">
         <h2 class="fs-700 ff-headers text-contrast text-center">Food diary</h2>
         <input class="add-food" type="submit" value="Add food">
-        <div class="empty-state-info" style="display: none;">
-            <p>There is no food to display</p>
+        <div id="empty-state-info">
+            <p class="fs-600 ff-headers text-contrast text-center">There is no food to display</p>
             <i class="fas fa-utensils"></i>
         </div>
         <div id="diary-table">

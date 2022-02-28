@@ -35,6 +35,8 @@ export const DOMelements = {
     addFoodModalBackground: document.querySelector(".modal-background"),
     addFoodMatchesOptions: document.querySelector("#food-options"),
     addFoodMatchTable: document.querySelector("#food-details"),
+    // food - empty/active state
+    addFoodEmptyStateInfo: document.querySelector("#empty-state-info"),
     // home
     homeSingleDaysArray: document.querySelectorAll(".radio-container span"),
     homeProgressBarValue: document.querySelector("#bar-progress"),
@@ -44,5 +46,5 @@ export const DOMelements = {
     homeCarbo: document.querySelector("#daily-summary #carbohydrates span"),
     homeProteins: document.querySelector("#daily-summary #proteins span"),
     homeFat: document.querySelector("#daily-summary #fat span"),
-    chartCtx: document.getElementById("myChart"),
+    chartCtxContainer: document.querySelector("#history-chart"),
 }

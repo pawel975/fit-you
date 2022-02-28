@@ -12,18 +12,8 @@ export const getDayData = (date) => {
     return dayData
 }
 
-export const initBasicData = () => {
-    
-    // Creates state object if it doesn't exist 
-    if (getState() === null) {
-        initState();
-    } 
-    
-    // Checks if there is any actual date in state
-    if (getState("activeDate") === "") {
-        updateState("activeDate", getCurrentDate());
-    }
-    
+export const updateHomePage = () => {
+
     let lastWeek = getLastWeek();
     
     let activeDate = getState("activeDate");
@@ -46,16 +36,19 @@ export const initBasicData = () => {
         }
         
         day.addEventListener("click", renderDayData);
-        
     })
-    
+
     let lastWeekHistory = getState("userHistory");
     let sortedHistory = [];
     lastWeekHistory.forEach(day => {
         let index = lastWeek.indexOf(day.date);
         if (index > -1) sortedHistory[index] = day;
     })
+
     updateState("userHistory", lastWeekHistory);
+
+    updateDaySummary();
+    renderHistoryChart();
 }
 
 // Create date in user diary
@@ -100,12 +93,21 @@ const renderDayData = (e) => {
     updateDaySummary();
 }
 
-window.addEventListener("load", () => {
-    
-    initBasicData();
-    updateDaySummary();
-    renderHistoryChart();
 
+window.addEventListener("load", () => {
+
+    // Creates state object if it doesn't exist 
+    if (getState() === null) {
+        initState();
+    } 
+
+    // Checks if there is any actual date in state
+    if (getState("activeDate") === "") {
+        updateState("activeDate", getCurrentDate());
+    }
+    
+    updateHomePage();
+    
     // Empty state
     // if (getState("areUserParamsReady"))
 
