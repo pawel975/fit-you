@@ -1,6 +1,9 @@
 // Containes all DOM elements and classes into variables
 
 export const DOMelements = {
+    // global
+    emptyUserParamsInfo: document.querySelectorAll(".empty-user-params-info"),
+    goToMeasures: document.querySelector("#go-to-measures"),
     // index
     navLogo: document.querySelector("#fit-you-logo"),
     navHome: document.querySelector("#nav-home"),
@@ -20,7 +23,7 @@ export const DOMelements = {
     userGoal: document.querySelector("#user-params #goal"),
     summaryContainer: document.querySelector("#params-summary-container"),
     // food
-    addFoodBtn: document.querySelectorAll(".add-food"),
+    addFoodBtn: document.querySelector("#add-food"),
     addFoodDiaryTableContainer: document.querySelector("#diary-table"),
     addFoodTableKcalTotal: document.querySelector("#table-summary #kcal-total"),
     addFoodTableProteinTotal: document.querySelector("#table-summary #protein-total"),
@@ -35,9 +38,9 @@ export const DOMelements = {
     addFoodModalBackground: document.querySelector(".modal-background"),
     addFoodMatchesOptions: document.querySelector("#food-options"),
     addFoodMatchTable: document.querySelector("#food-details"),
-    // food - empty/active state
-    addFoodEmptyStateInfo: document.querySelector("#empty-state-info"),
     // home
+    homeChooseDayField: document.querySelector("#choose-day"),
+    homeDailySummaryContainer: document.querySelector("#summary-container"),
     homeSingleDaysArray: document.querySelectorAll(".radio-container span"),
     homeProgressBarValue: document.querySelector("#bar-progress"),
     homeProgressCrossedLimit: document.querySelector("#bar-progress-crossed-limit"),

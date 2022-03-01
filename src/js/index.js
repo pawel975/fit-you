@@ -5,7 +5,7 @@ import { updateHomePage } from "./home";
 import { updateSettingsPage } from "./settings";
 import { getState } from "./state";
 
-const {navLogo, navHome, navFood, navMotivation, navSettings, mainHome, mainFood, mainMotivation, mainSettings, addFoodDiaryTableContainer, addFoodEmptyStateInfo} = DOMelements 
+const {navLogo, navHome, navFood, navMotivation, navSettings, mainHome, mainFood, mainMotivation, mainSettings, addFoodDiaryTableContainer, emptyUserParamsInfo, homeChooseDayField, homeDailySummaryContainer, addFoodBtn} = DOMelements 
 
 const updateAllPages = () => {
     updateFoodPage();
@@ -17,11 +17,23 @@ const updateView = () => {
 
     // If user params aren't ready display empty state infos in home and food pages 
     if (!getState("areUserParamsReady")) {
+        // hide food page content
+        addFoodBtn.style.display = "none"
         addFoodDiaryTableContainer.style.display = "none";
-        addFoodEmptyStateInfo.style.display = "block";
+        // hide home page content
+        homeDailySummaryContainer.style.display = "none";
+        homeChooseDayField.style.display = "none";
+        // show empty state info
+        emptyUserParamsInfo.forEach(field => field.style.display = "flex");
     } else {
+        // show food page content
+        addFoodBtn.style.display = "initial";
         addFoodDiaryTableContainer.style.display = "initial";
-        addFoodEmptyStateInfo.style.display = "none";
+        // show home page content
+        homeDailySummaryContainer.style.display = "flex";
+        homeChooseDayField.style.display = "flex";
+        // hide empty state info
+        emptyUserParamsInfo.forEach(field => field.style.display = "none");
     }
 }
 

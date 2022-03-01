@@ -8,11 +8,8 @@
   display: flex;
   flex-direction: column;
 
-  h2 {
-      margin-top: 3rem;
-  }
-
   #choose-day {
+    display: flex;
     border: none;
   }
 

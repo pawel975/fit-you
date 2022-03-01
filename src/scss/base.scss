@@ -33,7 +33,7 @@ body {
   ul {
   
     margin: auto;
-    width: clamp(15.625rem, 60%, 64rem);
+    width: clamp(15.625rem, 80%, 64rem);
     height: fit-content;
     display: flex;
     padding: 0;
@@ -55,7 +55,6 @@ body {
         color: variables.$clr-light;
         transition: 0.3s;
       }
-      
     }
   }
 }
@@ -64,20 +63,13 @@ body {
   cursor: pointer;
 }
 
-#nav-user-profile {
-  cursor: pointer;
-  display: flex; 
-  white-space: nowrap;
-  color: variables.$clr-darkest;
-  font-weight: 900;
-  color: variables.$clr-darkest;
-  gap: 0.875rem;
-
-}
-
 /* ----------------- */
 /* Global components */
 /* ----------------- */
+
+h2 {
+  margin-top: 3rem;
+}
 
 // inputs
 input, .dropdown{
@@ -240,7 +232,7 @@ input[type=submit], button {
   }
 }
 
-// Empty state info
+// Empty add food state info
 .empty-state-info {
   width: clamp(15rem,80%,40rem);
   height: 100%;
@@ -264,6 +256,36 @@ input[type=submit], button {
     width: 100%;
   }
 
+}
+
+// empty user params info
+.empty-user-params-info {
+  margin: auto;
+  margin-top: 3rem;
+  color: variables.$clr-contrast;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .svg-inline--fa {
+    display: flex;
+    margin-left:auto;
+    width: 30%;
+    height: 100%;
+  }
+
+  div {
+    margin:auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+
+    p {
+      width: 100%;
+    }
+  }
 }
 
 // Custom scrollbar

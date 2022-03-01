@@ -104,11 +104,9 @@ window.addEventListener("load", ()=> {
     updateFoodPage();
     
     // Handle modal open
-    addFoodBtn.forEach(button => {
-        button.addEventListener("click", () => {
-            choosedFood = undefined; 
-            addFoodModal.style.display = "initial";
-        })
+    addFoodBtn.addEventListener("click", () => {
+        choosedFood = undefined; 
+        addFoodModal.style.display = "initial";
     })
     
     // Handle modal search and fetch data
