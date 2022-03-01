@@ -573,28 +573,6 @@ input[type=submit], button {
   opacity: 0.5;
 }
 
-.empty-state-info {
-  width: clamp(15rem, 80%, 40rem);
-  height: 100%;
-  grid-column: 1/3;
-  grid-row: 2/4;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  color: #44ac49;
-  font-weight: 900;
-}
-.empty-state-info p {
-  font-size: 2rem;
-  text-align: center;
-}
-.empty-state-info .svg-inline--fa {
-  padding: 2rem;
-  margin: auto;
-  flex-grow: 1;
-  width: 100%;
-}
-
 .empty-user-params-info {
   margin: auto;
   margin-top: 3rem;

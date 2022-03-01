@@ -56,6 +56,7 @@ body {
         transition: 0.3s;
       }
     }
+
   }
 }
 
@@ -230,32 +231,6 @@ input[type=submit], button {
     }
 
   }
-}
-
-// Empty add food state info
-.empty-state-info {
-  width: clamp(15rem,80%,40rem);
-  height: 100%;
-  grid-column: 1/3;
-  grid-row: 2/4;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  color: variables.$clr-contrast;
-  font-weight: 900;
-
-  p {
-    font-size: variables.$fs-500;
-    text-align: center;
-  }
-
-  .svg-inline--fa {
-    padding: 2rem;
-    margin:auto;
-    flex-grow: 1;
-    width: 100%;
-  }
-
 }
 
 // empty user params info

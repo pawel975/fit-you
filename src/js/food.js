@@ -34,6 +34,9 @@ const fetchFoodData = () => {
 }
 
 const createFoodOption = (fetchedMatches, matchedFood) => {
+
+    if (fetchedMatches.length === 0) return;
+
     fetchedMatches.forEach(match => {
         const {fdcId, description, brandName, servingSize, foodNutrients} = match
 
@@ -47,7 +50,7 @@ const createFoodOption = (fetchedMatches, matchedFood) => {
     })
 }
 
-// Create food record in particular day
+// Create food record in particular day to state
 const createFoodStateRecord = (date, food, servingCount) => {
     let userDiary = getState("userHistory");
     let tmpData = getDayData(date);
