@@ -29,15 +29,16 @@ export const DOMelements = {
     addFoodTableProteinTotal: document.querySelector("#table-summary #protein-total"),
     addFoodTableCarboTotal: document.querySelector("#table-summary #carbohydrates-total"),
     addFoodTableFatTotal: document.querySelector("#table-summary #fat-total"),
+    // food - modal
     addFoodModal: document.querySelector("#search-food-modal"),
     addFoodSearch: document.querySelector("#search-food"),
+    addFoodMatchedFood: document.querySelector("#matched-food"),
+    addFoodMatchTable: document.querySelector("#food-details"),
     addFoodMatchesArea: document.querySelector("#food-options"),
     addFoodServingCount: document.querySelector("#serving-count"),
     addFoodFinish: document.querySelector("#finish-adding"),
     addFoodModalClose: document.querySelector("#modal-close-container"),
     addFoodModalBackground: document.querySelector(".modal-background"),
-    addFoodMatchesOptions: document.querySelector("#food-options"),
-    addFoodMatchTable: document.querySelector("#food-details"),
     // home
     homeChooseDayField: document.querySelector("#choose-day"),
     homeDailySummaryContainer: document.querySelector("#summary-container"),

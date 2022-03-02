@@ -44,14 +44,16 @@ export default class FoodOption {
     }
 
     createMatchDetailsTable(){
+
         const categories = {
             Portions: this.servingCount,
             Serving: (this.serving).toFixed(1), 
             Calories: (this.calories * (this.serving/100) * this.servingCount).toFixed(1), 
-            Carbohydrates: (this.carbohydrates * (this.serving/100) * this.servingCount).toFixed(1),
+            Carbo: (this.carbohydrates * (this.serving/100) * this.servingCount).toFixed(1),
             Protein: (this.proteins * (this.serving/100) * this.servingCount).toFixed(1),
             Fat: (this.fat * (this.serving/100) * this.servingCount).toFixed(1) 
         }
+        
         const table = document.createElement("table");
         table.setAttribute("id", "food-nutrition")
 

@@ -112,12 +112,12 @@
             <form>
                 <input autocomplete="off" id="search-food" required type="text" placeholder="Search food">
             </form>
-            <div id="matched-food" style="display: flex;">
+            <div id="matched-food" style="display: none;">
                 <div id="food-options">
                     <!-- Here will be created food matches from search form -->
                 </div>
             </div>
-            <div id="food-details">
+            <div id="food-details" style="display: none;">
                 <table id="food-nutrition">
                     <tr>
                         <td>Portions</td>
@@ -149,9 +149,9 @@
                     <input disabled id="finish-adding" type="submit" value="Add food">
                 </form>    
             </div>
-            <div class="empty-state-info" style="display: none;">
-                <p>There is no food to display</p>
-                <i class="fas fa-utensils"></i>
+            <div class="empty-search-food-state-info"       style="display: initial;">
+                <i class="fas fa-search"></i>
+                <p>No matches found</p>
             </div>
         </aside>
     </div>

@@ -101,6 +101,12 @@ const renderMatches = () => {
     })
 }
 
+const clearAddFoodModal = () => {
+    addFoodSearch.value = "";
+    addFoodMatchesArea.textContent = "";
+    addFoodServingCount.value = 1;
+}
+
 
 window.addEventListener("load", ()=> {
     
@@ -150,16 +156,19 @@ window.addEventListener("load", ()=> {
             renderTable(activeDate);
             addFoodModal.style.display = "none";
         }
+        clearAddFoodModal();
     })
     
     // Handle modal close (cross button)
     addFoodModalClose.addEventListener("click", () => {
         addFoodModal.style.display = "none";
+        clearAddFoodModal();
     })
     
     // Handle modal close (click outside modal)
     addFoodModalBackground.addEventListener('click', () => {
         addFoodModal.style.display = "none";
+        clearAddFoodModal();
     })
     
 })
