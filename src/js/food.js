@@ -3,8 +3,9 @@ import { DOMelements } from "./base";
 import { createDiaryTable} from "./diaryTable";
 import FoodOption from "./foodOption";
 import {getState, updateState} from "./state";
+import "regenerator-runtime/runtime.js";
 
-const {addFoodBtn, addFoodDiaryTableContainer, addFoodServingCount, addFoodMatchesArea, addFoodModal, addFoodSearch, addFoodFinish, addFoodModalClose, addFoodModalBackground, addFoodMatchTable} = DOMelements;
+const {addFoodBtn, addFoodDiaryTableContainer, addFoodServingCount, addFoodMatchesArea, addFoodMatchedFood, addFoodEmptySearchStateInfo, addFoodModal, addFoodSearch, addFoodFinish, addFoodModalClose, addFoodModalBackground, addFoodMatchTable} = DOMelements;
 
 let fetchedMatches = [];
 let matchedFood = [];
@@ -17,20 +18,20 @@ export const updateFoodPage = () => {
     renderTable(getState("activeDate"));
 }
 
-const fetchFoodData = () => {
+const fetchFoodData = async () => {
     let searchedFood = addFoodSearch.value.replace(/\s+/g, '%20');
         
-    const baseURL = `https://api.nal.usda.gov/fdc/v1/foods/search?query=${searchedFood}&dataType=&pageSize=30&pageNumber=1&sortBy=dataType.keyword&sortOrder=desc&api_key=${process.env.API_KEY}`
+    const baseURL = `https://api.nal.usda.gov/fdc/v1/foods/search?query=${searchedFood}&dataType=&pageSize=50&pageNumber=1&sortBy=&api_key=${process.env.API_KEY}`;
     
-    fetch(baseURL)
-    .then(response => response.json())
-    .then(data => {
-        const {foods} = data;
-        fetchedMatches = foods;
+    try {
+        const response = await fetch(baseURL);
+        const data = await response.json();
+        const { foods } = data;
         // filter to get rid of matches without serving size info
-        fetchedMatches = fetchedMatches.filter(match => match.servingSize !== undefined)
-    })
-    .catch(error => console.error(error));
+        fetchedMatches = foods.filter(match => match.servingSize !== undefined);
+    } catch (error) {
+        return console.error(error);
+    }
 }
 
 const createFoodOption = (fetchedMatches, matchedFood) => {
@@ -76,12 +77,14 @@ const renderMatchDetailsTable = (choosedFood) => {
     addFoodMatchTable.removeChild(addFoodMatchTable.childNodes[1])
 }
 
-const renderMatches = () => {
+const renderMatches = async () => {
     // Clear matches food area 
     addFoodMatchesArea.textContent = "";
     matchedFood = [];
 
-    fetchFoodData();
+    await fetchFoodData();
+
+    updateSearchState();
 
     // Creates new record on food matches area
     createFoodOption(fetchedMatches, matchedFood);
@@ -105,8 +108,22 @@ const clearAddFoodModal = () => {
     addFoodSearch.value = "";
     addFoodMatchesArea.textContent = "";
     addFoodServingCount.value = 1;
+    fetchedMatches = [];
+    choosedFood = [];
+    updateSearchState();
 }
 
+const updateSearchState = () => {
+    if (fetchedMatches.length === 0 || addFoodSearch.value.length === 0) {
+        addFoodEmptySearchStateInfo.style.display = "block";
+        addFoodMatchedFood.style.display = "none";
+        addFoodMatchTable.style.display = "none";
+    } else {
+        addFoodEmptySearchStateInfo.style.display = "none";
+        addFoodMatchedFood.style.display = "initial";
+        addFoodMatchTable.style.display = "flex";
+    }
+}
 
 window.addEventListener("load", ()=> {
     

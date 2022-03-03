@@ -3,7 +3,7 @@
 export const DOMelements = {
     // global
     emptyUserParamsInfo: document.querySelectorAll(".empty-user-params-info"),
-    goToMeasures: document.querySelector("#go-to-measures"),
+    goToMeasures: document.querySelectorAll(".go-to-measures"),
     // index
     navLogo: document.querySelector("#fit-you-logo"),
     navHome: document.querySelector("#nav-home"),
@@ -35,6 +35,7 @@ export const DOMelements = {
     addFoodMatchedFood: document.querySelector("#matched-food"),
     addFoodMatchTable: document.querySelector("#food-details"),
     addFoodMatchesArea: document.querySelector("#food-options"),
+    addFoodEmptySearchStateInfo: document.querySelector(".empty-search-food-state-info"),
     addFoodServingCount: document.querySelector("#serving-count"),
     addFoodFinish: document.querySelector("#finish-adding"),
     addFoodModalClose: document.querySelector("#modal-close-container"),

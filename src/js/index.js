@@ -4,8 +4,9 @@ import { updateFoodPage } from "./food";
 import { updateHomePage } from "./home";
 import { updateSettingsPage } from "./settings";
 import { getState } from "./state";
+import "regenerator-runtime/runtime.js";
 
-const {navLogo, navHome, navFood, navMotivation, navSettings, mainHome, mainFood, mainMotivation, mainSettings, addFoodDiaryTableContainer, emptyUserParamsInfo, homeChooseDayField, homeDailySummaryContainer, addFoodBtn} = DOMelements 
+const {navLogo, navHome, navFood, navMotivation, navSettings, mainHome, mainFood, mainMotivation, mainSettings, addFoodDiaryTableContainer, emptyUserParamsInfo, homeChooseDayField, homeDailySummaryContainer, addFoodBtn, goToMeasures} = DOMelements 
 
 const updateAllPages = () => {
     updateFoodPage();
@@ -38,6 +39,7 @@ const updateView = () => {
 }
 
 updateView();
+updateAllPages();
 
 // Init default view
 mainHome.style.display = "initial";
@@ -45,7 +47,7 @@ mainFood.style.display = "none";
 mainMotivation.style.display = "none";
 mainSettings.style.display = "none";
 
-navLogo.addEventListener("click", (e) => {
+navLogo.addEventListener("click", () => {
     updateView();
     updateAllPages();
     mainHome.style.display = "initial";
@@ -54,7 +56,7 @@ navLogo.addEventListener("click", (e) => {
     mainSettings.style.display = "none";
 })
 
-navHome.addEventListener("click", (e) => {
+navHome.addEventListener("click", () => {
     updateView();
     updateAllPages();
     mainHome.style.display = "initial";
@@ -63,7 +65,7 @@ navHome.addEventListener("click", (e) => {
     mainSettings.style.display = "none";
 })
 
-navFood.addEventListener("click", (e) => {
+navFood.addEventListener("click", () => {
     updateView();
     updateAllPages();
     mainHome.style.display = "none";
@@ -72,7 +74,7 @@ navFood.addEventListener("click", (e) => {
     mainSettings.style.display = "none";
 })
 
-navMotivation.addEventListener("click", (e) => {
+navMotivation.addEventListener("click", () => {
     updateView();
     updateAllPages();
     mainHome.style.display = "none";
@@ -81,7 +83,7 @@ navMotivation.addEventListener("click", (e) => {
     mainSettings.style.display = "none";
 })
 
-navSettings.addEventListener("click", (e) => {
+navSettings.addEventListener("click", () => {
     updateView();
     updateAllPages();
     mainHome.style.display = "none";
@@ -89,3 +91,13 @@ navSettings.addEventListener("click", (e) => {
     mainMotivation.style.display = "none";
     mainSettings.style.display = "initial";
 })
+
+goToMeasures.forEach(button => button.addEventListener("click", () => {
+    updateView();
+    updateAllPages();
+    mainHome.style.display = "none";
+    mainFood.style.display = "none";
+    mainMotivation.style.display = "none";
+    mainSettings.style.display = "initial";
+    })
+)

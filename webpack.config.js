@@ -27,6 +27,7 @@ module.exports = {
     ]
   },
   entry: [
+    'babel-polyfill',
     './src/js/base.js',
     './src/js/index.js',
     './src/js/settings.js',
