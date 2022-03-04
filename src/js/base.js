@@ -10,11 +10,11 @@ export const DOMelements = {
     navHome: document.querySelector("#nav-home"),
     navFood: document.querySelector("#nav-food"),
     navMotivation: document.querySelector("#nav-motivation"),
-    navSettings: document.querySelector("#nav-user-profile"),
+    navMeasures: document.querySelector("#nav-measures"),
     mainHome: document.querySelector("#main-home"),
     mainFood: document.querySelector("#main-food"),
     mainMotivation: document.querySelector("#main-motivation"),
-    mainSettings: document.querySelector("#main-settings"),
+    mainMeasures: document.querySelector("#main-measures"),
     // settings
     userParamsForm: document.querySelector("#user-params"),
     userGender: document.querySelector("#user-params #gender"),

@@ -2,6 +2,36 @@
 @use 'utility-classes';
 
 #main-motivation {
-    width: clamp(15rem, 80%, 80rem);
+    width: clamp(15rem, 50%, 80rem);
 
+    #motivation-quotes {
+        border-block: 1px solid variables.$clr-less-dark;
+        margin: auto;
+        margin-top: 3rem;
+        // outline: 2px solid red;
+
+        #quote {
+            font-size: variables.$fs-400;
+        }
+
+        #author {
+            text-align: right;
+            color: variables.$clr-contrast;
+            font-size: variables.$fs-500;
+        }
+    }
+
+    #benefits {
+        margin: auto;
+
+        ul {
+            font-size: variables.$fs-400;
+            list-style: disc;
+
+            ::marker {
+                color: variables.$clr-contrast;
+            }
+        }
+
+    }
 }

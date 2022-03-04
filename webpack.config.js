@@ -30,11 +30,12 @@ module.exports = {
     'babel-polyfill',
     './src/js/base.js',
     './src/js/index.js',
-    './src/js/settings.js',
+    './src/js/measures.js',
     './src/js/state.js',
     './src/js/food.js',
     './src/js/date.js',
     './src/js/home.js',
+    './src/js/motivation.js',
   ],
   output: {
     filename: 'bundle.js',

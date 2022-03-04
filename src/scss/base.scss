@@ -5,6 +5,7 @@
 @use "main-home";
 @use "main-settings";
 @use "main-food";
+@use "main-motivation";
 
 @import url('https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap');
 
@@ -70,6 +71,14 @@ body {
 
 h2 {
   margin-top: 3rem;
+  font-size: variables.$fs-700;
+  font-family: variables.$ff-headers;
+  color: variables.$clr-contrast;
+  text-align: center;
+}
+
+h3 {
+  font-size: variables.$fs-500;
 }
 
 // inputs
@@ -295,7 +304,7 @@ input[type=submit], button {
 // loader spinner 
 
 .loader {
-  display: initial;
+  display: none;
   margin-top: 1rem;
   width: 5rem;
   height: 5rem;

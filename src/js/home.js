@@ -37,15 +37,6 @@ export const updateHomePage = () => {
         day.addEventListener("click", renderDayData);
     })
 
-    // Filter user history older than last week and sort it by date
-    let lastWeekHistory = getState("userHistory");
-    let sortedHistory = [];
-    lastWeekHistory.forEach(day => {
-        let index = lastWeek.indexOf(day.date);
-        if (index > -1) sortedHistory[index] = day;
-    })
-    updateState("userHistory", sortedHistory);
-
     updateDaySummary();
     renderHistoryChart();
 }

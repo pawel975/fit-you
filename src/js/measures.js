@@ -6,7 +6,7 @@ const {userGender, userAge, userHeight, userWeight, userGoal, userParamsForm,  s
 let user = {};
 let dailyBMR = 0;
 
-export const updateSettingsPage = () => {
+export const updateMeasuresPage = () => {
     // Fetching user params from local storage and fill form with data
     userGender.value = getState("userParams").gender,
     userAge.value = getState("userParams").age,
@@ -88,7 +88,7 @@ const updateParamsSummary = () => {
 
 window.addEventListener("load", ()=> {
 
-    updateSettingsPage();
+    updateMeasuresPage();
 
     // Change user params
     userParamsForm.addEventListener("submit", (e) => {

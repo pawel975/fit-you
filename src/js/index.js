@@ -2,23 +2,20 @@ import { DOMelements } from "./base";
 import "../scss/base.scss"
 import { updateFoodPage } from "./food";
 import { updateHomePage } from "./home";
-import { updateSettingsPage } from "./settings";
+import { updateMeasuresPage } from "./measures";
 import { getState, initState } from "./state";
 
 
-const {navLogo, navHome, navFood, navMotivation, navSettings, mainHome, mainFood, mainMotivation, mainSettings, addFoodDiaryTableContainer, emptyUserParamsInfo, homeChooseDayField, homeDailySummaryContainer, addFoodBtn, goToMeasures} = DOMelements 
+const {navLogo, navHome, navFood, navMotivation, navMeasures, mainHome, mainFood, mainMotivation, mainMeasures, addFoodDiaryTableContainer, emptyUserParamsInfo, homeChooseDayField, homeDailySummaryContainer, addFoodBtn, goToMeasures} = DOMelements 
 
 const updateAllPages = () => {
-    updateFoodPage();
+
     updateHomePage();
-    updateSettingsPage();
+    updateFoodPage();
+    updateMeasuresPage();
 }
 
 export const updateView = () => {
-
-    if (getState() === null) {
-        initState();
-    }
     
     // If user params aren't ready display empty state infos in home and food pages 
     if (!getState("areUserParamsReady")) {
@@ -42,14 +39,24 @@ export const updateView = () => {
     }
 }
 
-// Init default view
-mainHome.style.display = "initial";
-mainFood.style.display = "none";
-mainMotivation.style.display = "none";
-mainSettings.style.display = "none";
+window.addEventListener("load", ()=> {
 
-updateAllPages();
-updateView();
+    if (getState() === null) {
+        initState();
+    }
+
+    // Init default view
+    mainHome.style.display = "initial";
+    mainFood.style.display = "none";
+    mainMotivation.style.display = "none";
+    mainMeasures.style.display = "none";
+    
+    // Render all pages scripts
+    updateAllPages();
+
+    // Update view based on state settings
+    updateView();
+})
 
 navLogo.addEventListener("click", () => {
     updateView();
@@ -57,7 +64,7 @@ navLogo.addEventListener("click", () => {
     mainHome.style.display = "initial";
     mainFood.style.display = "none";
     mainMotivation.style.display = "none";
-    mainSettings.style.display = "none";
+    mainMeasures.style.display = "none";
 })
 
 navHome.addEventListener("click", () => {
@@ -66,7 +73,7 @@ navHome.addEventListener("click", () => {
     mainHome.style.display = "initial";
     mainFood.style.display = "none";
     mainMotivation.style.display = "none";
-    mainSettings.style.display = "none";
+    mainMeasures.style.display = "none";
 })
 
 navFood.addEventListener("click", () => {
@@ -75,7 +82,7 @@ navFood.addEventListener("click", () => {
     mainHome.style.display = "none";
     mainFood.style.display = "flex";
     mainMotivation.style.display = "none";
-    mainSettings.style.display = "none";
+    mainMeasures.style.display = "none";
 })
 
 navMotivation.addEventListener("click", () => {
@@ -84,16 +91,16 @@ navMotivation.addEventListener("click", () => {
     mainHome.style.display = "none";
     mainFood.style.display = "none";
     mainMotivation.style.display = "initial";
-    mainSettings.style.display = "none";
+    mainMeasures.style.display = "none";
 })
 
-navSettings.addEventListener("click", () => {
+navMeasures.addEventListener("click", () => {
     updateView();
     updateAllPages();
     mainHome.style.display = "none";
     mainFood.style.display = "none";
     mainMotivation.style.display = "none";
-    mainSettings.style.display = "initial";
+    mainMeasures.style.display = "initial";
 })
 
 goToMeasures.forEach(button => button.addEventListener("click", () => {
@@ -102,6 +109,6 @@ goToMeasures.forEach(button => button.addEventListener("click", () => {
     mainHome.style.display = "none";
     mainFood.style.display = "none";
     mainMotivation.style.display = "none";
-    mainSettings.style.display = "initial";
+    mainMeasures.style.display = "initial";
     })
 )

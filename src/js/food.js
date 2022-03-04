@@ -16,6 +16,7 @@ export const updateFoodPage = () => {
 
     // initalize table on load
     renderTable(getState("activeDate"));
+    
 }
 
 const fetchFoodData = async () => {

@@ -21,6 +21,7 @@ export default class FoodOption {
         const foodName = document.createElement("span");
         foodName.setAttribute("id", "name");
         foodName.textContent = `${this.name}, `;
+        foodName.style.fontWeight = "bold";
         
         const foodBrand = document.createElement("span");
         foodBrand.setAttribute("id", "brand");
@@ -33,6 +34,7 @@ export default class FoodOption {
         const foodCalories = document.createElement("span");
         foodCalories.setAttribute("id", "calories");
         foodCalories.textContent = `${this.calories}kcal/100g`;
+        foodCalories.style.fontWeight = "bold";
 
         singleOption.appendChild(foodName);
         singleOption.appendChild(foodName);
