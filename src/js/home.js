@@ -15,7 +15,6 @@ export const getDayData = (date) => {
 export const updateHomePage = () => {
 
     let lastWeek = getLastWeek();
-    
     let activeDate = getState("activeDate");
     
     homeSingleDaysArray.forEach((day, i) => {
@@ -38,14 +37,14 @@ export const updateHomePage = () => {
         day.addEventListener("click", renderDayData);
     })
 
+    // Filter user history older than last week and sort it by date
     let lastWeekHistory = getState("userHistory");
     let sortedHistory = [];
     lastWeekHistory.forEach(day => {
         let index = lastWeek.indexOf(day.date);
         if (index > -1) sortedHistory[index] = day;
     })
-
-    updateState("userHistory", lastWeekHistory);
+    updateState("userHistory", sortedHistory);
 
     updateDaySummary();
     renderHistoryChart();
@@ -107,8 +106,5 @@ window.addEventListener("load", () => {
     }
     
     updateHomePage();
-    
-    // Empty state
-    // if (getState("areUserParamsReady"))
 
 })

@@ -3,8 +3,8 @@ import "../scss/base.scss"
 import { updateFoodPage } from "./food";
 import { updateHomePage } from "./home";
 import { updateSettingsPage } from "./settings";
-import { getState } from "./state";
-import "regenerator-runtime/runtime.js";
+import { getState, initState } from "./state";
+
 
 const {navLogo, navHome, navFood, navMotivation, navSettings, mainHome, mainFood, mainMotivation, mainSettings, addFoodDiaryTableContainer, emptyUserParamsInfo, homeChooseDayField, homeDailySummaryContainer, addFoodBtn, goToMeasures} = DOMelements 
 
@@ -14,8 +14,12 @@ const updateAllPages = () => {
     updateSettingsPage();
 }
 
-const updateView = () => {
+export const updateView = () => {
 
+    if (getState() === null) {
+        initState();
+    }
+    
     // If user params aren't ready display empty state infos in home and food pages 
     if (!getState("areUserParamsReady")) {
         // hide food page content
@@ -38,14 +42,14 @@ const updateView = () => {
     }
 }
 
-updateView();
-updateAllPages();
-
 // Init default view
 mainHome.style.display = "initial";
 mainFood.style.display = "none";
 mainMotivation.style.display = "none";
 mainSettings.style.display = "none";
+
+updateAllPages();
+updateView();
 
 navLogo.addEventListener("click", () => {
     updateView();

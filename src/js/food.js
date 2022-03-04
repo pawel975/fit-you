@@ -5,7 +5,7 @@ import FoodOption from "./foodOption";
 import {getState, updateState} from "./state";
 import "regenerator-runtime/runtime.js";
 
-const {addFoodBtn, addFoodDiaryTableContainer, addFoodServingCount, addFoodMatchesArea, addFoodMatchedFood, addFoodEmptySearchStateInfo, addFoodModal, addFoodSearch, addFoodFinish, addFoodModalClose, addFoodModalBackground, addFoodMatchTable} = DOMelements;
+const {addFoodBtn, addFoodDiaryTableContainer, addFoodServingCount, addFoodMatchesArea, addFoodMatchedFood, addFoodEmptySearchStateInfo, addFoodModal, addFoodSearch, addFoodFinish, addFoodModalClose, addFoodModalBackground, addFoodMatchTable, loader} = DOMelements;
 
 let fetchedMatches = [];
 let matchedFood = [];
@@ -23,12 +23,16 @@ const fetchFoodData = async () => {
         
     const baseURL = `https://api.nal.usda.gov/fdc/v1/foods/search?query=${searchedFood}&dataType=&pageSize=50&pageNumber=1&sortBy=&api_key=${process.env.API_KEY}`;
     
+    addFoodEmptySearchStateInfo.style.display = "none";
+    loader.style.display = "initial";
+    
     try {
         const response = await fetch(baseURL);
         const data = await response.json();
         const { foods } = data;
         // filter to get rid of matches without serving size info
         fetchedMatches = foods.filter(match => match.servingSize !== undefined);
+        loader.style.display = "none"
     } catch (error) {
         return console.error(error);
     }
@@ -53,6 +57,7 @@ const createFoodOption = (fetchedMatches, matchedFood) => {
 
 // Create food record in particular day to state
 const createFoodStateRecord = (date, food, servingCount) => {
+
     let userDiary = getState("userHistory");
     let tmpData = getDayData(date);
     food.servingCount = servingCount;
@@ -118,6 +123,7 @@ const updateSearchState = () => {
         addFoodEmptySearchStateInfo.style.display = "block";
         addFoodMatchedFood.style.display = "none";
         addFoodMatchTable.style.display = "none";
+        loader.style.display = "none"
     } else {
         addFoodEmptySearchStateInfo.style.display = "none";
         addFoodMatchedFood.style.display = "initial";

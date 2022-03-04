@@ -2,6 +2,7 @@
 
 export const DOMelements = {
     // global
+    loader: document.querySelector(".loader"),
     emptyUserParamsInfo: document.querySelectorAll(".empty-user-params-info"),
     goToMeasures: document.querySelectorAll(".go-to-measures"),
     // index
