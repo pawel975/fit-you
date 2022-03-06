@@ -89,7 +89,7 @@ const renderDayData = (e) => {
 }
 
 
-window.addEventListener("load", () => {
+window.addEventListener("DOMContentLoaded", () => {
 
     // Creates state object if it doesn't exist 
     if (getState() === null) {

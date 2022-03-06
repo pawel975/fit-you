@@ -39,7 +39,7 @@ export const updateView = () => {
     }
 }
 
-window.addEventListener("load", ()=> {
+window.addEventListener("DOMContentLoaded", ()=> {
 
     if (getState() === null) {
         initState();

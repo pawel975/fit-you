@@ -219,7 +219,7 @@ select {
   width: clamp(1rem, 70%, 35rem);
 }
 #main-home #summary-container #daily-summary div:first-child {
-  color: #aaaaaa;
+  color: #818181;
   font-size: 2rem;
 }
 #main-home #summary-container #daily-summary div:first-child span {
@@ -236,7 +236,7 @@ select {
   flex-direction: column;
   padding-right: 1rem;
   font-size: 1.25rem;
-  color: #aaaaaa;
+  color: #818181;
 }
 #main-home #summary-container #daily-summary div:nth-child(1n+3) span {
   font-size: 3rem;
@@ -434,7 +434,7 @@ body {
   display: flex;
   align-items: center;
   margin-inline: auto;
-  border-bottom: 1px solid #aaaaaa;
+  border-bottom: 1px solid #818181;
 }
 .nav-desktop ul {
   margin: auto;

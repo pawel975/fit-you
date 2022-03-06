@@ -132,7 +132,7 @@ const updateSearchState = () => {
     }
 }
 
-window.addEventListener("load", ()=> {
+window.addEventListener("DOMContentLoaded", ()=> {
     
     updateFoodPage();
     

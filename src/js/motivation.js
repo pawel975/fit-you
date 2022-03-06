@@ -37,7 +37,7 @@ const updateMotivationPage = () => {
     quoteInterval = setInterval(() => updateView(quotesArr), 10000);
 }
 
-window.addEventListener("load", async () => {
+window.addEventListener("DOMContentLoaded", async () => {
 
     if (!quotesArr) {
         await fetchQuotes();

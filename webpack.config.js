@@ -3,6 +3,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require("path");
 
 module.exports = {
+  cache: {
+    type: 'filesystem',
+    maxAge: 5184000000,
+  },
   module: {
     rules: [
       {
@@ -38,7 +42,7 @@ module.exports = {
     './src/js/motivation.js',
   ],
   output: {
-    filename: 'bundle.js',
+    filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
   },
   mode: 'development',
@@ -48,13 +52,27 @@ module.exports = {
     open:true
   },
   plugins: [
-      new Dotenv({
-        prefix: 'process.env.'
-      }),
-      new HtmlWebpackPlugin({
-        template: './src/html/index.html',
-        filename: 'index.html',
-        inject: 'body',
-      }),
-    ]
-  };
+    new Dotenv({
+      prefix: 'process.env.'
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/html/index.html',
+      filename: 'index.html',
+      inject: 'body',
+    }),
+  ],
+  optimization: {
+    moduleIds: 'deterministic',
+    runtimeChunk: 'single',
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        },
+      },
+    },
+  },
+};
+  
