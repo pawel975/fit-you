@@ -106,7 +106,7 @@ select {
 }
 
 .text-contrast {
-  color: #44ac49;
+  color: #41a046;
 }
 
 .text-dark {
@@ -226,7 +226,7 @@ select {
   font-size: 5.5rem;
 }
 #main-home #summary-container #daily-summary div:first-child span:first-child {
-  color: #44ac49;
+  color: #41a046;
 }
 #main-home #summary-container #daily-summary div:first-child span:nth-child(3) {
   color: #29285f;
@@ -261,7 +261,7 @@ select {
   width: 0%;
   max-width: 100%;
   height: 100%;
-  background-color: #44ac49;
+  background-color: #41a046;
 }
 #main-home #summary-container #daily-summary #pbar-container #bar-progress-crossed-limit {
   display: flex;
@@ -272,10 +272,10 @@ select {
   width: 50%;
 }
 
-#main-settings {
+#main-measures {
   width: clamp(15rem, 80%, 80rem);
 }
-#main-settings #section-container {
+#main-measures #section-container {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -283,10 +283,10 @@ select {
   justify-content: space-around;
   align-items: stretch;
 }
-#main-settings #section-container #user-params-container {
+#main-measures #section-container #user-params-container {
   width: 100%;
 }
-#main-settings #section-container #user-params-container form {
+#main-measures #section-container #user-params-container form {
   margin: auto;
   width: 50%;
   display: flex;
@@ -294,14 +294,14 @@ select {
   align-items: flex-start;
   gap: 0.3rem;
 }
-#main-settings #section-container #user-params-container form label {
+#main-measures #section-container #user-params-container form label {
   color: #29285f;
   font-size: 1.5rem;
 }
-#main-settings #section-container #params-summary-container {
+#main-measures #section-container #params-summary-container {
   width: 100%;
 }
-#main-settings #section-container #params-summary-container div {
+#main-measures #section-container #params-summary-container div {
   padding: 3em;
   border-radius: 3rem;
   display: grid;
@@ -309,7 +309,7 @@ select {
   background-color: #29285f;
   height: 100%;
 }
-#main-settings #section-container #params-summary-container div p {
+#main-measures #section-container #params-summary-container div p {
   font-family: "Dongle", sans-serif;
   width: 100%;
   text-align: center;
@@ -318,9 +318,9 @@ select {
   line-height: 1.1;
   font-weight: 900;
 }
-#main-settings #section-container #params-summary-container div span {
+#main-measures #section-container #params-summary-container div span {
   font-family: inherit;
-  color: #44ac49;
+  color: #41a046;
 }
 
 #main-food {
@@ -370,6 +370,49 @@ select {
 #main-food #diary-table table tbody tr:last-child td:first-child {
   background-color: #29285f;
   color: white;
+}
+
+#main-motivation {
+  width: clamp(15rem, 50%, 80rem);
+}
+#main-motivation #motivation-quotes {
+  position: relative;
+  border-block: 1px solid #c8c8c8;
+  margin: auto;
+  margin-top: 3rem;
+}
+#main-motivation #motivation-quotes #quote {
+  font-size: 1.5rem;
+  width: 85%;
+}
+#main-motivation #motivation-quotes #author {
+  margin-top: 1rem;
+  text-align: right;
+  color: #41a046;
+  font-size: 2rem;
+}
+#main-motivation #motivation-quotes #refresh {
+  cursor: pointer;
+  top: 1rem;
+  right: 1rem;
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #41a046;
+}
+#main-motivation #motivation-quotes #refresh .svg-inline--fa.fa-w-16 {
+  width: 100%;
+  height: 100%;
+}
+#main-motivation #benefits {
+  margin: auto;
+}
+#main-motivation #benefits ul {
+  font-size: 1.5rem;
+  list-style: disc;
+}
+#main-motivation #benefits ul ::marker {
+  color: #41a046;
 }
 
 /* ---------- */
@@ -431,6 +474,14 @@ body {
 /* ----------------- */
 h2 {
   margin-top: 3rem;
+  font-size: 4rem;
+  font-family: "Dongle", sans-serif;
+  color: #41a046;
+  text-align: center;
+}
+
+h3 {
+  font-size: 2rem;
 }
 
 input, .dropdown {
@@ -457,7 +508,7 @@ input[type=submit], button {
 }
 
 .dropdown select:hover {
-  background-color: #44ac49;
+  background-color: #41a046;
   color: #f8f7f7;
 }
 
@@ -566,7 +617,7 @@ input[type=submit], button {
 .empty-user-params-info {
   margin: auto;
   margin-top: 3rem;
-  color: #44ac49;
+  color: #41a046;
   font-weight: 900;
   display: flex;
   align-items: center;
@@ -593,7 +644,7 @@ input[type=submit], button {
   width: 100%;
   margin: auto;
   margin-top: 3rem;
-  color: #44ac49;
+  color: #41a046;
   font-weight: 900;
   display: block;
 }
@@ -622,13 +673,13 @@ input[type=submit], button {
 }
 
 .loader {
-  display: initial;
+  display: none;
   margin-top: 1rem;
   width: 5rem;
   height: 5rem;
   border-radius: 50%;
   border: 0.6rem solid #c8c8c8;
-  border-top: 0.6rem solid #44ac49;
+  border-top: 0.6rem solid #41a046;
   -webkit-animation: spin 0.6s linear infinite;
           animation: spin 0.6s linear infinite;
 }

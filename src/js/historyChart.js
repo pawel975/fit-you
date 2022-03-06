@@ -18,7 +18,7 @@ export const renderHistoryChart = () => {
 
     const userHistory = getState("userHistory");
 
-    if (JSON.parse(localStorage.getItem("state")) !== null) {
+    if (getState() !== null) {
         userHistory.forEach(day => {
             chartLabels.push(day.date.slice(0,5));
             chartData.push(day.summary.kcal);
@@ -43,6 +43,7 @@ export const renderHistoryChart = () => {
             }]
         },
         options: {
+            animation: false,
             scales: {
                 y: {
                     beginAtZero: true

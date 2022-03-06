@@ -37,6 +37,11 @@ export const updateHomePage = () => {
         day.addEventListener("click", renderDayData);
     })
 
+    // Filter user history to only last 7 days
+    let lastWeekHistory = getState("userHistory");
+    lastWeekHistory = lastWeekHistory.filter(day => lastWeek.indexOf(day.date) > -1)
+    updateState("userHistory", lastWeekHistory);
+
     updateDaySummary();
     renderHistoryChart();
 }

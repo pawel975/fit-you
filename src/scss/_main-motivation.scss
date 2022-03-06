@@ -5,6 +5,7 @@
     width: clamp(15rem, 50%, 80rem);
 
     #motivation-quotes {
+        position: relative;
         border-block: 1px solid variables.$clr-less-dark;
         margin: auto;
         margin-top: 3rem;
@@ -12,12 +13,30 @@
 
         #quote {
             font-size: variables.$fs-400;
+            width: 85%;
         }
 
         #author {
+            margin-top: 1rem;
             text-align: right;
             color: variables.$clr-contrast;
             font-size: variables.$fs-500;
+        }
+
+        #refresh {
+
+            cursor: pointer;
+            top: 1rem;
+            right: 1rem;
+            position: absolute;
+            width: 1.5rem;
+            height: 1.5rem;
+            color: variables.$clr-contrast;
+
+            .svg-inline--fa.fa-w-16 {
+                width: 100%;
+                height: 100%;
+            }
         }
     }
 
