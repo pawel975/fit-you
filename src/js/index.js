@@ -1,12 +1,12 @@
 import { DOMelements } from "./base";
 import "../scss/base.scss"
 import { updateFoodPage } from "./food";
-import { updateHomePage } from "./home";
+import { renderDayData, updateHomePage } from "./home";
 import { updateMeasuresPage } from "./measures";
 import { getState, initState } from "./state";
 
 
-const {navLogo, navHome, navFood, navMotivation, navMeasures, mainHome, mainFood, mainMotivation, mainMeasures, addFoodDiaryTableContainer, emptyUserParamsInfo, homeChooseDayField, homeDailySummaryContainer, addFoodBtn, goToMeasures} = DOMelements 
+const {navLogo, navHome, navFood, navMotivation, navMeasures, mainHome, mainFood, mainMotivation, mainMeasures, addFoodDiaryTableContainer, emptyUserParamsInfo, homeChooseDayField, homeDailySummaryContainer, addFoodBtn, goToMeasures, homeSingleDaysArray} = DOMelements 
 
 const updateAllPages = () => {
 
@@ -39,6 +39,34 @@ export const updateView = () => {
     }
 }
 
+const displayHomePage = () => {
+    mainHome.style.display = "initial";
+    mainFood.style.display = "none";
+    mainMotivation.style.display = "none";
+    mainMeasures.style.display = "none";
+}
+
+const displayFoodPage = () => {
+    mainHome.style.display = "none";
+    mainFood.style.display = "flex";
+    mainMotivation.style.display = "none";
+    mainMeasures.style.display = "none";
+}
+
+const displayMotivationPage = () => {
+    mainHome.style.display = "none";
+    mainFood.style.display = "none";
+    mainMotivation.style.display = "initial";
+    mainMeasures.style.display = "none";
+}
+
+const displayMeasuresPage = () => {
+    mainHome.style.display = "none";
+    mainFood.style.display = "none";
+    mainMotivation.style.display = "none";
+    mainMeasures.style.display = "initial";
+}
+
 window.addEventListener("DOMContentLoaded", ()=> {
 
     if (getState() === null) {
@@ -46,10 +74,7 @@ window.addEventListener("DOMContentLoaded", ()=> {
     }
 
     // Init default view
-    mainHome.style.display = "initial";
-    mainFood.style.display = "none";
-    mainMotivation.style.display = "none";
-    mainMeasures.style.display = "none";
+    displayHomePage();
     
     // Render all pages scripts
     updateAllPages();
@@ -61,54 +86,96 @@ window.addEventListener("DOMContentLoaded", ()=> {
 navLogo.addEventListener("click", () => {
     updateView();
     updateAllPages();
-    mainHome.style.display = "initial";
-    mainFood.style.display = "none";
-    mainMotivation.style.display = "none";
-    mainMeasures.style.display = "none";
+    displayHomePage();
+})
+
+navLogo.addEventListener("keydown", (e) => {
+    if (e.code === "Enter") {
+        updateView();
+        updateAllPages();
+        displayHomePage()
+    }
 })
 
 navHome.addEventListener("click", () => {
     updateView();
     updateAllPages();
-    mainHome.style.display = "initial";
-    mainFood.style.display = "none";
-    mainMotivation.style.display = "none";
-    mainMeasures.style.display = "none";
+    displayHomePage();
+})
+
+navHome.addEventListener("keydown", (e) => {
+    if (e.code === "Enter") {
+        updateView();
+        updateAllPages();
+        displayHomePage()
+    }
 })
 
 navFood.addEventListener("click", () => {
     updateView();
     updateAllPages();
-    mainHome.style.display = "none";
-    mainFood.style.display = "flex";
-    mainMotivation.style.display = "none";
-    mainMeasures.style.display = "none";
+    displayFoodPage();
+})
+
+navFood.addEventListener("keydown", (e) => {
+    if (e.code === "Enter") {
+        updateView();
+        updateAllPages();
+        displayFoodPage()
+    }
 })
 
 navMotivation.addEventListener("click", () => {
     updateView();
     updateAllPages();
-    mainHome.style.display = "none";
-    mainFood.style.display = "none";
-    mainMotivation.style.display = "initial";
-    mainMeasures.style.display = "none";
+    displayMotivationPage();
+})
+
+navMotivation.addEventListener("keydown", (e) => {
+    if (e.code === "Enter") {
+        updateView();
+        updateAllPages();
+        displayMotivationPage();
+    }
 })
 
 navMeasures.addEventListener("click", () => {
     updateView();
     updateAllPages();
-    mainHome.style.display = "none";
-    mainFood.style.display = "none";
-    mainMotivation.style.display = "none";
-    mainMeasures.style.display = "initial";
+    displayMeasuresPage();
+})
+
+navMeasures.addEventListener("keydown", (e) => {
+    if (e.code === "Enter") {
+        updateView();
+        updateAllPages();
+        displayMeasuresPage();
+    }
 })
 
 goToMeasures.forEach(button => button.addEventListener("click", () => {
     updateView();
     updateAllPages();
-    mainHome.style.display = "none";
-    mainFood.style.display = "none";
-    mainMotivation.style.display = "none";
-    mainMeasures.style.display = "initial";
+    displayMeasuresPage();
     })
 )
+
+goToMeasures.forEach(button => button.addEventListener("keydown", (e) => {
+        if (e.code === "Enter") {
+            updateView();
+            updateAllPages();
+            displayMeasuresPage();
+        }
+    })
+)
+
+
+
+homeSingleDaysArray.forEach(day => {
+    day.addEventListener("keydown", (e) => {
+        if (e.code === "Enter") {
+            renderDayData(e);
+            day.parentNode.childNodes[1].setAttribute("checked", true);
+        }
+    })
+})

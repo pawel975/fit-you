@@ -11,6 +11,10 @@
   #choose-day {
     display: flex;
     border: none;
+
+    span:focus {
+      outline: 3px solid orange;
+    }
   }
 
   #summary-container {

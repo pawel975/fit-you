@@ -208,6 +208,9 @@ select {
   display: flex;
   border: none;
 }
+#main-home #choose-day span:focus {
+  outline: 3px solid orange;
+}
 #main-home #summary-container {
   margin-top: 6rem;
   display: flex;
@@ -418,6 +421,10 @@ select {
 /* ---------- */
 /* Navigation */
 /* ---------- */
+*:focus {
+  outline: 3px solid orange;
+}
+
 body {
   display: flex;
   flex-direction: column;

@@ -83,7 +83,7 @@ const updateDaySummary = () => {
     }
 }
 
-const renderDayData = (e) => {
+export const renderDayData = (e) => {
     updateState("activeDate", e.target.getAttribute("data-date"))
     updateDaySummary();
 }

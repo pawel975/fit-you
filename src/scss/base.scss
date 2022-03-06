@@ -12,6 +12,9 @@
 /* ---------- */
 /* Navigation */
 /* ---------- */
+*:focus {
+  outline: 3px solid orange;
+}
 
 body {
   display: flex;
