@@ -29,9 +29,11 @@ export const updateHomePage = () => {
             createDayData(date);
         }
         
-        // Set choosed day radio button as checked
+        // Set choosed day button to pressed
         if (activeDate === date) {
-            day.parentNode.childNodes[1].setAttribute("checked", true);
+            day.parentNode.setAttribute("aria-pressed", true);
+        } else {
+            day.parentNode.setAttribute("aria-pressed", false);
         }
         
         day.addEventListener("click", renderDayData);
@@ -83,8 +85,8 @@ const updateDaySummary = () => {
     }
 }
 
-export const renderDayData = (e) => {
-    updateState("activeDate", e.target.getAttribute("data-date"))
+export const renderDayData = (day) => {
+    updateState("activeDate", day.getAttribute("data-date"))
     updateDaySummary();
 }
 

@@ -21,7 +21,7 @@ export const DOMelements = {
     // home
     homeChooseDayField: document.querySelector("#choose-day"),
     homeDailySummaryContainer: document.querySelector("#summary-container"),
-    homeSingleDaysArray: document.querySelectorAll(".radio-container span"),
+    homeSingleDaysArray: document.querySelectorAll(".date-container span"),
     homeProgressBarValue: document.querySelector("#bar-progress"),
     homeProgressCrossedLimit: document.querySelector("#bar-progress-crossed-limit"),
     homeRemainKcal: document.querySelector("#daily-summary div #remain-kcal"),

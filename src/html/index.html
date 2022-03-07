@@ -11,7 +11,7 @@
 </head>
 <body>
     <nav class="nav-desktop">
-        <h1 tabindex="0" id="fit-you-logo" class="fs-800 ff-headers text-left text-contrast" style="padding: 0">FitYou</h1>
+        <h1 id="fit-you-logo" class="fs-800 ff-headers text-left text-contrast" style="padding: 0">FitYou</h1>
         <ul role="list">
             <li tabindex="0" id="nav-home">Home</li>
             <li tabindex="0" id="nav-food">Food</li>
@@ -33,36 +33,29 @@
             </div>
         </div>
 
-        <fieldset id="choose-day">
-            <label class="radio-container">
-                <input type="radio" name="day">
-                <span tabindex="0" class="choosed">-----</span>
-            </label>
-            <label class="radio-container">
-                <input type="radio" name="day">
-                <span tabindex="0" class="choosed">-----</span>
-            </label>
-            <label class="radio-container">
-                <input type="radio" name="day">
-                <span tabindex="0" class="choosed">-----</span>
-            </label>
-            <label class="radio-container">
-                <input type="radio" name="day">
-                <span tabindex="0" class="choosed">-----</span>
-            </label>
-            <label class="radio-container">
-                <input type="radio" name="day">
-                <span tabindex="0" class="choosed">-----</span>
-            </label>
-            <label class="radio-container">
-                <input type="radio" name="day">
-                <span tabindex="0" class="choosed">-----</span>
-            </label>
-            <label class="radio-container">
-                <input type="radio" name="day">
-                <span tabindex="0" class="choosed">Today</span>
-            </label>
-        </fieldset>
+        <div role="group" id="choose-day">
+            <div aria-pressed="false" tabindex="0" class="date-container">
+                <span date-date="">-----</span>
+            </div>
+            <div aria-pressed="false" tabindex="0" class="date-container">
+                <span date-date="" class="choosed">-----</span>
+            </div>
+            <div aria-pressed="false" tabindex="0" class="date-container">
+                <span date-date="" class="choosed">-----</span>
+            </div>
+            <div aria-pressed="false" tabindex="0" class="date-container">
+                <span date-date="" class="choosed">-----</span>
+            </div>
+            <div aria-pressed="false" tabindex="0" class="date-container">
+                <span date-date="" class="choosed">-----</span>
+            </div>
+            <div aria-pressed="false" tabindex="0" class="date-container">
+                <span date-date="" class="choosed">-----</span>
+            </div>
+            <div aria-pressed="false" tabindex="0" class="date-container">
+                <span date-date="" class="choosed">Today</span>
+            </div>
+        </div>
 
         <div id="summary-container">
             <section id="daily-summary">

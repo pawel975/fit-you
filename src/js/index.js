@@ -169,13 +169,17 @@ goToMeasures.forEach(button => button.addEventListener("keydown", (e) => {
     })
 )
 
-homeSingleDaysArray.forEach(day => {
-    day.addEventListener("keydown", (e) => {
-        console.log(e.target)
-        if (e.code === "Enter") {
-            renderDayData(e)
-            // day.parentNode.childNodes[1].setAttribute("checked", true);
-        }
-    })
-})
+// FIX THAT
+
+// homeSingleDaysArray.forEach(day => {
+//     day.parentNode.addEventListener("keydown", (e) => {
+//         // console.log(e.target.parentNode.childNodes)
+//         if (e.code === "Enter") {
+//             e.target.parentNode.childNodes.forEach(node => console.log(node))
+//             renderDayData(day)
+//             day.parentNode.setAttribute("aria-pressed", true);
+//             // day.parentNode.childNodes[1].setAttribute("checked", true);
+//         }
+//     })
+// })
 
