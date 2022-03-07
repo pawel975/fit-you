@@ -88,7 +88,6 @@ export const renderDayData = (e) => {
     updateDaySummary();
 }
 
-
 window.addEventListener("DOMContentLoaded", () => {
 
     // Creates state object if it doesn't exist 

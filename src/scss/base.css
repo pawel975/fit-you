@@ -208,9 +208,6 @@ select {
   display: flex;
   border: none;
 }
-#main-home #choose-day span:focus {
-  outline: 3px solid orange;
-}
 #main-home #summary-container {
   margin-top: 6rem;
   display: flex;
@@ -418,11 +415,8 @@ select {
   color: #41a046;
 }
 
-/* ---------- */
-/* Navigation */
-/* ---------- */
 *:focus {
-  outline: 3px solid orange;
+  outline: 4px double #41a046;
 }
 
 body {
@@ -436,6 +430,9 @@ body {
   color: #29285f;
 }
 
+/* ---------- */
+/* Navigation */
+/* ---------- */
 .nav-desktop {
   width: clamp(15rem, 80%, 80rem);
   display: flex;

@@ -169,13 +169,13 @@ goToMeasures.forEach(button => button.addEventListener("keydown", (e) => {
     })
 )
 
-
-
 homeSingleDaysArray.forEach(day => {
     day.addEventListener("keydown", (e) => {
+        console.log(e.target)
         if (e.code === "Enter") {
-            renderDayData(e);
-            day.parentNode.childNodes[1].setAttribute("checked", true);
+            renderDayData(e)
+            // day.parentNode.childNodes[1].setAttribute("checked", true);
         }
     })
 })
+
