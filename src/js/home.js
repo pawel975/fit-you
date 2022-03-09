@@ -4,7 +4,7 @@ import { getLastWeek, getCurrentDate} from "./date";
 import { renderHistoryChart} from "./historyChart";
 import { getState, updateState, initState } from "./state";
 
-const {homeSingleDaysArray, homeProgressCrossedLimit, homeRemainKcal, homeGoalKcal, homeFat, homeProteins, homeCarbo, homeProgressBarValue} = DOMelements;
+const {homeChooseDayField, homeSingleDaysArray, homeProgressCrossedLimit, homeRemainKcal, homeGoalKcal, homeFat, homeProteins, homeCarbo, homeProgressBarValue} = DOMelements;
 
 // Get single date records  
 export const getDayData = (date) => {
@@ -31,12 +31,27 @@ export const updateHomePage = () => {
         
         // Set choosed day button to pressed
         if (activeDate === date) {
-            day.parentNode.setAttribute("aria-pressed", true);
+            day.setAttribute("aria-pressed", true);
         } else {
-            day.parentNode.setAttribute("aria-pressed", false);
+            day.setAttribute("aria-pressed", false);
         }
         
-        day.addEventListener("click", renderDayData);
+        // events of chooseing date from field of days
+        day.addEventListener("click", (e) => {
+            renderDayData(e.target);
+            day.setAttribute("aria-pressed", true);
+        })
+        day.addEventListener("keydown", (e) => {
+            if (e.code === "Enter") {
+                renderDayData(e.target)
+                day.setAttribute("aria-pressed", true);
+            } else if (e.code === "ArrowLeft" || e.code === "ArrowDown") {
+                console.log("left");
+            } else if (e.code === "ArrowRight" || e.code === "ArrowUp") {
+                console.log("right");
+            }
+        })
+        
     })
 
     // Filter user history to only last 7 days
@@ -50,6 +65,7 @@ export const updateHomePage = () => {
 
 // Create date in user diary
 const createDayData = (date) => {
+
     let userDiary = getState("userHistory");
     userDiary.push({
         date: date,
@@ -61,7 +77,9 @@ const createDayData = (date) => {
             fat: 0,
         }
     });
+
     updateState("userHistory", userDiary);
+    
 }
 
 const updateDaySummary = () => {
@@ -85,9 +103,13 @@ const updateDaySummary = () => {
     }
 }
 
+// render data of day choosed in days field
 export const renderDayData = (day) => {
+
+    homeSingleDaysArray.forEach(day => day.setAttribute("aria-pressed", false));
     updateState("activeDate", day.getAttribute("data-date"))
     updateDaySummary();
+
 }
 
 window.addEventListener("DOMContentLoaded", () => {

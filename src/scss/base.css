@@ -160,7 +160,7 @@ select {
   justify-content: center;
   gap: 1rem;
 }
-#choose-day .date-container {
+#choose-day .single-day-date {
   height: 100%;
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -172,8 +172,9 @@ select {
   border: 2px solid #29285f;
   border-radius: 5rem;
 }
-#choose-day .date-container[aria-pressed=true] {
-  background-color: red;
+#choose-day .single-day-date[aria-pressed=true] {
+  background-color: #29285f;
+  color: #f8f7f7;
 }
 
 #main-home {
@@ -325,7 +326,7 @@ select {
 #main-food #diary-table {
   margin: 2rem;
   width: 60%;
-  background-color: white;
+  background-color: #f1faf1;
   border: 1px solid #c8c8c8;
   text-align: center;
 }
@@ -341,7 +342,7 @@ select {
 }
 #main-food #diary-table table thead {
   background-color: #29285f;
-  color: white;
+  color: #f1faf1;
   font-weight: 900;
 }
 #main-food #diary-table table tbody tr:last-child {
@@ -350,7 +351,7 @@ select {
 }
 #main-food #diary-table table tbody tr:last-child td:first-child {
   background-color: #29285f;
-  color: white;
+  color: #f1faf1;
 }
 
 #main-motivation {
@@ -478,7 +479,7 @@ input, .dropdown {
   border: 3px solid #29285f;
   text-align: right;
   padding-right: 1rem;
-  background-color: white;
+  background-color: #f1faf1;
 }
 
 input[type=submit], button {
@@ -518,7 +519,7 @@ input[type=submit], button {
   left: 50%;
   top: 50%;
   border-radius: 1rem;
-  background-color: white;
+  background-color: #f1faf1;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -564,7 +565,7 @@ input[type=submit], button {
 }
 .modal-wrapper .modal-section #matched-food #food-options p[aria-pressed=true] {
   background-color: #29285f;
-  color: white;
+  color: #f1faf1;
   padding-left: 0.5rem;
 }
 .modal-wrapper .modal-section #food-details {
@@ -685,4 +686,7 @@ input[type=submit], button {
   100% {
     transform: rotate(360deg);
   }
+}
+.dark-theme {
+  filter: invert(0.95) hue-rotate(180deg);
 }/*# sourceMappingURL=base.css.map */

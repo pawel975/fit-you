@@ -8,7 +8,7 @@
     justify-content: center;
     gap: 1rem;
 
-    .date-container {
+    .single-day-date {
         height: 100%;
         width: fit-content;
         cursor: pointer;
@@ -19,8 +19,11 @@
         border-radius: 5rem;
 
         &[aria-pressed=true] {
-            background-color: red;
+            background-color: variables.$clr-darkest;
+            color: variables.$clr-light;
         }
+
+
     }
 
 

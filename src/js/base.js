@@ -6,6 +6,7 @@ export const DOMelements = {
     loader: document.querySelector(".loader"),
     emptyUserParamsInfo: document.querySelectorAll(".empty-user-params-info"),
     goToMeasures: document.querySelectorAll(".go-to-measures"),
+    toggleThemeBtn: document.querySelector('#toggle-theme-btn'),
 
     // index
     navLogo: document.querySelector("#fit-you-logo"),
@@ -21,7 +22,7 @@ export const DOMelements = {
     // home
     homeChooseDayField: document.querySelector("#choose-day"),
     homeDailySummaryContainer: document.querySelector("#summary-container"),
-    homeSingleDaysArray: document.querySelectorAll(".date-container span"),
+    homeSingleDaysArray: document.querySelectorAll(".single-day-date"),
     homeProgressBarValue: document.querySelector("#bar-progress"),
     homeProgressCrossedLimit: document.querySelector("#bar-progress-crossed-limit"),
     homeRemainKcal: document.querySelector("#daily-summary div #remain-kcal"),

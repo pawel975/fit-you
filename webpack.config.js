@@ -40,6 +40,7 @@ module.exports = {
     './src/js/date.js',
     './src/js/home.js',
     './src/js/motivation.js',
+    './src/js/toggleTheme.js',
   ],
   output: {
     filename: '[name].[contenthash].js',

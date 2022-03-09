@@ -1,8 +1,8 @@
 import { DOMelements } from "./base";
 import "../scss/base.scss"
 import { updateFoodPage } from "./food";
-import { renderDayData, updateHomePage } from "./home";
 import { updateMeasuresPage } from "./measures";
+import { updateHomePage } from "./home";
 import { getState, initState } from "./state";
 
 
@@ -169,17 +169,5 @@ goToMeasures.forEach(button => button.addEventListener("keydown", (e) => {
     })
 )
 
-// FIX THAT
 
-// homeSingleDaysArray.forEach(day => {
-//     day.parentNode.addEventListener("keydown", (e) => {
-//         // console.log(e.target.parentNode.childNodes)
-//         if (e.code === "Enter") {
-//             e.target.parentNode.childNodes.forEach(node => console.log(node))
-//             renderDayData(day)
-//             day.parentNode.setAttribute("aria-pressed", true);
-//             // day.parentNode.childNodes[1].setAttribute("checked", true);
-//         }
-//     })
-// })
 
