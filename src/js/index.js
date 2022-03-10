@@ -74,7 +74,7 @@ window.addEventListener("DOMContentLoaded", ()=> {
     }
 
     // Init default view
-    displayHomePage();
+    displayFoodPage();
     
     // Render all pages scripts
     updateAllPages();

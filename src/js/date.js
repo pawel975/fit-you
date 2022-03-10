@@ -5,7 +5,7 @@ export const getCurrentDate = () => {
     const month = `${dateObj.getMonth() + 1}`;
     const year = `${dateObj.getFullYear()}`;
 
-    const date = `${day > 10 ? day : "0" + day}.${month > 10 ? month : "0" + month}.${year}`;
+    const date = `${day > 9 ? day : "0" + day}.${month > 9 ? month : "0" + month}.${year}`;
 
     return date;
 }
@@ -25,7 +25,7 @@ export const getLastWeek = () => {
         const month = `${previousDate.getMonth() + 1}`;
         const year = `${previousDate.getFullYear()}`;
     
-        const date = `${day > 10 ? day : "0" + day}.${month > 10 ? month : "0" + month}.${year}`;
+        const date = `${day > 9 ? day : "0" + day}.${month > 9 ? month : "0" + month}.${year}`;
         days.push(date);
 
     }

@@ -47,6 +47,7 @@ export const createDiaryTable = (foodRecords) => {
         const td = document.createElement("td");
         bodyRow.appendChild(td);
         td.textContent = record.name;
+
     
         for (let i = 0; i < Object.keys(categories).length; i++) {
             let td = document.createElement("td");
@@ -56,8 +57,28 @@ export const createDiaryTable = (foodRecords) => {
             bodyRow.appendChild(td);
         }
 
+        // Add delete icon to the end of each row
+        const deleteTd = document.createElement("td");
+        deleteTd.setAttribute("class", "delete-row-cross");
+
+        const deleteIcon = document.createElement("i");
+        deleteIcon.setAttribute("class", "fas fa-times-circle");
+        deleteIcon.style.pointerEvents = "none";
+
+        deleteTd.appendChild(deleteIcon)
+        bodyRow.appendChild(deleteTd)
         tbody.appendChild(bodyRow);
+
+        // When delete button is clicked, delete row
+        deleteTd.addEventListener("click", (e) => {
+            // console.log(e.target.parentNode.parentNode)
+            let body = e.target.parentNode.parentNode
+            let row = e.target.parentNode
+            body.removeChild(row)
+        })
+
     })
+
 
     // Create table summary
     const bodyRow = document.createElement("tr");
@@ -74,10 +95,14 @@ export const createDiaryTable = (foodRecords) => {
         fat: "fat-total",
     };
 
-    for (let i = 0; i < Object.keys(summaryIds).length; i++) {
+    for (let i = 0; i < Object.keys(summaryIds).length + 1; i++) {
         const td = document.createElement("td");
-        td.setAttribute("id", summaryIds[Object.keys(summaryNutritions)[i]]);
-        td.textContent = `${summaryNutritions[Object.keys(summaryNutritions)[i]].toFixed() + sufix(Object.keys(summaryNutritions)[i])}`
+
+        if (summaryIds[Object.keys(summaryNutritions)[i]]){
+            td.setAttribute("id", summaryIds[Object.keys(summaryNutritions)[i]]);
+            td.textContent = `${summaryNutritions[Object.keys(summaryNutritions)[i]].toFixed() + sufix(Object.keys(summaryNutritions)[i])}`
+        }
+
         bodyRow.appendChild(td);
     }
 
@@ -95,7 +120,7 @@ const sufix = (nutritionType) => {
     let sufix;
     switch(nutritionType){
         case "calories":
-            sufix = "kcal";
+            sufix = " kcal";
             break
         case "portions":
             sufix = "";
@@ -104,7 +129,7 @@ const sufix = (nutritionType) => {
             sufix = "";
             break
         default:
-            sufix = "g";
+            sufix = " g";
     }
 
     return sufix;

@@ -20,45 +20,5 @@
             padding-inline: 2rem;
         }
     }
-
-    #diary-table {
-        margin: 2rem;
-        width: 60%;
-        background-color: variables.$clr-very-light;
-        border: 1px solid variables.$clr-less-dark;
-        text-align: center;
-        
-        table {
-            width: 100%;
-            
-            td {
-                min-width: 5rem;
-                flex: 1;
-            }
-                
-            td {
-                border-bottom: 1px solid variables.$clr-less-dark;
-            }
-            
-            thead {
-                background-color: variables.$clr-darkest;
-                color: variables.$clr-very-light;
-                font-weight: 900;   
-            }
-
-            tbody{
-
-                tr:last-child {
-                    border: none;
-                    font-weight: bold;
-                    td:first-child{
-                        background-color: variables.$clr-darkest;
-                        color: variables.$clr-very-light;
-                    }
-                }
-            }
-
-        }
-    }
 }
 

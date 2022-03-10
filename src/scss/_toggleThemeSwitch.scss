@@ -1,0 +1,48 @@
+@use 'variables';
+
+#toggle-theme-switch {
+    
+    width: auto;
+    height: auto;
+    position: relative;
+
+    input[type=checkbox] {
+        display: none;
+    }
+
+    .checked {
+        position: relative;
+        display: block;
+        width: 4rem;
+        height: 2rem;
+        border-radius: 5rem;
+        background-color: variables.$clr-darkest;
+        border: 1px solid variables.$clr-darkest;
+    }
+
+    input[type=checkbox]:checked ~ .checked {
+        background-color: variables.$clr-darkest;
+        transition: 0.2s;
+    }
+
+    .checked::before {
+        content: url('../img/sun-solid.svg');
+        position: absolute;
+        height: 100%;
+        padding: 0.3rem;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background-color: variables.$clr-very-light;
+        transform: translate(0,-50%);
+        left: 0%;
+        top: 50%;
+        transition: 0.2s;
+    }
+
+    input[type=checkbox]:checked ~ .checked::before {
+        content: url("../img/moon-solid.svg");
+        transform: translate(-100%,-50%);
+        background-color: variables.$clr-very-light;
+        left: 100%;
+    }
+}

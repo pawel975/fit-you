@@ -1,0 +1,53 @@
+@use 'variables';
+
+#diary-table {
+    margin: 2rem;
+    text-align: center;
+    width: 100%;
+    
+    table {
+        margin: auto;
+        width: clamp(15rem, 95%, 55rem);
+        border-collapse: collapse;
+        
+        thead {
+            background-color: variables.$clr-darkest;
+            color: variables.$clr-very-light;
+            font-weight: 900;
+
+            tr {
+                td:first-child {
+                    width: 15rem
+                }
+            }
+            
+        }
+
+        tbody{
+
+            tr { 
+                
+                td {
+                    border-bottom: 1px solid variables.$clr-less-dark;
+                    min-width: 5rem;
+                    flex: 1;
+                }
+        
+                td:nth-child(7) {
+                    min-width: 3rem;
+                    border: none;
+                }
+            }
+
+            tr:last-child {
+                border: none;
+                font-weight: bold;
+                td:first-child{
+                    background-color: variables.$clr-darkest;
+                    color: variables.$clr-very-light;
+                }
+            }
+        }
+
+    }
+}
