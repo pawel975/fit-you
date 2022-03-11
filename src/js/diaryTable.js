@@ -1,3 +1,4 @@
+import { DOMelements } from "./base";
 import { getDayData } from "./home";
 import { getState, updateState } from "./state";
 
@@ -28,7 +29,7 @@ export const createDiaryTable = (foodRecords) => {
     thead.appendChild(headRow);
     
     // Populate table body with records
-    foodRecords.forEach(record => {
+    foodRecords.forEach((record, index) => {
         const categories = {
             weight: record.serving * record.servingCount,
             calories: record.calories * (record.serving/100) * record.servingCount, 
@@ -44,6 +45,7 @@ export const createDiaryTable = (foodRecords) => {
         summaryNutritions.fat += Number(categories.fat);
     
         const bodyRow = document.createElement("tr");
+        bodyRow.setAttribute("rowId", index)
         const td = document.createElement("td");
         bodyRow.appendChild(td);
         td.textContent = record.name;
@@ -71,14 +73,26 @@ export const createDiaryTable = (foodRecords) => {
 
         // When delete button is clicked, delete row
         deleteTd.addEventListener("click", (e) => {
-            // console.log(e.target.parentNode.parentNode)
+            // foodRecords.pop();
+            const spliceIndex = e.target.parentNode
+            console.log(e.target.parentNode)
+            foodRecords.splice(spliceIndex, 1)
+            console.log(foodRecords)
+            const { addFoodDiaryTableContainer} = DOMelements
+            addFoodDiaryTableContainer.textContent = ""; 
+            addFoodDiaryTableContainer.appendChild(createDiaryTable(foodRecords))
+
+            // console.log(e.target.parentNode.parentNode.childNodes.forEach(child => console.log(child.getAttribute("rowId"))))
+            // console.log(e.target.parentNode.parentNode.childNodes)
+            // for (const record in foodRecords) {
+            // }
+            // createDiaryTable(foodRecords)
             let body = e.target.parentNode.parentNode
             let row = e.target.parentNode
-            body.removeChild(row)
+            // body.removeChild(row)
         })
 
     })
-
 
     // Create table summary
     const bodyRow = document.createElement("tr");

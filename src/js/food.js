@@ -194,6 +194,8 @@ window.addEventListener("DOMContentLoaded", ()=> {
         addFoodModal.style.display = "none";
         clearAddFoodModal();
     })
+
+    
     
 })
 
