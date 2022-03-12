@@ -13,10 +13,11 @@ export default class FoodOption {
     }
 
     createMatch(){        
-        const singleOption = document.createElement("p");
+        const singleOption = document.createElement("button");
         singleOption.setAttribute("id", `${this.id}`);
-        singleOption.setAttribute("role", "button");
+        // singleOption.setAttribute("role", "button");
         singleOption.setAttribute("aria-pressed", "false");
+        singleOption.setAttribute("tabindex", "0")
 
         const foodName = document.createElement("span");
         foodName.setAttribute("id", "name");

@@ -1,12 +1,26 @@
 import { DOMelements } from "./base";
+import { getState, updateState } from "./state";
 
 const { toggleThemeSwitch } = DOMelements;
 
 window.addEventListener("load", () => {
 
-    // Add dark theme class to the html tag
-    toggleThemeSwitch.addEventListener("change", () => {
-        document.childNodes[1].classList.toggle("dark-theme");
+    const htmlTag = document.childNodes[1]
+    let darkModeOn = getState("darkModeOn")
+    
+    if (darkModeOn) {
+        htmlTag.classList.add("dark-theme");
+        toggleThemeSwitch.setAttribute("aria-checked", darkModeOn)
+    }
+    
+    // Add dark theme class to the html tag and update state
+    toggleThemeSwitch.addEventListener("click", () => {
+        
+        darkModeOn = !darkModeOn
+        updateState("darkModeOn", darkModeOn);
+
+        toggleThemeSwitch.setAttribute("aria-checked", darkModeOn)
+        htmlTag.classList.toggle("dark-theme");
     })
 
 })

@@ -98,7 +98,7 @@ input, .dropdown{
   background-color: variables.$clr-very-light;
 }
 
-input[type=submit], button {
+input[type=submit] {
   margin-top: 1rem;
   text-align: center;
   background-color: variables.$clr-darkest;
@@ -144,17 +144,28 @@ input[type=submit], button {
     align-items: center;
     padding-inline: 2rem;
     padding-bottom: 2rem;
-    gap: 1.5rem;
 
     #modal-close-container {
+      width: 100%;
+      margin: 0;
+      margin-top: 1rem;
+      // height: fit-content;
+      position: relative;
+      display: block;
+      text-align: right;
 
-      .svg-inline--fa.fa-w-16 {
-        width: 1.5em;
-        height: fit-content;
-        position: absolute;
-        right: 1rem;
-        top: 1rem;
+      button {
+
+        background: transparent;
+        border: none;
+
+        .svg-inline--fa.fa-w-16 {
+          width: 2rem;
+          color: variables.$clr-darkest;
+          height: 100%;
+        }
       }
+
     }
     
     form {
@@ -165,6 +176,7 @@ input[type=submit], button {
     }
 
     #matched-food {
+      margin-block: 1rem;
       width: 100%;
       flex-grow: 1;
       overflow-y: scroll;
@@ -173,16 +185,18 @@ input[type=submit], button {
         width: 100%;
         max-height: 100;
 
-        p {
-          padding-block: 0.25rem;
+        button {
+          text-align: left;
+          background-color: transparent;
           color: variables.$clr-darkest;
+          border: none;
           border-bottom: 1px solid variables.$clr-less-dark;
           cursor: pointer;
 
-          &:hover {
+          &:hover, &:focus{
             background-color: variables.$clr-less-dark;
             color:variables.$clr-darkest;
-            padding-left: 0.5rem;
+            padding-left: 1rem;
           }
 
           &[aria-pressed=true] {

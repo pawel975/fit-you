@@ -46,7 +46,8 @@ export const updateHomePage = () => {
                 renderDayData(e.target)
                 day.setAttribute("aria-pressed", true);
             } else if (e.code === "ArrowLeft" || e.code === "ArrowDown") {
-                console.log("left");
+                console.log(e.target);
+                console.log(homeChooseDayField.children)
             } else if (e.code === "ArrowRight" || e.code === "ArrowUp") {
                 console.log("right");
             }

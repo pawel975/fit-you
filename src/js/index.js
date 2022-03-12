@@ -6,7 +6,7 @@ import { updateHomePage } from "./home";
 import { getState, initState } from "./state";
 
 
-const {navLogo, navHome, navFood, navMotivation, navMeasures, mainHome, mainFood, mainMotivation, mainMeasures, addFoodDiaryTableContainer, emptyUserParamsInfo, homeChooseDayField, homeDailySummaryContainer, addFoodBtn, goToMeasures, homeSingleDaysArray} = DOMelements 
+const {navLogo, navHome, navFood, navMotivation, navMeasures, mainHome, mainFood, mainMotivation, mainMeasures, addFoodDiaryTableContainer, emptyUserParamsInfo, homeChooseDayField, homeDailySummaryContainer, addFoodBtn, goToMeasures} = DOMelements 
 
 const updateAllPages = () => {
 
@@ -74,7 +74,7 @@ window.addEventListener("DOMContentLoaded", ()=> {
     }
 
     // Init default view
-    displayFoodPage();
+    displayHomePage();
     
     // Render all pages scripts
     updateAllPages();
@@ -157,15 +157,6 @@ goToMeasures.forEach(button => button.addEventListener("click", () => {
     updateView();
     updateAllPages();
     displayMeasuresPage();
-    })
-)
-
-goToMeasures.forEach(button => button.addEventListener("keydown", (e) => {
-        if (e.code === "Enter") {
-            updateView();
-            updateAllPages();
-            displayMeasuresPage();
-        }
     })
 )
 

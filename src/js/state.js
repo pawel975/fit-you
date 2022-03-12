@@ -6,6 +6,7 @@ export const initState = () => {
         userParams: {},
         activeDate: "",
         areUserParamsReady: false,
+        darkModeOn: false,
     }
 
     window.localStorage.setItem("state", JSON.stringify(initState));

@@ -18,16 +18,15 @@
             <li tabindex="0" id="nav-motivation">Motivation</li>
             <li tabindex="0" id="nav-measures">Measures <i class="fas fa-weight"></i></li>
         </ul>
-        <label id="toggle-theme-switch">
-            <input type="checkbox">
-            <span tabindex="0" class="checked"></span>
-        </label>
-
+        <button id="toggle-theme-switch" role="switch" aria-checked="false" aria-colcount="0" id="toggle-theme-switch">
+            <span class="check"></span>
+        </button>
     </nav>
 
     <!-- Main home -->
 
     <main id="main-home">
+
         <h2 class="fs-700 ff-headers text-contrast text-center">Your daily statistics</h2>
 
         <div class="empty-user-params-info">
@@ -39,6 +38,7 @@
         </div>
 
         <div role="select" id="choose-day">
+
             <span role="button" data-date="" aria-pressed="false" tabindex="0" class="single-day-date">
                 -----
             </span>
@@ -58,11 +58,13 @@
                 -----
             </span>
             <span role="button" data-date="" aria-pressed="false" tabindex="0" class="single-day-date">
-                Today
+                -----
             </span>
+
         </div>
 
         <div id="summary-container">
+
             <section id="daily-summary">
                 <div>
                     <span id="remain-kcal">1983</span>
@@ -77,10 +79,13 @@
                 <div id="proteins" class="text-center" ><span>20</span>PROTEINS</div>
                 <div id="fat" class="text-center"><span>12</span>FAT</div>
             </section>
+
             <section id="history-chart">
                 <canvas id="#summary-chart" aria-label="history-diary-label" role="img"></canvas>
             </section>
+
         </div>
+
     </main>
 
     <!-- Main food -->
@@ -106,7 +111,9 @@
         <div class="modal-background"></div>
         <aside class="modal-section">
             <div id="modal-close-container">
-                <i class="fas fa-window-close"></i>
+                <button>
+                    <i class="fas fa-window-close"></i>
+                </button>
             </div>
             <form>
                 <input autocomplete="off" id="search-food" required type="text" placeholder="Search food">

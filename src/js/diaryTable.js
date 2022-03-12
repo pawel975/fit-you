@@ -65,11 +65,15 @@ export const createDiaryTable = (foodRecords) => {
         const deleteTd = document.createElement("td");
         deleteTd.setAttribute("class", "delete-row-cross");
 
+        const deleteIconContainer = document.createElement("button");
+        deleteIconContainer.setAttribute("class", "")
+
         const deleteIcon = document.createElement("i");
         deleteIcon.setAttribute("class", "fas fa-times-circle");
         deleteIcon.style.pointerEvents = "none";
 
-        deleteTd.appendChild(deleteIcon)
+        deleteTd.appendChild(deleteIconContainer)
+        deleteIconContainer.appendChild(deleteIcon)
         bodyRow.appendChild(deleteTd)
         tbody.appendChild(bodyRow);
 
@@ -156,10 +160,10 @@ const saveSummaryToState = (nutritionSummaryObject) => {
 
 const updateTable = (deleteTd, foodRecords) => {
 
-    deleteTd.addEventListener("click", (e) => {
+    deleteTd.children[0].addEventListener("click", (e) => {
 
         // Delete row from passed food records
-        const spliceIndex = [...e.target.parentNode.parentNode.childNodes].indexOf(e.target.parentNode)
+        const spliceIndex = [...e.target.parentNode.parentNode.parentNode.children].indexOf(e.target.parentNode.parentNode)
         foodRecords.splice(spliceIndex, 1)
     
         // Update food records in state

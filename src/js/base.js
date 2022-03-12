@@ -49,7 +49,7 @@ export const DOMelements = {
     addFoodEmptySearchStateInfo: document.querySelector(".empty-search-food-state-info"),
     addFoodServingCount: document.querySelector("#serving-count"),
     addFoodFinish: document.querySelector("#finish-adding"),
-    addFoodModalClose: document.querySelector("#modal-close-container"),
+    addFoodModalClose: document.querySelector("#modal-close-container button"),
     addFoodModalBackground: document.querySelector(".modal-background"),
 
     // motivation
