@@ -2,6 +2,8 @@ import { DOMelements } from "./base";
 import { getDayData } from "./home";
 import { getState, updateState } from "./state";
 
+const { addFoodDiaryTableContainer} = DOMelements
+
 export const createDiaryTable = (foodRecords) => {
 
     const summaryNutritions = {
@@ -71,26 +73,8 @@ export const createDiaryTable = (foodRecords) => {
         bodyRow.appendChild(deleteTd)
         tbody.appendChild(bodyRow);
 
-        // When delete button is clicked, delete row
-        deleteTd.addEventListener("click", (e) => {
-            // foodRecords.pop();
-            const spliceIndex = e.target.parentNode
-            console.log(e.target.parentNode)
-            foodRecords.splice(spliceIndex, 1)
-            console.log(foodRecords)
-            const { addFoodDiaryTableContainer} = DOMelements
-            addFoodDiaryTableContainer.textContent = ""; 
-            addFoodDiaryTableContainer.appendChild(createDiaryTable(foodRecords))
-
-            // console.log(e.target.parentNode.parentNode.childNodes.forEach(child => console.log(child.getAttribute("rowId"))))
-            // console.log(e.target.parentNode.parentNode.childNodes)
-            // for (const record in foodRecords) {
-            // }
-            // createDiaryTable(foodRecords)
-            let body = e.target.parentNode.parentNode
-            let row = e.target.parentNode
-            // body.removeChild(row)
-        })
+        // Updates table and state after removing row
+        updateTable(deleteTd, foodRecords)
 
     })
 
@@ -168,4 +152,29 @@ const saveSummaryToState = (nutritionSummaryObject) => {
     })
     
     updateState("userHistory", diary);
+}
+
+const updateTable = (deleteTd, foodRecords) => {
+
+    deleteTd.addEventListener("click", (e) => {
+
+        // Delete row from passed food records
+        const spliceIndex = [...e.target.parentNode.parentNode.childNodes].indexOf(e.target.parentNode)
+        foodRecords.splice(spliceIndex, 1)
+    
+        // Update food records in state
+        let activeDate = getState("activeDate");
+        let userDiary = getState("userHistory");
+        let tmpData = getDayData(activeDate);
+    
+        tmpData.eatenFood = foodRecords;
+        userDiary.forEach(day => {
+            if (day.date === activeDate) day.eatenFood = tmpData.eatenFood;
+        })
+        updateState("userHistory", userDiary);
+    
+        // Render updated table
+        addFoodDiaryTableContainer.textContent = ""; 
+        addFoodDiaryTableContainer.appendChild(createDiaryTable(getDayData(activeDate).eatenFood))
+    })
 }

@@ -8,9 +8,12 @@
 
     input[type=checkbox] {
         display: none;
+        visibility: hidden;
+        position: absolute;
     }
 
     .checked {
+        cursor: pointer;
         position: relative;
         display: block;
         width: 4rem;
@@ -46,3 +49,14 @@
         left: 100%;
     }
 }
+
+@media (prefers-reduced-motion: reduce) {
+
+    input[type=checkbox]:checked ~ .checked {
+        transition-duration: 0ms;
+    }
+    .checked::before {
+        transition-duration: 0ms;
+    }
+
+  }
