@@ -4,6 +4,7 @@ import { createDiaryTable} from "./diaryTable";
 import FoodOption from "./foodOption";
 import {getState, updateState} from "./state";
 import "regenerator-runtime/runtime.js";
+import { makeAreaTabable } from "./tabing";
 
 const {addFoodBtn, addFoodDiaryTableContainer, addFoodServingCount, addFoodMatchesArea, addFoodMatchedFood, addFoodEmptySearchStateInfo, addFoodModal, addFoodSearch, addFoodFinish, addFoodModalClose, addFoodModalBackground, addFoodMatchTable, loader} = DOMelements;
 
@@ -87,6 +88,7 @@ const renderMatches = async () => {
     // Clear matches food area 
     addFoodMatchesArea.textContent = "";
     matchedFood = [];
+    choosedFood = undefined;
 
     await fetchFoodData();
 
@@ -96,18 +98,33 @@ const renderMatches = async () => {
     createFoodOption(fetchedMatches, matchedFood);
     matchedFood.forEach(food => addFoodMatchesArea.appendChild(food.createMatch()))
 
-    // Set food meant to be saved to diary (state)
-    addFoodMatchesArea.childNodes.forEach(option => {
-        option.setAttribute("aria-pressed", "false");
-        option.addEventListener("click", () => {
-            choosedFood = matchedFood.filter(match => match.id === Number(option.id))[0];
-            addFoodMatchesArea.childNodes.forEach(option => {
-                option.setAttribute("aria-pressed", "false");
-            });
-            option.setAttribute("aria-pressed", "true");
-            renderMatchDetailsTable(choosedFood);
+    // Check if there are any matched food
+    if (addFoodMatchesArea.childNodes.length){
+
+        // Make first matched food from matches area tabable
+        makeAreaTabable(addFoodMatchesArea);
+        addFoodMatchesArea.children[0].setAttribute("tabindex", "0");
+    
+        // Set food meant to be saved to diary (state)
+        addFoodMatchesArea.childNodes.forEach(option => {
+            option.setAttribute("aria-selected", false);
+            option.addEventListener("click", () => {
+                choosedFood = matchedFood.filter(match => match.id === Number(option.id))[0];
+
+                if (choosedFood) {
+                    addFoodFinish.disabled = false;
+                } else {
+                    addFoodFinish.disabled = true;
+                }
+
+                addFoodMatchesArea.childNodes.forEach(option => {
+                    option.setAttribute("aria-selected", false);
+                });
+                option.setAttribute("aria-selected", true);
+                renderMatchDetailsTable(choosedFood);
+            })
         })
-    })
+    }
 }
 
 const clearAddFoodModal = () => {
@@ -147,7 +164,7 @@ window.addEventListener("DOMContentLoaded", ()=> {
         e.preventDefault();
         matchedFood = [];
         // If search field is empty, disable finish adding button
-        if ((addFoodSearch.value).length === 0) {
+        if ((addFoodSearch.value).length === 0 || !choosedFood) {
             addFoodFinish.disabled = true;
         } else {
             addFoodFinish.disabled = false;
@@ -195,7 +212,5 @@ window.addEventListener("DOMContentLoaded", ()=> {
         clearAddFoodModal();
     })
 
-    
-    
 })
 

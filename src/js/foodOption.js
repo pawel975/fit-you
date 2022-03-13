@@ -16,8 +16,8 @@ export default class FoodOption {
         const singleOption = document.createElement("button");
         singleOption.setAttribute("id", `${this.id}`);
         // singleOption.setAttribute("role", "button");
-        singleOption.setAttribute("aria-pressed", "false");
-        singleOption.setAttribute("tabindex", "0")
+        singleOption.setAttribute("aria-selected", "false");
+        singleOption.setAttribute("tabindex", "-1")
 
         const foodName = document.createElement("span");
         foodName.setAttribute("id", "name");

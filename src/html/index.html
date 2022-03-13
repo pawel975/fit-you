@@ -12,16 +12,83 @@
 <body>
     <nav class="nav-desktop">
         <h1 tabindex="0" id="fit-you-logo" class="fs-800 ff-headers text-left text-contrast" style="padding: 0">FitYou</h1>
-        <ul role="list">
-            <li tabindex="0" id="nav-home">Home</li>
-            <li tabindex="0" id="nav-food">Food</li>
-            <li tabindex="0" id="nav-motivation">Motivation</li>
-            <li tabindex="0" id="nav-measures">Measures <i class="fas fa-weight"></i></li>
-        </ul>
-        <button id="toggle-theme-switch" role="switch" aria-checked="false" aria-colcount="0" id="toggle-theme-switch">
+        <div id="nav-tab-area" role="tablist">
+            <button tabindex="0" aria-selected="true" role="tab" id="nav-home">Home</button>
+            <button tabindex="-1" aria-selected="false" role="tab"  id="nav-food">Food</button>
+            <button tabindex="-1" aria-selected="false" role="tab"   id="nav-motivation">Motivation</button>
+            <button tabindex="-1" aria-selected="false" role="tab"  id="nav-measures">Measures <i class="fas fa-weight"></i></button>
+        </div>
+        <button id="toggle-theme-switch" role="switch" aria-checked="false" id="toggle-theme-switch">
             <span class="check"></span>
+            <span class="sr-only">Toggle night-mode</span>
         </button>
     </nav>
+
+    <div id="search-food-modal" class="modal-wrapper" style="display: none;">
+        <div class="modal-background"></div>
+        <aside class="modal-section">
+
+            <div id="modal-close-container">
+                <button>
+                    <i class="fas fa-window-close"></i>
+                    <span class="sr-only">Close modal</span>
+                </button>
+            </div>
+
+            <form>
+                <input autocomplete="off" id="search-food" required type="text" placeholder="Search food">
+            </form>
+
+            <div class="loader"></div>
+
+            <div id="matched-food">
+                <div id="food-options">
+                    <!-- Here will be created food matches from search form -->
+                </div>
+            </div>
+
+            <div id="food-details">
+                <table id="food-nutrition">
+                    <tr>
+                        <td>Portions</td>
+                        <td>--</td>
+                    </tr>
+                    <tr>
+                        <td>Serving</td>
+                        <td>--g</td>
+                    </tr>
+                    <tr>
+                        <td>Calories</td>
+                        <td>--kcal</td>
+                    </tr>
+                    <tr>
+                        <td>Carbo</td>
+                        <td>--g</td>
+                    </tr>
+                    <tr>
+                        <td>Proteins</td>
+                        <td>--g</td>
+                    </tr>
+                    <tr>
+                        <td>Fat</td>
+                        <td>--g</td>
+                    </tr>
+                </table>
+
+                <form id="add-food-form">
+                    <input type="number" id="serving-count" min="0,1" autocomplete="off" required placeholder="Serv. count" value="1">
+                    <input disabled id="finish-adding" type="submit" value="Add food">
+                </form>    
+
+            </div>
+
+            <div class="empty-search-food-state-info" style="display: initial;">
+                <i class="fas fa-search"></i>
+                <p class="text-center fs-500">No matches found</p>
+            </div>
+
+        </aside>
+    </div>
 
     <!-- Main home -->
 
@@ -37,29 +104,29 @@
             </div>
         </div>
 
-        <div role="select" id="choose-day">
+        <div role="tablist" id="choose-day">
 
-            <span role="button" data-date="" aria-pressed="false" tabindex="0" class="single-day-date">
+            <button role="tab" data-date="" aria-selected="false" tabindex="0" class="single-day-date">
                 -----
-            </span>
-            <span role="button" data-date="" aria-pressed="false" tabindex="0" class="single-day-date">
+            </button>
+            <button role="tab" data-date="" aria-selected="false" tabindex="-1" class="single-day-date">
                 -----
-            </span>
-            <span role="button" data-date="" aria-pressed="false" tabindex="0" class="single-day-date">
+            </button>
+            <button role="tab" data-date="" aria-selected="false" tabindex="-1" class="single-day-date">
                 -----
-            </span>
-            <span role="button" data-date="" aria-pressed="false" tabindex="0" class="single-day-date">
+            </button>
+            <button role="tab" data-date="" aria-selected="false" tabindex="-1" class="single-day-date">
                 -----
-            </span>
-            <span role="button" data-date="" aria-pressed="false" tabindex="0" class="single-day-date">
+            </button>
+            <button role="tab" data-date="" aria-selected="false" tabindex="-1" class="single-day-date">
                 -----
-            </span>
-            <span role="button" data-date="" aria-pressed="false" tabindex="0" class="single-day-date">
+            </button>
+            <button role="tab" data-date="" aria-selected="false" tabindex="-1" class="single-day-date">
                 -----
-            </span>
-            <span role="button" data-date="" aria-pressed="false" tabindex="0" class="single-day-date">
+            </button>
+            <button role="tab" data-date="" aria-selected="false" tabindex="-1" class="single-day-date">
                 -----
-            </span>
+            </button>
 
         </div>
 
@@ -107,62 +174,7 @@
             <!-- Here will be generated table -->
         </div>
     </main>
-    <div id="search-food-modal" class="modal-wrapper" style="display: none;">
-        <div class="modal-background"></div>
-        <aside class="modal-section">
-            <div id="modal-close-container">
-                <button>
-                    <i class="fas fa-window-close"></i>
-                </button>
-            </div>
-            <form>
-                <input autocomplete="off" id="search-food" required type="text" placeholder="Search food">
-            </form>
-            <div class="loader"></div>
-            <div id="matched-food" style="display: none;">
-                <div id="food-options">
-                    <!-- Here will be created food matches from search form -->
-                </div>
-            </div>
-            <div id="food-details" style="display: none;">
-                <table id="food-nutrition">
-                    <tr>
-                        <td>Portions</td>
-                        <td>--</td>
-                    </tr>
-                    <tr>
-                        <td>Serving</td>
-                        <td>--g</td>
-                    </tr>
-                    <tr>
-                        <td>Calories</td>
-                        <td>--kcal</td>
-                    </tr>
-                    <tr>
-                        <td>Carbo</td>
-                        <td>--g</td>
-                    </tr>
-                    <tr>
-                        <td>Proteins</td>
-                        <td>--g</td>
-                    </tr>
-                    <tr>
-                        <td>Fat</td>
-                        <td>--g</td>
-                    </tr>
-                </table>
-                <form id="add-food-form">
-                    <input type="number" id="serving-count" min="0,1" autocomplete="off" required placeholder="Serv. count" value="1">
-                    <input disabled id="finish-adding" type="submit" value="Add food">
-                </form>    
-            </div>
-            <div class="empty-search-food-state-info" style="display: initial;">
-                <i class="fas fa-search"></i>
-                <p class="text-center fs-500">No matches found</p>
-            </div>
-        </aside>
-    </div>
-
+    
     <!-- Main motivation -->
 
     <main id="main-motivation"> 
@@ -184,9 +196,10 @@
         <section id="motivation-quotes">
             <p id="quote">“Nature has given us all the pieces required to achieve exceptional wellness and health, but has left it to us to put these pieces together.”</p>
             <p id="author">Diane McLaren</p>
-            <div id="refresh">
+            <button id="refresh">
                 <i class="fas fa-redo"></i>
-            </div>
+                <span class="sr-only">Render new quote</span>
+            </button>
         </section>
     </main>
 

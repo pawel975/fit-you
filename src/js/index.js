@@ -4,9 +4,10 @@ import { updateFoodPage } from "./food";
 import { updateMeasuresPage } from "./measures";
 import { updateHomePage } from "./home";
 import { getState, initState } from "./state";
+import { makeAreaTabable } from "./tabing";
 
 
-const {navLogo, navHome, navFood, navMotivation, navMeasures, mainHome, mainFood, mainMotivation, mainMeasures, addFoodDiaryTableContainer, emptyUserParamsInfo, homeChooseDayField, homeDailySummaryContainer, addFoodBtn, goToMeasures} = DOMelements 
+const {navLogo, navHome, navFood, navMotivation, navMeasures, navTabArea, mainHome, mainFood, mainMotivation, mainMeasures, addFoodDiaryTableContainer, emptyUserParamsInfo, homeChooseDayField, homeDailySummaryContainer, addFoodBtn, goToMeasures} = DOMelements 
 
 const updateAllPages = () => {
 
@@ -67,7 +68,14 @@ const displayMeasuresPage = () => {
     mainMeasures.style.display = "initial";
 }
 
-window.addEventListener("DOMContentLoaded", ()=> {
+const changeTabPanelSelection = (choosedTab) => {
+    [...navTabArea.children].forEach(tab => {
+        tab.setAttribute("aria-selected", false);
+    })
+    choosedTab.setAttribute("aria-selected", true);
+}
+
+window.addEventListener("DOMContentLoaded", () => {
 
     if (getState() === null) {
         initState();
@@ -81,6 +89,10 @@ window.addEventListener("DOMContentLoaded", ()=> {
 
     // Update view based on state settings
     updateView();
+
+    // Make rover tabing feature in control areas
+    makeAreaTabable(navTabArea);
+    makeAreaTabable(homeChooseDayField);
 })
 
 navLogo.addEventListener("click", () => {
@@ -97,60 +109,32 @@ navLogo.addEventListener("keydown", (e) => {
     }
 })
 
-navHome.addEventListener("click", () => {
+navHome.addEventListener("click", (e) => {
     updateView();
     updateAllPages();
     displayHomePage();
+    changeTabPanelSelection(e.target);
 })
 
-navHome.addEventListener("keydown", (e) => {
-    if (e.code === "Enter") {
-        updateView();
-        updateAllPages();
-        displayHomePage()
-    }
-})
-
-navFood.addEventListener("click", () => {
+navFood.addEventListener("click", (e) => {
     updateView();
     updateAllPages();
     displayFoodPage();
+    changeTabPanelSelection(e.target);
 })
 
-navFood.addEventListener("keydown", (e) => {
-    if (e.code === "Enter") {
-        updateView();
-        updateAllPages();
-        displayFoodPage()
-    }
-})
-
-navMotivation.addEventListener("click", () => {
+navMotivation.addEventListener("click", (e) => {
     updateView();
     updateAllPages();
     displayMotivationPage();
+    changeTabPanelSelection(e.target);
 })
 
-navMotivation.addEventListener("keydown", (e) => {
-    if (e.code === "Enter") {
-        updateView();
-        updateAllPages();
-        displayMotivationPage();
-    }
-})
-
-navMeasures.addEventListener("click", () => {
+navMeasures.addEventListener("click", (e) => {
     updateView();
     updateAllPages();
     displayMeasuresPage();
-})
-
-navMeasures.addEventListener("keydown", (e) => {
-    if (e.code === "Enter") {
-        updateView();
-        updateAllPages();
-        displayMeasuresPage();
-    }
+    changeTabPanelSelection(e.target);
 })
 
 goToMeasures.forEach(button => button.addEventListener("click", () => {

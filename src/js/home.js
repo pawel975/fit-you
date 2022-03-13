@@ -29,28 +29,23 @@ export const updateHomePage = () => {
             createDayData(date);
         }
         
-        // Set choosed day button to pressed
+        // Set choosed day button to selected
         if (activeDate === date) {
-            day.setAttribute("aria-pressed", true);
+            day.setAttribute("aria-selected", true);
         } else {
-            day.setAttribute("aria-pressed", false);
+            day.setAttribute("aria-selected", false);
         }
         
         // events of chooseing date from field of days
         day.addEventListener("click", (e) => {
             renderDayData(e.target);
-            day.setAttribute("aria-pressed", true);
+            day.setAttribute("aria-selected", true);
         })
         day.addEventListener("keydown", (e) => {
             if (e.code === "Enter") {
                 renderDayData(e.target)
-                day.setAttribute("aria-pressed", true);
-            } else if (e.code === "ArrowLeft" || e.code === "ArrowDown") {
-                console.log(e.target);
-                console.log(homeChooseDayField.children)
-            } else if (e.code === "ArrowRight" || e.code === "ArrowUp") {
-                console.log("right");
-            }
+                day.setAttribute("aria-selected", true);
+            } 
         })
         
     })
@@ -107,7 +102,7 @@ const updateDaySummary = () => {
 // render data of day choosed in days field
 export const renderDayData = (day) => {
 
-    homeSingleDaysArray.forEach(day => day.setAttribute("aria-pressed", false));
+    homeSingleDaysArray.forEach(day => day.setAttribute("aria-selected", false));
     updateState("activeDate", day.getAttribute("data-date"))
     updateDaySummary();
 

@@ -33,37 +33,44 @@ body {
   width: clamp(15rem, 80%, 80rem);
   display: flex;
   align-items: center;
+  justify-content: space-around;
   margin-inline: auto;
   border-bottom: 1px solid variables.$clr-dark;
   
-  ul {
-  
-    margin: auto;
-    width: clamp(15.625rem, 80%, 64rem);
-    height: fit-content;
+  #nav-tab-area {
+    width: 100%;
+    margin-inline: 1rem;
     display: flex;
-    padding: 0;
-  
-    li {
-      cursor: pointer;
+    align-items: center;
+    justify-content: space-around;
+
+    button {
       width: 100%;
       height: fit-content;
+      border: none;
+      background-color: transparent;
       color: variables.$clr-darkest;
       font-size: variables.$fs-400;
       font-weight: 700;
       text-align: center;
       display: block;
-      text-decoration: none;
       padding-block: 1rem;
-
-      &:hover {
+  
+      &[aria-selected=true] {
         background-color: variables.$clr-darkest;
         color: variables.$clr-light;
-        transition: 0.3s;
+      }
+
+      &:hover {
+        background-color: variables.$clr-less-dark;
+        color: variables.$clr-darkest;
       }
     }
+
   }
+
 }
+
 
 #fit-you-logo {
   cursor: pointer;
@@ -179,6 +186,7 @@ input[type=submit] {
       margin-block: 1rem;
       width: 100%;
       flex-grow: 1;
+      display: none;
       overflow-y: scroll;
 
       #food-options {
@@ -186,6 +194,8 @@ input[type=submit] {
         max-height: 100;
 
         button {
+          display: block;
+          width: 100%;
           text-align: left;
           background-color: transparent;
           color: variables.$clr-darkest;
@@ -193,13 +203,13 @@ input[type=submit] {
           border-bottom: 1px solid variables.$clr-less-dark;
           cursor: pointer;
 
-          &:hover, &:focus{
+          &:hover{
             background-color: variables.$clr-less-dark;
             color:variables.$clr-darkest;
             padding-left: 1rem;
           }
 
-          &[aria-pressed=true] {
+          &[aria-selected=true] {
             background-color: variables.$clr-darkest;
             color:variables.$clr-very-light;
             padding-left: 0.5rem;
@@ -212,6 +222,7 @@ input[type=submit] {
       display: flex;
       align-items: center;
       width: 100%;
+      display: none;
 
       #food-nutrition {
         width: 100%;

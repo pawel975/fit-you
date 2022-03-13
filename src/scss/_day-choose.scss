@@ -18,7 +18,7 @@
         border: 2px solid variables.$clr-darkest;
         border-radius: 5rem;
 
-        &[aria-pressed=true] {
+        &[aria-selected=true] {
             background-color: variables.$clr-darkest;
             color: variables.$clr-light;
         }

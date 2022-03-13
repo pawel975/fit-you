@@ -163,7 +163,7 @@ const updateTable = (deleteTd, foodRecords) => {
     deleteTd.children[0].addEventListener("click", (e) => {
 
         // Delete row from passed food records
-        const spliceIndex = [...e.target.parentNode.parentNode.parentNode.children].indexOf(e.target.parentNode.parentNode)
+        const spliceIndex = Array.from(e.target.parentNode.parentNode.parentNode.children).indexOf(e.target.parentNode.parentNode)
         foodRecords.splice(spliceIndex, 1)
     
         // Update food records in state

@@ -3,6 +3,7 @@
 export const DOMelements = {
 
     // global
+    navTabArea: document.querySelector("#nav-tab-area"),
     loader: document.querySelector(".loader"),
     emptyUserParamsInfo: document.querySelectorAll(".empty-user-params-info"),
     goToMeasures: document.querySelectorAll(".go-to-measures"),

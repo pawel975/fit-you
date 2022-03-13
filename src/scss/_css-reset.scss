@@ -24,6 +24,10 @@ h1 {
   line-height: 1;
 }
 
+button {
+  cursor: pointer;
+}
+
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
 ul[role='list'],
 ol[role='list'] {
@@ -61,6 +65,16 @@ textarea,
 select {
   font: inherit;
 }
+
+/* Visually hides content but screen reader can read it */
+.sr-only {
+  position:absolute;
+  left:-10000px;
+  top:auto;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+  }
 
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
