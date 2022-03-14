@@ -5,6 +5,7 @@ import FoodOption from "./foodOption";
 import {getState, updateState} from "./state";
 import "regenerator-runtime/runtime.js";
 import { makeAreaTabable } from "./tabing";
+import { trapFocus } from "./trapFocus";
 
 const {addFoodBtn, addFoodDiaryTableContainer, addFoodServingCount, addFoodMatchesArea, addFoodMatchedFood, addFoodEmptySearchStateInfo, addFoodModal, addFoodSearch, addFoodFinish, addFoodModalClose, addFoodModalBackground, addFoodMatchTable, loader} = DOMelements;
 
@@ -125,6 +126,7 @@ const renderMatches = async () => {
             })
         })
     }
+
 }
 
 const clearAddFoodModal = () => {
@@ -157,10 +159,13 @@ window.addEventListener("DOMContentLoaded", ()=> {
     addFoodBtn.addEventListener("click", () => {
         choosedFood = undefined; 
         addFoodModal.style.display = "initial";
+        
+        // Traps focus into modal
+        trapFocus(addFoodModal, 1);
     })
     
     // Handle modal search and fetch data
-    addFoodSearch.addEventListener("input", (e) => {
+    addFoodSearch.addEventListener("input", async (e) => {
         e.preventDefault();
         matchedFood = [];
         // If search field is empty, disable finish adding button
@@ -170,7 +175,10 @@ window.addEventListener("DOMContentLoaded", ()=> {
             addFoodFinish.disabled = false;
         }
     
-        renderMatches();
+        await renderMatches();
+
+        // Traps focus into modal
+        trapFocus(addFoodModal, 1);
     }) 
     
     addFoodServingCount.addEventListener("input", (e) => {
@@ -185,6 +193,7 @@ window.addEventListener("DOMContentLoaded", ()=> {
         matchedFood.forEach(food => {
             food.servingCount = addFoodServingCount.value;
         }) 
+
         renderMatchDetailsTable(choosedFood);
     })
     
