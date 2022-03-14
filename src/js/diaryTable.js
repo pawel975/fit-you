@@ -127,9 +127,6 @@ const sufix = (nutritionType) => {
         case "portions":
             sufix = "";
             break
-        case "weight":
-            sufix = "";
-            break
         default:
             sufix = " g";
     }
