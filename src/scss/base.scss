@@ -25,12 +25,13 @@ body {
   background-color: variables.$clr-light;
   color: variables.$clr-darkest;
 }
+
 /* ---------- */
 /* Navigation */
 /* ---------- */
 
-.nav-desktop {
-  width: clamp(15rem, 80%, 80rem);
+#nav-desktop {
+  width: clamp(30rem, 80%, 80rem);
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -69,8 +70,24 @@ body {
 
   }
 
-}
+  @media (max-width: 30rem) {
 
+    #nav-desktop {
+      display: none;
+    }
+
+    #nav-mobile {
+      width: clamp(30rem, 80%, 80rem);
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      margin-inline: auto;
+      border-bottom: 1px solid variables.$clr-dark;
+    }
+
+  }
+
+}
 
 #fit-you-logo {
   cursor: pointer;

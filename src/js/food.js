@@ -113,10 +113,12 @@ const renderMatches = async () => {
                 choosedFood = matchedFood.filter(match => match.id === Number(option.id))[0];
 
                 if (choosedFood) {
-                    addFoodFinish.disabled = false;
+                    addFoodFinish.disabled = false;     
                 } else {
                     addFoodFinish.disabled = true;
                 }
+
+                trapFocus(addFoodModal)
 
                 addFoodMatchesArea.childNodes.forEach(option => {
                     option.setAttribute("aria-selected", false);
