@@ -14,7 +14,7 @@ window.addEventListener("load", () => {
     }
     
     // Add dark theme class to the html tag and update state
-    toggleThemeSwitch.addEventListener("click", () => {
+    toggleThemeSwitch.forEach(toggle => toggle.addEventListener("click", () => {
         
         darkModeOn = !darkModeOn
         updateState("darkModeOn", darkModeOn);
@@ -22,6 +22,7 @@ window.addEventListener("load", () => {
         toggleThemeSwitch.setAttribute("aria-checked", darkModeOn)
         htmlTag.classList.toggle("dark-theme");
     })
+    )
 
 })
 

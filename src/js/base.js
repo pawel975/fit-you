@@ -7,7 +7,7 @@ export const DOMelements = {
     loader: document.querySelector(".loader"),
     emptyUserParamsInfo: document.querySelectorAll(".empty-user-params-info"),
     goToMeasures: document.querySelectorAll(".go-to-measures"),
-    toggleThemeSwitch: document.querySelector('#toggle-theme-switch'),
+    toggleThemeSwitch: document.querySelectorAll('#toggle-theme-switch'),
 
     // index
     navLogo: document.querySelector("#fit-you-logo"),

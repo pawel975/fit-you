@@ -12,19 +12,38 @@
 <body>
     <nav id="nav-desktop">
         <h1 tabindex="0" id="fit-you-logo" class="fs-800 ff-headers text-left text-contrast" style="padding: 0">FitYou</h1>
-        <div id="nav-tab-area" role="tablist">
+        <div class="nav-tab-area" role="tablist">
             <button tabindex="0" aria-selected="true" role="tab" id="nav-home">Home</button>
             <button tabindex="-1" aria-selected="false" role="tab"  id="nav-food">Food</button>
             <button tabindex="-1" aria-selected="false" role="tab"   id="nav-motivation">Motivation</button>
             <button tabindex="-1" aria-selected="false" role="tab"  id="nav-measures">Measures <i class="fas fa-weight"></i></button>
         </div>
-        <button id="toggle-theme-switch" role="switch" aria-checked="false" id="toggle-theme-switch">
+        <button class="toggle-theme-switch" role="switch" aria-checked="false" id="toggle-theme-switch">
             <span class="check"></span>
             <span class="sr-only">Toggle night-mode</span>
         </button>
     </nav>
 
-    <nav id="nav-mobile"></nav>
+    <nav id="nav-mobile">
+        <h1 tabindex="0" id="fit-you-logo" class="fs-800 ff-headers text-left text-contrast" style="padding: 0">FitYou</h1>
+        <i class="fas fa-bars open-nav-menu"></i>
+    </nav>
+
+    <div id="side-menu" role="dialog">
+        <div id="side-menu-background"></div>
+        <div id="side-menu-content">
+            <div id="nav-mobile-tab-area" role="tablist">
+                <button tabindex="0" aria-selected="true" role="tab" id="nav-home">Home</button>
+                <button tabindex="-1" aria-selected="false" role="tab"  id="nav-food">Food</button>
+                <button tabindex="-1" aria-selected="false" role="tab" id="nav-motivation">Motivation</button>
+                <button tabindex="-1" aria-selected="false" role="tab"  id="nav-measures">Measures <i class="fas fa-weight"></i></button>
+            </div>
+            <button class="toggle-theme-switch" role="switch" aria-checked="false" id="toggle-theme-switch">
+                <span class="check"></span>
+                <span class="sr-only">Toggle night-mode</span>
+            </button>
+        </div>
+    </div>
 
     <!-- Main home -->
 
