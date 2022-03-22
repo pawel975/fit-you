@@ -99,6 +99,7 @@ navLogo.addEventListener("click", () => {
     updateView();
     updateAllPages();
     displayHomePage();
+    changeTabPanelSelection(navHome);
 })
 
 navLogo.addEventListener("keydown", (e) => {
@@ -106,6 +107,7 @@ navLogo.addEventListener("keydown", (e) => {
         updateView();
         updateAllPages();
         displayHomePage()
+        changeTabPanelSelection(navHome);
     }
 })
 
