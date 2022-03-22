@@ -11,7 +11,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap');
 
-*:focus {
+*:focus-visible {
   outline: 4px double variables.$clr-contrast;
 }
 
