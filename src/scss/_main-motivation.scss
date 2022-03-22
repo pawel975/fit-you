@@ -4,6 +4,10 @@
 #main-motivation {
     width: clamp(15rem, 50%, 80rem);
 
+    @media (max-width: 30rem) {
+        width: 80%;
+    }
+
     #motivation-quotes {
         position: relative;
         border-block: 1px solid variables.$clr-less-dark;
