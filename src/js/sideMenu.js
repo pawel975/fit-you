@@ -2,22 +2,21 @@ import { DOMelements } from "./base";
 
 window.addEventListener("load", () => {
 
-    const {sideMenu, sideMenuClose, sideMenuOpen, sideMenuContent} = DOMelements;
+    const {sideMenu, sideMenuClose, sideMenuOpen, sideMenuContent, sideMenuBg} = DOMelements;
 
-    console.log(sideMenu)
-    console.log(sideMenuOpen)
-    console.log(sideMenuClose)
-    console.log(sideMenuContent)
+    sideMenuOpen.addEventListener("click", () => {
+        sideMenu.style.left = "0%";
+        sideMenuContent.style.left = "0%";
+    })
 
     sideMenuClose.addEventListener("click", () => {
-        sideMenu.style.display = "none";
-        console.log(sideMenuClose)
+        sideMenu.style.left = "-100%";
+        sideMenuContent.style.left = "-70%";
     })
     
-    sideMenuOpen.addEventListener("click", () => {
-        sideMenu.style.display = "initial";
-        sideMenuContent.style.left = "0%";
-        console.log(sideMenuOpen)
+    sideMenuBg.addEventListener("click", () => {
+        sideMenu.style.left = "-100%";
+        sideMenuContent.style.left = "-70%";
     })
 
 })

@@ -9,6 +9,7 @@ export const DOMelements = {
     goToMeasures: document.querySelectorAll(".go-to-measures"),
     toggleThemeSwitches: document.querySelectorAll('.toggle-theme-switch'),
     sideMenu: document.querySelector(".side-menu"),
+    sideMenuBg: document.querySelector(".side-menu-bg"),
     sideMenuContent: document.querySelector(".side-menu-content"),
     sideMenuOpen: document.querySelector(".side-menu-open"),
     sideMenuClose: document.querySelector('.side-menu-close'),
