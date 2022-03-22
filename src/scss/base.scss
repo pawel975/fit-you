@@ -8,6 +8,9 @@
 @use "main-motivation";
 @use "toggleThemeSwitch";
 @use 'diaryTable';
+@use 'nav';
+@use 'modal-food';
+
 
 @import url('https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap');
 
@@ -24,56 +27,6 @@ body {
   min-height: 100vh;
   background-color: variables.$clr-light;
   color: variables.$clr-darkest;
-}
-/* ---------- */
-/* Navigation */
-/* ---------- */
-
-.nav-desktop {
-  width: clamp(15rem, 80%, 80rem);
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  margin-inline: auto;
-  border-bottom: 1px solid variables.$clr-dark;
-  
-  #nav-tab-area {
-    width: 100%;
-    margin-inline: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-
-    button {
-      width: 100%;
-      height: fit-content;
-      border: none;
-      background-color: transparent;
-      color: variables.$clr-darkest;
-      font-size: variables.$fs-400;
-      font-weight: 700;
-      text-align: center;
-      display: block;
-      padding-block: 1rem;
-  
-      &[aria-selected=true] {
-        background-color: variables.$clr-darkest;
-        color: variables.$clr-light;
-      }
-
-      &:hover {
-        background-color: variables.$clr-less-dark;
-        color: variables.$clr-darkest;
-      }
-    }
-
-  }
-
-}
-
-
-#fit-you-logo {
-  cursor: pointer;
 }
 
 /* ----------------- */
@@ -93,6 +46,7 @@ h3 {
 }
 
 // inputs
+
 input, .dropdown{
   color: variables.$clr-darkest;
   font-size: variables.$fs-300;
@@ -121,151 +75,8 @@ input[type=submit] {
   color: variables.$clr-light;
 }
 
-// Modal
-.modal-wrapper {
-  position: absolute;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  
-  .modal-background {
-    position: absolute;
-    background-color: rgba(0,0,0,0.5);
-    width: 100%;
-    height: 100%;
-  }
-  
-  .modal-section {
-    position: absolute;
-    width: clamp(15rem, 30%, 35rem);
-    height: 40rem;
-    transform: translate(-50%,-50%);
-    left: 50%;
-    top: 50%;
-    border-radius: 1rem;
-    background-color: variables.$clr-very-light;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding-inline: 2rem;
-    padding-bottom: 2rem;
-
-    #modal-close-container {
-      width: 100%;
-      margin: 0;
-      margin-top: 1rem;
-      // height: fit-content;
-      position: relative;
-      display: block;
-      text-align: right;
-
-      button {
-
-        background: transparent;
-        border: none;
-
-        .svg-inline--fa.fa-w-16 {
-          width: 2rem;
-          color: variables.$clr-darkest;
-          height: 100%;
-        }
-      }
-
-    }
-    
-    form {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
-    #matched-food {
-      margin-block: 1rem;
-      width: 100%;
-      flex-grow: 1;
-      display: none;
-      overflow-y: scroll;
-
-      #food-options {
-        width: 100%;
-        max-height: 100;
-
-        button {
-          display: block;
-          width: 100%;
-          text-align: left;
-          background-color: transparent;
-          color: variables.$clr-darkest;
-          border: none;
-          border-bottom: 1px solid variables.$clr-less-dark;
-          cursor: pointer;
-
-          &:hover{
-            background-color: variables.$clr-less-dark;
-            color:variables.$clr-darkest;
-            padding-left: 1rem;
-          }
-
-          &[aria-selected=true] {
-            background-color: variables.$clr-darkest;
-            color:variables.$clr-very-light;
-            padding-left: 0.5rem;
-          }
-        }
-      }
-    }
-
-    #food-details {
-      display: flex;
-      align-items: center;
-      width: 100%;
-      display: none;
-
-      #food-nutrition {
-        width: 100%;
-
-        tr {
-          td {
-            &:first-child {
-              text-align: left;
-            }
-          }
-        }
-      }
-
-      #add-food-form {
-        width: 100%;
-        height: 100%;
-        justify-content: center;
-
-        input {
-          width: clamp(10rem, 70%, 14rem);
-          margin: 0;
-          margin-bottom: 1rem;
-        }
-
-        p {
-          font-size: variables.$fs-400;
-          margin: 1rem;
-
-          span {
-            margin-right: 0.2rem;
-          }
-        }
-
-        #finish-adding:disabled {
-          opacity: 0.5;
-        }
-      }
-    }
-
-  }
-}
-
 // empty user params info
+
 .empty-user-params-info {
   margin: auto;
   margin-top: 3rem;
@@ -314,6 +125,7 @@ input[type=submit] {
 }
 
 // Custom scrollbar
+
 ::-webkit-scrollbar {
   width: 8px;
 }
