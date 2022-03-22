@@ -3,18 +3,18 @@
 export const DOMelements = {
 
     // global
-    navTabArea: document.querySelector("#nav-tab-area"),
+    navTabAreas: document.querySelectorAll(".nav-tab-area"),
     loader: document.querySelector(".loader"),
     emptyUserParamsInfo: document.querySelectorAll(".empty-user-params-info"),
     goToMeasures: document.querySelectorAll(".go-to-measures"),
     toggleThemeSwitches: document.querySelectorAll('.toggle-theme-switch'),
 
     // index
-    navLogo: document.querySelector("#fit-you-logo"),
-    navHome: document.querySelector("#nav-home"),
-    navFood: document.querySelector("#nav-food"),
-    navMotivation: document.querySelector("#nav-motivation"),
-    navMeasures: document.querySelector("#nav-measures"),
+    navLogo: document.querySelectorAll(".fit-you-logo"),
+    navHome: document.querySelectorAll(".nav-home"),
+    navFood: document.querySelectorAll(".nav-food"),
+    navMotivation: document.querySelectorAll(".nav-motivation"),
+    navMeasures: document.querySelectorAll(".nav-measures"),
     mainHome: document.querySelector("#main-home"),
     mainFood: document.querySelector("#main-food"),
     mainMotivation: document.querySelector("#main-motivation"),

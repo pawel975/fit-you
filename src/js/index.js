@@ -7,7 +7,7 @@ import { getState, initState } from "./state";
 import { makeAreaTabable } from "./tabing";
 
 
-const {navLogo, navHome, navFood, navMotivation, navMeasures, navTabArea, mainHome, mainFood, mainMotivation, mainMeasures, addFoodDiaryTableContainer, emptyUserParamsInfo, homeChooseDayField, homeDailySummaryContainer, addFoodBtn, goToMeasures} = DOMelements 
+const {navLogo, navHome, navFood, navMotivation, navMeasures, navTabAreas, mainHome, mainFood, mainMotivation, mainMeasures, addFoodDiaryTableContainer, emptyUserParamsInfo, homeChooseDayField, homeDailySummaryContainer, addFoodBtn, goToMeasures} = DOMelements 
 
 const updateAllPages = () => {
 
@@ -69,7 +69,7 @@ const displayMeasuresPage = () => {
 }
 
 const changeTabPanelSelection = (choosedTab) => {
-    [...navTabArea.children].forEach(tab => {
+    [...navTabAreas.children].forEach(tab => {
         tab.setAttribute("aria-selected", false);
     })
     choosedTab.setAttribute("aria-selected", true);
@@ -91,52 +91,63 @@ window.addEventListener("DOMContentLoaded", () => {
     updateView();
 
     // Make rover tabing feature in control areas
-    makeAreaTabable(navTabArea);
+    navTabAreas.forEach(area => makeAreaTabable(area));
     makeAreaTabable(homeChooseDayField);
 })
 
-navLogo.addEventListener("click", () => {
-    updateView();
-    updateAllPages();
-    displayHomePage();
-    changeTabPanelSelection(navHome);
-})
-
-navLogo.addEventListener("keydown", (e) => {
-    if (e.code === "Enter") {
+navLogo.forEach(logo => {
+    
+    logo.addEventListener("click", () => {
         updateView();
         updateAllPages();
-        displayHomePage()
+        displayHomePage();
         changeTabPanelSelection(navHome);
-    }
+    })
+
+    logo.addEventListener("keydown", (e) => {
+        if (e.code === "Enter") {
+            updateView();
+            updateAllPages();
+            displayHomePage()
+            changeTabPanelSelection(navHome);
+        }
+    })
 })
 
-navHome.addEventListener("click", (e) => {
-    updateView();
-    updateAllPages();
-    displayHomePage();
-    changeTabPanelSelection(e.target);
+navHome.forEach(home => {
+    home.addEventListener("click", (e) => {
+        updateView();
+        updateAllPages();
+        displayHomePage();
+        changeTabPanelSelection(e.target);
+    })
 })
 
-navFood.addEventListener("click", (e) => {
-    updateView();
-    updateAllPages();
-    displayFoodPage();
-    changeTabPanelSelection(e.target);
+navFood.forEach(food => {
+    food.addEventListener("click", (e) => {
+        updateView();
+        updateAllPages();
+        displayFoodPage();
+        changeTabPanelSelection(e.target);
+    })
 })
 
-navMotivation.addEventListener("click", (e) => {
-    updateView();
-    updateAllPages();
-    displayMotivationPage();
-    changeTabPanelSelection(e.target);
+navMotivation.forEach(motivation => {
+    motivation.addEventListener("click", (e) => {
+        updateView();
+        updateAllPages();
+        displayMotivationPage();
+        changeTabPanelSelection(e.target);
+    })
 })
 
-navMeasures.addEventListener("click", (e) => {
-    updateView();
-    updateAllPages();
-    displayMeasuresPage();
-    changeTabPanelSelection(e.target);
+navMeasures.forEach(measures => {
+    measures.addEventListener("click", (e) => {
+        updateView();
+        updateAllPages();
+        displayMeasuresPage();
+        changeTabPanelSelection(e.target);
+    })
 })
 
 goToMeasures.forEach(button => button.addEventListener("click", () => {

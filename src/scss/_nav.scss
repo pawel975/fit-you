@@ -7,46 +7,77 @@
     justify-content: space-around;
     margin-inline: auto;
     border-bottom: 1px solid variables.$clr-dark;
-    
-    #nav-tab-area {
-      width: 100%;
-      margin-inline: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-  
-      button {
-        width: 100%;
-        height: fit-content;
-        border: none;
-        background-color: transparent;
-        color: variables.$clr-darkest;
-        font-size: variables.$fs-400;
-        font-weight: 700;
-        text-align: center;
-        display: block;
-        padding-block: 1rem;
-    
-        &[aria-selected=true] {
-          background-color: variables.$clr-darkest;
-          color: variables.$clr-light;
-        }
-  
-        &:hover {
-          background-color: variables.$clr-less-dark;
-          color: variables.$clr-darkest;
-        }
-      }
-  
+
+    @media (max-width: 30rem) {
+        display: none;
     }
-  
-  }
-  
-  #fit-you-logo {
+}
+
+.nav-mobile {
+    width: 100%;
+    padding-inline: 2rem;
+    display: none;
+    align-items: center;
+    gap: 2rem;
+    justify-content: space-between;
+    margin-inline: auto;
+    border-bottom: 1px solid variables.$clr-dark;
+
+    @media (max-width: 30rem) {
+        display: flex;
+    }
+
+    h1 {
+        margin-right: auto;
+    }
+
+    .svg-inline--fa.fa-w-14 {
+        width: 1.5rem;
+        height: 2rem;
+    } 
+
+}
+
+.fit-you-logo {
     cursor: pointer;
-  }
-  
-  .nav-mobile {
-      display: flex;
+}
       
+.nav-tab-area {
+  width: 100%;
+  margin-inline: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  @media (max-width: 30rem) {
+    margin: auto;
+    width: fit-content;
+    max-width: 80%;
+    flex-direction: column;
   }
+
+  button {
+    
+    width: 100%;
+    height: fit-content;
+    border: none;
+    background-color: transparent;
+    color: variables.$clr-darkest;
+    font-size: variables.$fs-400;
+    font-weight: 700;
+    text-align: center;
+    display: block;
+    padding-block: 1rem;
+
+    &[aria-selected=true] {
+      background-color: variables.$clr-darkest;
+      color: variables.$clr-light;
+    }
+
+    &:hover {
+      background-color: variables.$clr-less-dark;
+      color: variables.$clr-darkest;
+    }
+  }
+
+}
