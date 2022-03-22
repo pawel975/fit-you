@@ -9,17 +9,29 @@
     background-color: rgba(0,0,0,0.5);
     display: none;
 
-    @media (max-width: 30rem) {
-        display: initial;
-    }    
-    
     .side-menu-content {
-        padding: 2rem;
+        padding: 1rem;
         position: absolute;
         top: 0;
-        left: 0;
+        left: -70%;
         width: 70%;
         height: 100vh;
         background-color: variables.$clr-light;
+
+        .side-menu-close {
+            display: block;
+            margin-left: auto;
+            right: 0;
+            position: relative;
+            margin-bottom: 1rem;
+            border: none;
+            background-color: transparent;
+
+            .svg-inline--fa.fa-w-16 {
+                color: variables.$clr-darkest;
+                width: 3rem;
+                height: 2rem;
+            }
+        }
     }
 }

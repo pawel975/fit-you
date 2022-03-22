@@ -34,7 +34,13 @@
     .svg-inline--fa.fa-w-14 {
         width: 1.5rem;
         height: 2rem;
+        color: variables.$clr-darkest;
     } 
+
+    .side-menu-open {
+        border: none;
+        background-color: transparent;
+    }
 
 }
 
@@ -57,7 +63,6 @@
   }
 
   button {
-    
     width: 100%;
     height: fit-content;
     border: none;
@@ -69,15 +74,16 @@
     display: block;
     padding-block: 1rem;
 
-    &[aria-selected=true] {
-      background-color: variables.$clr-darkest;
-      color: variables.$clr-light;
+        &[aria-selected=true] {
+        background-color: variables.$clr-darkest;
+        color: variables.$clr-light;
+        }
+
+        &:hover {
+        background-color: variables.$clr-less-dark;
+        color: variables.$clr-darkest;
+        }
     }
 
-    &:hover {
-      background-color: variables.$clr-less-dark;
-      color: variables.$clr-darkest;
-    }
-  }
 
 }

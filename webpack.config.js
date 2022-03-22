@@ -41,6 +41,12 @@ module.exports = {
     './src/js/home.js',
     './src/js/motivation.js',
     './src/js/toggleTheme.js',
+    './src/js/trapFocus.js',
+    './src/js/sideMenu.js',
+    './src/js/tabing.js',
+    './src/js/historyChart.js',
+    './src/js/foodOption.js',
+    './src/js/diaryTable.js',
   ],
   output: {
     filename: '[name].[contenthash].js',

@@ -8,6 +8,10 @@ export const DOMelements = {
     emptyUserParamsInfo: document.querySelectorAll(".empty-user-params-info"),
     goToMeasures: document.querySelectorAll(".go-to-measures"),
     toggleThemeSwitches: document.querySelectorAll('.toggle-theme-switch'),
+    sideMenu: document.querySelector(".side-menu"),
+    sideMenuContent: document.querySelector(".side-menu-content"),
+    sideMenuOpen: document.querySelector(".side-menu-open"),
+    sideMenuClose: document.querySelector('.side-menu-close'),
 
     // index
     navLogo: document.querySelectorAll(".fit-you-logo"),
