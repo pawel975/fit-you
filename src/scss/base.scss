@@ -39,6 +39,10 @@ h2 {
   font-family: variables.$ff-headers;
   color: variables.$clr-contrast;
   text-align: center;
+
+  @media (max-width: 30rem) {
+      line-height: 1;
+  }
 }
 
 h3 {
@@ -85,12 +89,30 @@ input[type=submit] {
   display: flex;
   align-items: center;
   justify-content: center;
+  // outline: 2px solid red;
+
+  @media (max-width:30rem) {
+    flex-direction: column;
+    line-height: 1;
+    margin-top: 1rem;
+
+    p {
+      font-size: variables.$fs-500;
+      width: 100%;
+    }
+
+  }
 
   .svg-inline--fa {
     display: flex;
     margin-left:auto;
     width: 30%;
     height: 100%;
+
+    @media (max-width:30rem) {
+      margin: auto;
+      margin-bottom: 1rem;
+    }
   }
 
   div {
