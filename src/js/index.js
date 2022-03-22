@@ -68,11 +68,16 @@ const displayMeasuresPage = () => {
     mainMeasures.style.display = "initial";
 }
 
-const changeTabPanelSelection = (choosedTab) => {
-    [...navTabAreas.children].forEach(tab => {
-        tab.setAttribute("aria-selected", false);
-    })
-    choosedTab.setAttribute("aria-selected", true);
+const changeTabPanelSelection = (e, choosedTab) => {
+
+    // If event is passed in then reselect item in nav (prevents Logo from being selected)
+    if (e.target) {
+        const navBar = e.target.parentNode;
+        [...navBar.children].forEach(tab => {
+            tab.setAttribute("aria-selected", false);
+        })
+        choosedTab.setAttribute("aria-selected", true);
+    }
 }
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -119,7 +124,7 @@ navHome.forEach(home => {
         updateView();
         updateAllPages();
         displayHomePage();
-        changeTabPanelSelection(e.target);
+        changeTabPanelSelection(e, e.target);
     })
 })
 
@@ -128,7 +133,7 @@ navFood.forEach(food => {
         updateView();
         updateAllPages();
         displayFoodPage();
-        changeTabPanelSelection(e.target);
+        changeTabPanelSelection(e, e.target);
     })
 })
 
@@ -137,7 +142,7 @@ navMotivation.forEach(motivation => {
         updateView();
         updateAllPages();
         displayMotivationPage();
-        changeTabPanelSelection(e.target);
+        changeTabPanelSelection(e, e.target);
     })
 })
 
@@ -146,7 +151,7 @@ navMeasures.forEach(measures => {
         updateView();
         updateAllPages();
         displayMeasuresPage();
-        changeTabPanelSelection(e.target);
+        changeTabPanelSelection(e, e.target);
     })
 })
 
