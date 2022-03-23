@@ -1,14 +1,14 @@
 @use "./variables";
 
 .nav-desktop {
-    width: clamp(15rem, 80%, 80rem);
+    width: clamp(60rem, 80%, 80rem);
     display: flex;
     align-items: center;
     justify-content: space-around;
     margin-inline: auto;
     border-bottom: 1px solid variables.$clr-dark;
 
-    @media (max-width: 30rem) {
+    @media (max-width: variables.$screen-small) {
         display: none;
     }
 }
@@ -23,7 +23,7 @@
     margin-inline: auto;
     border-bottom: 1px solid variables.$clr-dark;
 
-    @media (max-width: 30rem) {
+    @media (max-width: variables.$screen-small) {
         display: flex;
     }
 
@@ -55,7 +55,7 @@
   align-items: center;
   justify-content: space-around;
 
-  @media (max-width: 30rem) {
+  @media (max-width: variables.$screen-small) {
     margin: auto;
     width: fit-content;
     max-width: 80%;

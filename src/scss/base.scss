@@ -3,7 +3,7 @@
 @use "utility-classes";
 @use "day-choose";
 @use "main-home";
-@use "main-settings";
+@use "main-measures";
 @use "main-food";
 @use "main-motivation";
 @use "toggleThemeSwitch";
@@ -40,7 +40,7 @@ h2 {
   color: variables.$clr-contrast;
   text-align: center;
 
-  @media (max-width: 30rem) {
+  @media (max-width: variables.$screen-small) {
       line-height: 1;
   }
 }
@@ -54,7 +54,7 @@ h3 {
 input, .dropdown{
   color: variables.$clr-darkest;
   font-size: variables.$fs-300;
-  width: 20rem;
+  width: clamp(10rem, 100% , 20rem);
   height: 3rem;
   border-radius: 50rem;
   border: 3px solid variables.$clr-darkest;
@@ -90,7 +90,7 @@ input[type=submit] {
   align-items: center;
   justify-content: center;
 
-  @media (max-width:30rem) {
+  @media (max-width: variables.$screen-small) {
     flex-direction: column;
     line-height: 1;
     margin-top: 1rem;
@@ -103,7 +103,7 @@ input[type=submit] {
     width: 30%;
     height: 100%;
 
-    @media (max-width:30rem) {
+    @media (max-width: variables.$screen-small) {
       margin: auto;
       margin-bottom: 1rem;
     }
@@ -116,7 +116,7 @@ input[type=submit] {
     flex-direction: column;
     width: 50%;
 
-    @media (max-width: 30rem) {
+    @media (max-width: variables.$screen-small) {
       width: 100%;
     }
 

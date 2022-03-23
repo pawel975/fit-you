@@ -87,7 +87,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     // Init default view
-    displayMotivationPage();
+    displayMeasuresPage();
     
     // Render all pages scripts
     updateAllPages();

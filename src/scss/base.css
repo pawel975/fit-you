@@ -25,6 +25,10 @@ h1 {
   line-height: 1;
 }
 
+button {
+  cursor: pointer;
+}
+
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
 ul[role=list],
 ol[role=list] {
@@ -64,6 +68,16 @@ select {
   font: inherit;
 }
 
+/* Visually hides content but screen reader can read it */
+.sr-only {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
@@ -84,6 +98,7 @@ select {
 /* colors */
 /* font sizes */
 /* font-families */
+/* screen-sizes */
 .flex-row {
   display: flex;
 }
@@ -172,7 +187,7 @@ select {
   border: 2px solid #29285f;
   border-radius: 5rem;
 }
-#choose-day .single-day-date[aria-pressed=true] {
+#choose-day .single-day-date[aria-selected=true] {
   background-color: #29285f;
   color: #f8f7f7;
 }
@@ -256,6 +271,11 @@ select {
 #main-measures {
   width: clamp(15rem, 80%, 80rem);
 }
+@media (max-width: 50rem) {
+  #main-measures {
+    width: 90%;
+  }
+}
 #main-measures #section-container {
   width: 100%;
   display: flex;
@@ -263,6 +283,13 @@ select {
   margin-block: 3rem;
   justify-content: space-around;
   align-items: stretch;
+}
+@media (max-width: 50rem) {
+  #main-measures #section-container {
+    flex-direction: column;
+    gap: 3rem;
+    margin-block: 1rem;
+  }
 }
 #main-measures #section-container #user-params-container {
   width: 100%;
@@ -272,12 +299,26 @@ select {
   width: 50%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 0.3rem;
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+}
+@media (max-width: 50rem) {
+  #main-measures #section-container #user-params-container form {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    align-items: center;
+  }
 }
 #main-measures #section-container #user-params-container form label {
   color: #29285f;
   font-size: 1.5rem;
+  width: 100%;
+  text-align: left;
+  padding-inline: 1rem;
 }
 #main-measures #section-container #params-summary-container {
   width: 100%;
@@ -320,6 +361,11 @@ select {
 #main-motivation {
   width: clamp(15rem, 50%, 80rem);
 }
+@media (max-width: 50rem) {
+  #main-motivation {
+    width: 80%;
+  }
+}
 #main-motivation #motivation-quotes {
   position: relative;
   border-block: 1px solid #c8c8c8;
@@ -337,17 +383,22 @@ select {
   font-size: 2rem;
 }
 #main-motivation #motivation-quotes #refresh {
-  cursor: pointer;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  border: none;
+  background-color: transparent;
   top: 1rem;
   right: 1rem;
   position: absolute;
-  width: 1.5rem;
-  height: 1.5rem;
   color: #41a046;
 }
 #main-motivation #motivation-quotes #refresh .svg-inline--fa.fa-w-16 {
-  width: 100%;
-  height: 100%;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 #main-motivation #benefits {
   margin: auto;
@@ -360,13 +411,13 @@ select {
   color: #41a046;
 }
 
-#toggle-theme-switch {
+.toggle-theme-switch {
   border: 0;
   padding: 0;
   margin: 0;
   background-color: transparent;
 }
-#toggle-theme-switch .check {
+.toggle-theme-switch .check {
   cursor: pointer;
   position: relative;
   display: block;
@@ -376,7 +427,7 @@ select {
   background-color: #29285f;
   border: 1px solid #29285f;
 }
-#toggle-theme-switch .check::before {
+.toggle-theme-switch .check::before {
   background-image: url("../img/sun-solid.svg");
   background-repeat: no-repeat;
   background-position: center;
@@ -391,7 +442,7 @@ select {
   left: 0%;
   top: 50%;
 }
-#toggle-theme-switch[aria-checked=true] .check::before {
+.toggle-theme-switch[aria-checked=true] .check::before {
   background-image: url("../img/moon-solid.svg");
   content: "";
   transform: translate(-100%, -50%);
@@ -440,105 +491,90 @@ select {
   color: white;
 }
 
-*:focus {
-  outline: 4px double #41a046;
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-inline: auto;
-  width: 100vw;
-  min-height: 100vh;
-  background-color: #f8f7f7;
-  color: #29285f;
-}
-
-/* ---------- */
-/* Navigation */
-/* ---------- */
 .nav-desktop {
-  width: clamp(15rem, 80%, 80rem);
+  width: clamp(60rem, 80%, 80rem);
   display: flex;
   align-items: center;
+  justify-content: space-around;
   margin-inline: auto;
   border-bottom: 1px solid #818181;
 }
-.nav-desktop ul {
-  margin: auto;
-  width: clamp(15.625rem, 80%, 64rem);
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  display: flex;
-  padding: 0;
+@media (max-width: 50rem) {
+  .nav-desktop {
+    display: none;
+  }
 }
-.nav-desktop ul li {
+
+.nav-mobile {
+  width: 100%;
+  padding-inline: 2rem;
+  display: none;
+  align-items: center;
+  gap: 2rem;
+  justify-content: space-between;
+  margin-inline: auto;
+  border-bottom: 1px solid #818181;
+}
+@media (max-width: 50rem) {
+  .nav-mobile {
+    display: flex;
+  }
+}
+.nav-mobile h1 {
+  margin-right: auto;
+}
+.nav-mobile .svg-inline--fa.fa-w-14 {
+  width: 1.5rem;
+  height: 2rem;
+  color: #29285f;
+}
+.nav-mobile .side-menu-open {
+  border: none;
+  background-color: transparent;
+}
+
+.fit-you-logo {
   cursor: pointer;
+}
+
+.nav-tab-area {
+  width: 100%;
+  margin-inline: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+@media (max-width: 50rem) {
+  .nav-tab-area {
+    margin: auto;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    max-width: 80%;
+    flex-direction: column;
+  }
+}
+.nav-tab-area button {
   width: 100%;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+  border: none;
+  background-color: transparent;
   color: #29285f;
   font-size: 1.5rem;
   font-weight: 700;
   text-align: center;
   display: block;
-  text-decoration: none;
   padding-block: 1rem;
 }
-.nav-desktop ul li:hover {
+.nav-tab-area button[aria-selected=true] {
   background-color: #29285f;
   color: #f8f7f7;
-  transition: 0.3s;
 }
-
-#fit-you-logo {
-  cursor: pointer;
-}
-
-/* ----------------- */
-/* Global components */
-/* ----------------- */
-h2 {
-  margin-top: 3rem;
-  font-size: 4rem;
-  font-family: "Dongle", sans-serif;
-  color: #41a046;
-  text-align: center;
-}
-
-h3 {
-  font-size: 2rem;
-}
-
-input, .dropdown {
+.nav-tab-area button:hover {
+  background-color: #c8c8c8;
   color: #29285f;
-  font-size: 1.25rem;
-  width: 20rem;
-  height: 3rem;
-  border-radius: 50rem;
-  border: 3px solid #29285f;
-  text-align: right;
-  padding-right: 1rem;
-  background-color: white;
-}
-
-input[type=submit] {
-  margin-top: 1rem;
-  text-align: center;
-  background-color: #29285f;
-  border-color: #29285f;
-  color: #f8f7f7;
-  font-family: "Dongle", sans-serif;
-  font-size: 2rem;
-  cursor: pointer;
-}
-
-.dropdown select:hover {
-  background-color: #41a046;
-  color: #f8f7f7;
 }
 
 .modal-wrapper {
@@ -597,6 +633,7 @@ input[type=submit] {
   margin-block: 1rem;
   width: 100%;
   flex-grow: 1;
+  display: none;
   overflow-y: scroll;
 }
 .modal-wrapper .modal-section #matched-food #food-options {
@@ -604,6 +641,8 @@ input[type=submit] {
   max-height: 100;
 }
 .modal-wrapper .modal-section #matched-food #food-options button {
+  display: block;
+  width: 100%;
   text-align: left;
   background-color: transparent;
   color: #29285f;
@@ -611,12 +650,12 @@ input[type=submit] {
   border-bottom: 1px solid #c8c8c8;
   cursor: pointer;
 }
-.modal-wrapper .modal-section #matched-food #food-options button:hover, .modal-wrapper .modal-section #matched-food #food-options button:focus {
+.modal-wrapper .modal-section #matched-food #food-options button:hover {
   background-color: #c8c8c8;
   color: #29285f;
   padding-left: 1rem;
 }
-.modal-wrapper .modal-section #matched-food #food-options button[aria-pressed=true] {
+.modal-wrapper .modal-section #matched-food #food-options button[aria-selected=true] {
   background-color: #29285f;
   color: white;
   padding-left: 0.5rem;
@@ -625,6 +664,7 @@ input[type=submit] {
   display: flex;
   align-items: center;
   width: 100%;
+  display: none;
 }
 .modal-wrapper .modal-section #food-details #food-nutrition {
   width: 100%;
@@ -653,6 +693,110 @@ input[type=submit] {
   opacity: 0.5;
 }
 
+.side-menu {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  display: initial;
+  left: -100%;
+}
+.side-menu .side-menu-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.side-menu .side-menu-content {
+  padding: 1rem;
+  position: absolute;
+  top: 0;
+  left: -70%;
+  width: 70%;
+  height: 100vh;
+  transition: 0.3s;
+  background-color: #f8f7f7;
+}
+.side-menu .side-menu-content .side-menu-close {
+  display: block;
+  margin-left: auto;
+  right: 0;
+  position: relative;
+  margin-bottom: 1rem;
+  border: none;
+  background-color: transparent;
+}
+.side-menu .side-menu-content .side-menu-close .svg-inline--fa.fa-w-16 {
+  color: #29285f;
+  width: 3rem;
+  height: 2rem;
+}
+
+*:focus-visible {
+  outline: 4px double #41a046;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-inline: auto;
+  width: 100vw;
+  min-height: 100vh;
+  background-color: #f8f7f7;
+  color: #29285f;
+}
+
+/* ----------------- */
+/* Global components */
+/* ----------------- */
+h2 {
+  margin-top: 3rem;
+  font-size: 4rem;
+  font-family: "Dongle", sans-serif;
+  color: #41a046;
+  text-align: center;
+}
+@media (max-width: 50rem) {
+  h2 {
+    line-height: 1;
+  }
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+input, .dropdown {
+  color: #29285f;
+  font-size: 1.25rem;
+  width: clamp(10rem, 100%, 20rem);
+  height: 3rem;
+  border-radius: 50rem;
+  border: 3px solid #29285f;
+  text-align: right;
+  padding-right: 1rem;
+  background-color: white;
+}
+
+input[type=submit] {
+  margin-top: 1rem;
+  text-align: center;
+  background-color: #29285f;
+  border-color: #29285f;
+  color: #f8f7f7;
+  font-family: "Dongle", sans-serif;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.dropdown select:hover {
+  background-color: #41a046;
+  color: #f8f7f7;
+}
+
 .empty-user-params-info {
   margin: auto;
   margin-top: 3rem;
@@ -662,11 +806,24 @@ input[type=submit] {
   align-items: center;
   justify-content: center;
 }
+@media (max-width: 50rem) {
+  .empty-user-params-info {
+    flex-direction: column;
+    line-height: 1;
+    margin-top: 1rem;
+  }
+}
 .empty-user-params-info .svg-inline--fa {
   display: flex;
   margin-left: auto;
   width: 30%;
   height: 100%;
+}
+@media (max-width: 50rem) {
+  .empty-user-params-info .svg-inline--fa {
+    margin: auto;
+    margin-bottom: 1rem;
+  }
 }
 .empty-user-params-info div {
   margin: auto;
@@ -674,6 +831,11 @@ input[type=submit] {
   align-items: center;
   flex-direction: column;
   width: 50%;
+}
+@media (max-width: 50rem) {
+  .empty-user-params-info div {
+    width: 100%;
+  }
 }
 .empty-user-params-info div p {
   width: 100%;

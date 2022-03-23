@@ -4,7 +4,7 @@
 #main-motivation {
     width: clamp(15rem, 50%, 80rem);
 
-    @media (max-width: 30rem) {
+    @media (max-width: variables.$screen-small) {
         width: 80%;
     }
 
