@@ -151,6 +151,16 @@ const updateSearchState = () => {
     }
 }
 
+// diables scroll on body
+const disableScroll = () => {
+    document.body.classList.add("disable-scroll");
+}
+
+// enables scroll on body
+const enableScroll = () => {
+    document.body.classList.remove("disable-scroll");
+}
+
 window.addEventListener("DOMContentLoaded", ()=> {
     
     updateFoodPage();
@@ -159,6 +169,7 @@ window.addEventListener("DOMContentLoaded", ()=> {
     addFoodBtn.addEventListener("click", () => {
         choosedFood = undefined; 
         addFoodModal.style.display = "initial";
+        document.body.classList.add("disable-scroll");
         
         // Traps focus into modal
         trapFocus(addFoodModal, 1);
@@ -207,18 +218,24 @@ window.addEventListener("DOMContentLoaded", ()=> {
             addFoodModal.style.display = "none";
         }
         clearAddFoodModal();
+
+        disableScroll();
     })
     
     // Handle modal close (cross button)
     addFoodModalClose.addEventListener("click", () => {
         addFoodModal.style.display = "none";
         clearAddFoodModal();
+
+        enableScroll();
     })
     
     // Handle modal close (click outside modal)
     addFoodModalBackground.addEventListener('click', () => {
         addFoodModal.style.display = "none";
         clearAddFoodModal();
+
+        enableScroll();
     })
 
 })
