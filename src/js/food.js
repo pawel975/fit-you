@@ -173,6 +173,8 @@ window.addEventListener("DOMContentLoaded", ()=> {
         
         // Traps focus into modal
         trapFocus(addFoodModal, 1);
+
+        disableScroll();
     })
     
     // Handle modal search and fetch data
@@ -219,7 +221,7 @@ window.addEventListener("DOMContentLoaded", ()=> {
         }
         clearAddFoodModal();
 
-        disableScroll();
+        enableScroll();
     })
     
     // Handle modal close (cross button)
