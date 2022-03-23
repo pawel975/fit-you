@@ -222,6 +222,7 @@ select {
   border: none;
 }
 #main-home #summary-container {
+  word-spacing: 0em;
   margin-top: 4rem;
   display: flex;
   align-items: center;
@@ -250,7 +251,7 @@ select {
 @media (max-width: 50rem) {
   #main-home #summary-container #daily-summary div:first-child {
     width: clamp(1rem, 90%, 35rem);
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   }
 }
 #main-home #summary-container #daily-summary div:first-child span {
@@ -258,7 +259,7 @@ select {
 }
 @media (max-width: 50rem) {
   #main-home #summary-container #daily-summary div:first-child span {
-    font-size: 4rem;
+    font-size: 3rem;
   }
 }
 #main-home #summary-container #daily-summary div:first-child span:first-child {
