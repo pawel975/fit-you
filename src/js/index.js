@@ -98,6 +98,7 @@ window.addEventListener("DOMContentLoaded", () => {
     // Make rover tabing feature in control areas
     navTabAreas.forEach(area => makeAreaTabable(area));
     makeAreaTabable(homeChooseDayField);
+    
 })
 
 navLogo.forEach(logo => {
