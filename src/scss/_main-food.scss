@@ -6,10 +6,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 1rem;
-
-    #diary-table {
-        overflow-x: scroll;
-    }
+    
+    @media (max-width: 40rem) {
+        #diary-table {
+            width: 95%;
+            overflow-x: scroll;
+            padding-bottom: 1rem;
+        }
+}
 }
 
