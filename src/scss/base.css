@@ -175,6 +175,13 @@ select {
   justify-content: center;
   gap: 1rem;
 }
+@media (max-width: 50rem) {
+  #choose-day {
+    margin: 0;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+}
 #choose-day .single-day-date {
   height: 100%;
   width: -webkit-fit-content;
@@ -201,25 +208,54 @@ select {
   display: flex;
   flex-direction: column;
 }
+@media (max-width: 50rem) {
+  #main-home {
+    width: 90%;
+    margin-bottom: 3rem;
+  }
+}
 #main-home #choose-day {
   border: none;
 }
 #main-home #summary-container {
-  margin-top: 6rem;
+  margin-top: 4rem;
   display: flex;
   align-items: center;
   justify-content: space-around;
   width: 100%;
 }
+@media (max-width: 50rem) {
+  #main-home #summary-container {
+    flex-direction: column;
+    gap: 4rem;
+    margin-top: 3rem;
+  }
+}
 #main-home #summary-container #daily-summary {
   width: clamp(1rem, 70%, 35rem);
+}
+@media (max-width: 50rem) {
+  #main-home #summary-container #daily-summary {
+    width: clamp(1rem, 90%, 35rem);
+  }
 }
 #main-home #summary-container #daily-summary div:first-child {
   color: #818181;
   font-size: 2rem;
 }
+@media (max-width: 50rem) {
+  #main-home #summary-container #daily-summary div:first-child {
+    width: clamp(1rem, 90%, 35rem);
+    font-size: 1.5rem;
+  }
+}
 #main-home #summary-container #daily-summary div:first-child span {
   font-size: 5.5rem;
+}
+@media (max-width: 50rem) {
+  #main-home #summary-container #daily-summary div:first-child span {
+    font-size: 4rem;
+  }
 }
 #main-home #summary-container #daily-summary div:first-child span:first-child {
   color: #41a046;
@@ -234,12 +270,22 @@ select {
   font-size: 1.25rem;
   color: #818181;
 }
+@media (max-width: 50rem) {
+  #main-home #summary-container #daily-summary div:nth-child(1n+3) {
+    font-size: 0.875rem;
+  }
+}
 #main-home #summary-container #daily-summary div:nth-child(1n+3) span {
   font-size: 3rem;
   color: #29285f;
 }
+@media (max-width: 50rem) {
+  #main-home #summary-container #daily-summary div:nth-child(1n+3) span {
+    font-size: 2rem;
+  }
+}
 #main-home #summary-container #daily-summary #pbar-container {
-  width: 100%;
+  width: 80%;
   position: relative;
   display: flex;
   background-color: #c8c8c8;
@@ -264,8 +310,13 @@ select {
   z-index: 2;
   background-color: #e94b4b;
 }
-#main-home #summary-container #history-chart {
+#main-home #history-chart {
   width: 50%;
+}
+@media (max-width: 50rem) {
+  #main-home #history-chart {
+    width: clamp(20rem, 90%, 40rem);
+  }
 }
 
 #main-measures {
@@ -274,6 +325,7 @@ select {
 @media (max-width: 50rem) {
   #main-measures {
     width: 90%;
+    margin-bottom: 3rem;
   }
 }
 #main-measures #section-container {
@@ -364,6 +416,7 @@ select {
 @media (max-width: 50rem) {
   #main-motivation {
     width: 80%;
+    margin-bottom: 3rem;
   }
 }
 #main-motivation #motivation-quotes {
@@ -694,6 +747,7 @@ select {
 }
 
 .side-menu {
+  z-index: 2;
   width: 100%;
   height: 100%;
   position: absolute;

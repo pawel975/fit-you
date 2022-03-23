@@ -6,6 +6,7 @@
 
     @media (max-width: variables.$screen-small) {
         width: 80%;
+        margin-bottom: 3rem;
     }
 
     #motivation-quotes {
@@ -13,7 +14,6 @@
         border-block: 1px solid variables.$clr-less-dark;
         margin: auto;
         margin-top: 3rem;
-        // outline: 2px solid red;
 
         #quote {
             font-size: variables.$fs-400;
