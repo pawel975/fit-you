@@ -12,8 +12,6 @@ export const trapFocus = (element, firstElementFocusIndex) => {
 
     focusableEls[firstElementFocusIndex].focus();
 
-    console.log(focusableEls)
-
     element.addEventListener('keydown', handleTab);
 }
 
