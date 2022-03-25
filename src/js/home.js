@@ -4,7 +4,7 @@ import { getLastWeek, getCurrentDate} from "./date";
 import { renderHistoryChart} from "./historyChart";
 import { getState, updateState, initState } from "./state";
 
-const {homeChooseDayField, homeSingleDaysArray, homeProgressCrossedLimit, homeRemainKcal, homeGoalKcal, homeFat, homeProteins, homeCarbo, homeProgressBarValue} = DOMelements;
+const {homeSingleDaysArray, homeProgressCrossedLimit, homeRemainKcal, homeGoalKcal, homeFat, homeProteins, homeCarbo, homeProgressBarValue} = DOMelements;
 
 // Get single date records  
 export const getDayData = (date) => {
