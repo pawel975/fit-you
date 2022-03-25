@@ -24,6 +24,11 @@
         border: 2px solid variables.$clr-darkest;
         border-radius: 5rem;
 
+        @media (max-width: variables.$screen-small) {
+            padding: 0.1rem 0.3rem;
+            font-size: variables.$fs-300;
+        }
+
         &[aria-selected=true] {
             background-color: variables.$clr-darkest;
             color: variables.$clr-light;

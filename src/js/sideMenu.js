@@ -25,7 +25,6 @@ window.addEventListener("load", () => {
 
     sideMenuOpen.addEventListener("click", () => {
         handleSideMenuOpen()
-
     })
 
     sideMenuClose.addEventListener("click", () => {
