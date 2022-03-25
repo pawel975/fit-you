@@ -6,8 +6,7 @@ import { updateHomePage } from "./home";
 import { getState, initState } from "./state";
 import { makeAreaTabable } from "./tabing";
 
-
-const {navLogo, navHome, navFood, navMotivation, navMeasures, navTabAreas, mainHome, mainFood, mainMotivation, mainMeasures, addFoodDiaryTableContainer, emptyUserParamsInfo, homeChooseDayField, homeDailySummaryContainer, addFoodBtn, goToMeasures} = DOMelements 
+const {navLogo, navHome, navFood, navMotivation, navMeasures, navTabAreas, mainHome, mainFood, mainMotivation, mainMeasures, addFoodDiaryTableContainer, emptyUserParamsInfo, homeChooseDayField, homeDailySummaryContainer, addFoodBtn, goToMeasures, mobileNavElements, desktopNavElements, sideMenu} = DOMelements 
 
 const updateAllPages = () => {
 
@@ -80,6 +79,21 @@ const changeTabPanelSelection = (e, choosedTab) => {
     }
 }
 
+// changes tabing area to being tabable or not
+const manageNavTabing = () => {
+    const windowWidth = window.innerWidth;
+
+    if (windowWidth < 800) {
+        desktopNavElements.style.visibility = "hidden";
+        mobileNavElements.style.visibility = "visible";
+        sideMenu.style.visibility = "visible";
+    } else {
+        desktopNavElements.style.visibility = "visible";
+        mobileNavElements.style.visibility = "hidden";
+        sideMenu.style.visibility = "hidden";
+    }
+}
+
 window.addEventListener("DOMContentLoaded", () => {
 
     if (getState() === null) {
@@ -95,9 +109,17 @@ window.addEventListener("DOMContentLoaded", () => {
     // Update view based on state settings
     updateView();
 
-    // Make rover tabing feature in control areas
-    navTabAreas.forEach(area => makeAreaTabable(area));
+    // Make roving tabing feature in control areas
+    navTabAreas.forEach(area => {
+        if (area.style.display !== "none") {
+            makeAreaTabable(area);
+        }
+    })
     makeAreaTabable(homeChooseDayField);
+
+    // Enable tabing for visible nav and disables for other one
+    manageNavTabing();
+    window.addEventListener("resize", manageNavTabing)
     
 })
 
@@ -157,9 +179,9 @@ navMeasures.forEach(measures => {
 })
 
 goToMeasures.forEach(button => button.addEventListener("click", () => {
-    updateView();
-    updateAllPages();
-    displayMeasuresPage();
+        updateView();
+        updateAllPages();
+        displayMeasuresPage();
     })
 )
 

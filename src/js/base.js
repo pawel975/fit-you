@@ -4,7 +4,9 @@ export const DOMelements = {
 
     // global
     navTabAreas: document.querySelectorAll(".nav-tab-area"),
-    mobileMenuOptions: document.querySelectorAll(".mobile-menu"),
+    mobileMenuOptions: document.querySelector(".mobile-menu"),
+    mobileNavElements: document.querySelector(".nav-mobile"),
+    desktopNavElements: document.querySelector(".nav-desktop"),
     loader: document.querySelector(".loader"),
     emptyUserParamsInfo: document.querySelectorAll(".empty-user-params-info"),
     goToMeasures: document.querySelectorAll(".go-to-measures"),

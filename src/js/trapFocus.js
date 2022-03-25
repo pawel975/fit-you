@@ -3,7 +3,7 @@ let firstFocusableEl;
 let lastFocusableEl;
 const KEYCODE_TAB = 9;
 
-export const trapFocus = (element, firstElementFocusIndex) => {
+export const trapFocus = (element, firstElementFocusIndex = 0) => {
 
     // Fetch all elements to focus
     const focusableEls = element.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="number"]:not([disabled]), input[type="submit"], input[type="checkbox"]:not([disabled]), select:not([disabled])');

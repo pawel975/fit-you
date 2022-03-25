@@ -6,8 +6,9 @@
     height: 100%;
     position: fixed;
     top: 0;
-    display: initial;
+    display: none;
     left: -100%;
+    visibility: hidden;
 
     .side-menu-bg {
         position: absolute;
