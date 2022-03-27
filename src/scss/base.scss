@@ -185,4 +185,5 @@ input[type=submit] {
 
 .dark-theme {
   filter: invert(0.95) hue-rotate(180deg);
+  background-color: variables.$clr-light;
 }
