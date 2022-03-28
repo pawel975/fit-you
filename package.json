@@ -22,8 +22,9 @@
     "webpack-dev-server": "^4.7.4"
   },
   "dependencies": {
-    "@babel/core": "^7.16.12",
+    "@babel/core": "^7.17.8",
     "@babel/preset-env": "^7.16.11",
+    "babel-jest": "^27.5.1",
     "chart.js": "^3.7.1",
     "css-loader": "^6.6.0",
     "date-fns": "^2.28.0",

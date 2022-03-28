@@ -1,10 +1,7 @@
 
-// functions imports
-
 const {getCurrentDate, getLastWeek} = require("../js/date");
 
 // getCurrentDate
-
 test("Should output date in right format", () => {
     const date = getCurrentDate();
     expect(typeof date).toBe('string');
@@ -16,7 +13,6 @@ test("Date should be 11 char long", ()=> {
 })
 
 // getLastWeek
-
 test("Should output array of 7 elements long", ()=> {
     const lastWeekLength = getLastWeek().length;
     expect(lastWeekLength).toBe(7);

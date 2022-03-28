@@ -1,6 +1,6 @@
 
 // Initialize state object if it doesn't exist
-export const initState = () => {
+export const initState = (localStorage = window.localStorage) => {
     let initState = {
         userHistory: [],
         userParams: {},
@@ -9,16 +9,16 @@ export const initState = () => {
         darkModeOn: false,
     }
 
-    window.localStorage.setItem("state", JSON.stringify(initState));
+    localStorage.setItem("state", JSON.stringify(initState));
 }
 
-export const updateState = (stateProp, value) => {
+export const updateState = (stateProp, value, localStorage = window.localStorage) => {
     let state = JSON.parse(localStorage.getItem("state"));
     state[stateProp] = value;
-    window.localStorage.setItem("state", JSON.stringify(state));
+    localStorage.setItem("state", JSON.stringify(state));
 }
 
-export const getState = (stateProp) => {
+export const getState = (stateProp, localStorage = window.localStorage) => {
     let receivedData = JSON.parse(localStorage.getItem("state"));
     if (stateProp === undefined) return receivedData
     let data = receivedData[stateProp]
