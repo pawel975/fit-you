@@ -10,56 +10,44 @@ const localStorage = dom.window.localStorage;
 const document = dom.window.document;
 
 const toggleDarkMode = exportedForTesting.toggleDarkMode; 
-
 const {toggleThemeSwitches} = DOMelements;
 
-// toggleDarkMode
-
-expect.extend({
-    allElementsAriaCheckedToBe(receivedArr, attrValue) {
+// expect.extend({
+//     allElementsAriaCheckedToBe(receivedArr, attrValue) {
         
-        let passedElements = [];
-        let pass; 
+//         let passedElements = [];
+//         let pass; 
 
-        receivedArr.forEach(element => {
-            if(JSON.parse(element.getAttribute("aria-checked")) === attrValue){
-                passedElements.push(element.getAttribute("aria-checked"))
-            }
-        });
+//         receivedArr.forEach(element => {
+//             if(JSON.parse(element.getAttribute("aria-checked")) === attrValue){
+//                 passedElements.push(element.getAttribute("aria-checked"))
+//             }
+//         });
 
-        passedElements.length == receivedArr.length ? pass = true : pass = false;
+//         passedElements.length == receivedArr.length ? pass = true : pass = false;
 
-        if (pass) {
-            return {
-                message: () => `All elements should have aria-checked = ${attrValue}`,
-                pass: true,
-            }
-        } else {
-            return {
-                message: () => `All elements should have aria-checked = ${attrValue}`,
-                pass: false,
-            }
-        }
-    },
-})
+//         if (pass) {
+//             return {
+//                 message: () => `All elements should have aria-checked = ${attrValue}`,
+//                 pass: true,
+//             }
+//         } else {
+//             return {
+//                 message: () => `All elements should have aria-checked = ${attrValue}`,
+//                 pass: false,
+//             }
+//         }
+//     },
+// })
 
-test.only("All dark mode switches are synchronised with dark mode", () => {
+// toggleDarkMode
+test("Changes dark mode boolean value in state", () => {
 
     initState(localStorage);
     
-    const darkMode = getState("darkModeOn", localStorage);
-    toggleDarkMode(darkMode, localStorage)
+    const darkModeBefore = getState("darkModeOn", localStorage);
+    toggleDarkMode(darkModeBefore, localStorage)
+    const darkModeAfter = getState("darkModeOn", localStorage);
 
-    // const tmp = [];
-    // Array.from(toggleThemeSwitches).forEach(toggle => {
-    //     tmp.push(toggle.getAttribute("aria-checked"))
-    // })
-
-    // console.log(Array.from(toggleThemeSwitches) , "toggleThemeSwitch")
-    // console.log(tmp, "tmp")
-    // console.log(darkMode)
-    console.log(toggleThemeSwitches.length)
-
-    expect(toggleThemeSwitches).allElementsAriaCheckedToBe(darkMode);
-
+    expect(darkModeBefore).toBe(!darkModeAfter);
 })

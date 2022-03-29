@@ -48,6 +48,7 @@ module.exports = {
     './src/js/foodOption.js',
     './src/js/diaryTable.js',
   ],
+  devtool: 'inline-source-map',
   output: {
     filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
