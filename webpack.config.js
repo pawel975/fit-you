@@ -30,7 +30,8 @@ module.exports = {
       }
     ]
   },
-  entry: [
+  entry: {
+    index: [
     'babel-polyfill',
     './src/js/base.js',
     './src/js/index.js',
@@ -47,16 +48,18 @@ module.exports = {
     './src/js/historyChart.js',
     './src/js/foodOption.js',
     './src/js/diaryTable.js',
-  ],
+    ]
+  },
   devtool: 'inline-source-map',
   output: {
     filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
+    clean: true,
   },
   mode: 'development',
-  // serves server for project in current directory
+  // serves server for project in specified directory
   devServer: {
-    static: './',
+    static: './dist',
     open:true
   },
   plugins: [
