@@ -54,16 +54,22 @@ export const updateHomePage = () => {
     let lastWeekHistory = getState("userHistory");
     lastWeekHistory = lastWeekHistory.filter(day => lastWeek.indexOf(day.date) > -1)
     updateState("userHistory", lastWeekHistory);
-
+    
     // If active date is out of days range, set it to today
+    
     for (let i = 0; i < homeSingleDaysArray.length; i++) {
-        const dayOfTheWeek = lastWeek[i]
-        const dayInSummary = homeSingleDaysArray[i]
+        const dayOfTheWeek = lastWeek[i];
 
-        if (dayOfTheWeek === dayInSummary) return
+        if (dayOfTheWeek === activeDate) break
 
-        homeSingleDaysArray[lastWeek.length - 1].setAttribute("aria-selected", true);
+        if (i === 6){
+            if (dayOfTheWeek !== activeDate){
+                homeSingleDaysArray[lastWeek.length - 1].setAttribute("aria-selected", true);
+                updateState("activeDate", dayOfTheWeek)
+            }
+        }
     }
+
 
     updateDaySummary();
     renderHistoryChart();
