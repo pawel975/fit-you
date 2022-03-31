@@ -56,7 +56,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     clean: true,
   },
-  mode: 'development',
+  mode: 'production',
   // serves server for project in specified directory
   devServer: {
     static: './dist',

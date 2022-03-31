@@ -20,9 +20,9 @@ export const updateHomePage = () => {
     homeSingleDaysArray.forEach((day, i) => {
         
         // Fill choose day buttons field with dates
-        day.textContent = lastWeek[i].slice(0,5);
-        day.setAttribute("data-date", lastWeek[i]);
         const date = lastWeek[i];
+        day.textContent = date.slice(0,5);
+        day.setAttribute("data-date", date);
         
         // Create day in userHistory if doesn't exist
         if (!getDayData(date)) {
@@ -36,7 +36,7 @@ export const updateHomePage = () => {
             day.setAttribute("aria-selected", false);
         }
         
-        // events of chooseing date from field of days
+        // events of choosing date from field of days
         day.addEventListener("click", (e) => {
             renderDayData(e.target);
             day.setAttribute("aria-selected", true);
@@ -54,6 +54,16 @@ export const updateHomePage = () => {
     let lastWeekHistory = getState("userHistory");
     lastWeekHistory = lastWeekHistory.filter(day => lastWeek.indexOf(day.date) > -1)
     updateState("userHistory", lastWeekHistory);
+
+    // If active date is out of days range, set it to today
+    for (let i = 0; i < homeSingleDaysArray.length; i++) {
+        const dayOfTheWeek = lastWeek[i]
+        const dayInSummary = homeSingleDaysArray[i]
+
+        if (dayOfTheWeek === dayInSummary) return
+
+        homeSingleDaysArray[lastWeek.length - 1].setAttribute("aria-selected", true);
+    }
 
     updateDaySummary();
     renderHistoryChart();
