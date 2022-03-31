@@ -1,4 +1,4 @@
-// Webpack config for development
+// Webpack config for production
 
 const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -52,17 +52,12 @@ module.exports = {
     './src/js/diaryTable.js',
     ]
   },
-  devtool: 'inline-source-map',
   output: {
     filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
   },
-  mode: 'development',
-  devServer: {
-    static: './dist',
-    open:true
-  },
+  mode: 'production',
   plugins: [
     new Dotenv({
       prefix: 'process.env.'
