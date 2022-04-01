@@ -31,8 +31,8 @@ module.exports = {
     ]
   },
   entry: {
+    polyfills: './src/js/polyfills.js',
     index: [
-    // 'babel-polyfill',
     './src/js/base.js',
     './src/js/index.js',
     './src/js/measures.js',

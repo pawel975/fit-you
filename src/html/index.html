@@ -6,6 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script async="true" src="https://kit.fontawesome.com/e21a47bafe.js" crossorigin="anonymous"></script>
+    <script>
+        const modernBrowser = 'fetch' in window && 'assign' in Object;
+  
+        if (modernBrowser) {
+          const scriptElement = document.createElement('script');
+  
+          scriptElement.async = false;
+          scriptElement.src = '/polyfills.[contenthash].js';
+          document.head.appendChild(scriptElement);
+        }
+    </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>FitYou</title>
 </head>

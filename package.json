@@ -29,6 +29,7 @@
     "chart.js": "^3.7.1",
     "css-loader": "^6.6.0",
     "regenerator-runtime": "^0.13.9",
-    "style-loader": "^3.3.1"
+    "style-loader": "^3.3.1",
+    "whatwg-fetch": "^3.6.2"
   }
 }
