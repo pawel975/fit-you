@@ -7,7 +7,10 @@ App to track daily diet base on goals, including meals and products with it's nu
 
 Run `npm install` to install all dependencies
 
-## How to run
+## Build
 
 Run `npm run build` to build app in production mode
+
+## How to run
+
 Run `npm run dev` to run app in development mode and serve it on localhost
