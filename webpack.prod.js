@@ -6,7 +6,7 @@ module.exports = merge(common, {
   // source-map ussed for benchmark test in production, could be excluded 
   // devtool: 'source-map',
   performance: {
-    // hints: false,
+    hints: false,
   }
 });
   
