@@ -1,7 +1,7 @@
 
-## GetFit app
+## FitYou app
 
-App to track daily diet base on goals, including meals and products with it's nutritions.
+App to track daily food diary base on goals, including meals and products with it's nutritions.
 
 ## Installation
 
