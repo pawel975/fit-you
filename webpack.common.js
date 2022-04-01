@@ -1,5 +1,3 @@
-// Webpack config for production
-
 const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require("path");
@@ -57,7 +55,6 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     clean: true,
   },
-  mode: 'production',
   plugins: [
     new Dotenv({
       prefix: 'process.env.'
@@ -81,8 +78,5 @@ module.exports = {
       },
     },
   },
-  performance: {
-    hints: false,
-  }
 };
   
