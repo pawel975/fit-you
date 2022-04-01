@@ -32,7 +32,7 @@ module.exports = {
   },
   entry: {
     index: [
-    'babel-polyfill',
+    // 'babel-polyfill',
     './src/js/base.js',
     './src/js/index.js',
     './src/js/measures.js',
