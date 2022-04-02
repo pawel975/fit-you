@@ -920,19 +920,25 @@ input[type=submit] {
 }
 
 .empty-search-food-state-info {
-  width: 100%;
-  margin: auto;
-  margin-top: 3rem;
   color: #41a046;
   font-weight: 900;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 30%;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
 }
 .empty-search-food-state-info .svg-inline--fa.fa-w-16 {
-  margin: auto;
-  display: flex;
   justify-content: center;
-  width: 60%;
+  width: 20%;
   height: 100%;
+  margin: auto;
+}
+.empty-search-food-state-info p {
+  text-align: center;
+  font-size: 1.25rem;
 }
 
 ::-webkit-scrollbar {

@@ -71,8 +71,6 @@ const createFoodOption = (fetchedMatches, matchedFood) => {
             matchedFood.push(new FoodOption(fdcId, description, brandName, servingSize, calories, fat, proteins, carbs, Number(addFoodServingCount.value)))
         })
 
-    
-
 }
 
 // Create food record in particular day to state
@@ -164,7 +162,7 @@ const clearAddFoodModal = () => {
 
 const updateSearchState = () => {
     if (fetchedMatches.length === 0 || addFoodSearch.value.length === 0) {
-        addFoodEmptySearchStateInfo.style.display = "block";
+        addFoodEmptySearchStateInfo.style.display = "flex";
         addFoodMatchedFood.style.display = "none";
         addFoodMatchTable.style.display = "none";
         loader.style.display = "none"
