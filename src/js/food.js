@@ -43,20 +43,36 @@ const fetchFoodData = async () => {
 }
 
 const createFoodOption = (fetchedMatches, matchedFood) => {
+    
+    if (fetchedMatches.length === 0) return
+    
+        fetchedMatches.forEach(match => {
+            
+            const {fdcId, description, brandName, servingSize, foodNutrients} = match
+    
+            const fat = 
+                foodNutrients.filter(nutrient => nutrient.nutrientId === 1004)[0] ? 
+                foodNutrients.filter(nutrient => nutrient.nutrientId === 1004)[0].value :
+                null
+            const proteins = 
+                foodNutrients.filter(nutrient => nutrient.nutrientId === 1003)[0] ? 
+                foodNutrients.filter(nutrient => nutrient.nutrientId === 1003)[0].value :
+                null
+            const carbs = 
+                foodNutrients.filter(nutrient => nutrient.nutrientId === 1005)[0] ? 
+                foodNutrients.filter(nutrient => nutrient.nutrientId === 1005)[0].value :
+                null
+            const calories = 
+                foodNutrients.filter(nutrient => nutrient.nutrientId === 1008)[0] ? 
+                foodNutrients.filter(nutrient => nutrient.nutrientId === 1008)[0].value :
+                null
+    
+            // Push data fetched from API to array in form of FoodOption instances
+            matchedFood.push(new FoodOption(fdcId, description, brandName, servingSize, calories, fat, proteins, carbs, Number(addFoodServingCount.value)))
+        })
 
-    if (fetchedMatches.length === 0) return;
+    
 
-    fetchedMatches.forEach(match => {
-        const {fdcId, description, brandName, servingSize, foodNutrients} = match
-
-        const fat = foodNutrients.filter(nutrient => nutrient.nutrientId === 1004)[0].value
-        const proteins = foodNutrients.filter(nutrient => nutrient.nutrientId === 1003)[0].value
-        const carbs = foodNutrients.filter(nutrient => nutrient.nutrientId === 1005)[0].value
-        const calories = foodNutrients.filter(nutrient => nutrient.nutrientId === 1008)[0].value
-
-        // Push data fetched from API to array in form of FoodOption instances
-        matchedFood.push(new FoodOption(fdcId, description, brandName, servingSize, calories, fat, proteins, carbs, Number(addFoodServingCount.value)))
-    })
 }
 
 // Create food record in particular day to state
@@ -168,7 +184,6 @@ const disableScroll = () => {
 const enableScroll = () => {
     document.body.classList.remove("disable-scroll");
 }
-console.log(renderMatchDetailsTable());
 
 window.addEventListener("DOMContentLoaded", ()=> {
     
