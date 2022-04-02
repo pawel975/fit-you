@@ -737,13 +737,15 @@ select {
 .modal-wrapper .modal-section #food-details {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   width: 100%;
   display: none;
 }
 .modal-wrapper .modal-section #food-details #food-nutrition {
   width: 100%;
 }
-.modal-wrapper .modal-section #food-details #food-nutrition tr td:first-child {
+.modal-wrapper .modal-section #food-details #food-nutrition tr td {
+  width: 50%;
   text-align: left;
 }
 .modal-wrapper .modal-section #food-details #add-food-form {

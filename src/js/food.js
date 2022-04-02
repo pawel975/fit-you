@@ -6,6 +6,7 @@ import {getState, updateState} from "./state";
 import "regenerator-runtime/runtime.js";
 import { makeAreaTabable } from "./tabing";
 import { trapFocus } from "./trapFocus";
+import { createEmptyMatchDetailsTable } from "./emptyMatchDetailsTable";
 
 const {addFoodBtn, addFoodDiaryTableContainer, addFoodServingCount, addFoodMatchesArea, addFoodMatchedFood, addFoodEmptySearchStateInfo, addFoodModal, addFoodSearch, addFoodFinish, addFoodModalClose, addFoodModalBackground, addFoodMatchTable, loader} = DOMelements;
 
@@ -81,8 +82,14 @@ const renderTable = (date) => {
 }
 
 const renderMatchDetailsTable = (choosedFood) => {
-    addFoodMatchTable.insertBefore(choosedFood.createMatchDetailsTable(),addFoodMatchTable.children[0]);
+
+    if (choosedFood){
+        addFoodMatchTable.insertBefore(choosedFood.createMatchDetailsTable(),addFoodMatchTable.children[0]);
+    } else {
+        addFoodMatchTable.insertBefore(createEmptyMatchDetailsTable(), addFoodMatchTable.children[0]);
+    }
     addFoodMatchTable.removeChild(addFoodMatchTable.children[1])
+
 }
 
 const renderMatches = async () => {
@@ -134,7 +141,8 @@ const clearAddFoodModal = () => {
     addFoodMatchesArea.textContent = "";
     addFoodServingCount.value = 1;
     fetchedMatches = [];
-    choosedFood = [];
+    choosedFood = undefined;
+    renderMatchDetailsTable();
     updateSearchState();
 }
 
@@ -160,6 +168,7 @@ const disableScroll = () => {
 const enableScroll = () => {
     document.body.classList.remove("disable-scroll");
 }
+console.log(renderMatchDetailsTable());
 
 window.addEventListener("DOMContentLoaded", ()=> {
     

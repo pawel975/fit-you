@@ -108,17 +108,18 @@
       #food-details {
         display: flex;
         align-items: center;
+        justify-content: space-between;
         width: 100%;
         display: none;
   
         #food-nutrition {
           width: 100%;
   
+          
           tr {
             td {
-              &:first-child {
-                text-align: left;
-              }
+              width: 50%;
+              text-align: left;
             }
           }
         }
