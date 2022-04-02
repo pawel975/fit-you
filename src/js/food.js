@@ -81,8 +81,8 @@ const renderTable = (date) => {
 }
 
 const renderMatchDetailsTable = (choosedFood) => {
-    addFoodMatchTable.insertBefore(choosedFood.createMatchDetailsTable(),addFoodMatchTable.childNodes[2]);
-    addFoodMatchTable.removeChild(addFoodMatchTable.childNodes[1])
+    addFoodMatchTable.insertBefore(choosedFood.createMatchDetailsTable(),addFoodMatchTable.children[1]);
+    addFoodMatchTable.removeChild(addFoodMatchTable.children[1])
 }
 
 const renderMatches = async () => {
