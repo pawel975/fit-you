@@ -198,6 +198,12 @@ select {
   border: 2px solid #29285f;
   border-radius: 5rem;
 }
+@media (max-width: 50rem) {
+  #choose-day .single-day-date {
+    padding: 0.1rem 0.3rem;
+    font-size: 1.25rem;
+  }
+}
 #choose-day .single-day-date[aria-selected=true] {
   background-color: #29285f;
   color: #f8f7f7;
@@ -245,7 +251,7 @@ select {
   }
 }
 #main-home #summary-container #daily-summary div:first-child {
-  color: #818181;
+  color: #6b6b6b;
   font-size: 2rem;
 }
 @media (max-width: 50rem) {
@@ -273,7 +279,7 @@ select {
   flex-direction: column;
   padding-right: 1rem;
   font-size: 1.25rem;
-  color: #818181;
+  color: #6b6b6b;
 }
 @media (max-width: 50rem) {
   #main-home #summary-container #daily-summary div:nth-child(1n+3) {
@@ -556,7 +562,7 @@ select {
   align-items: center;
   justify-content: space-around;
   margin-inline: auto;
-  border-bottom: 1px solid #818181;
+  border-bottom: 1px solid #6b6b6b;
 }
 @media (max-width: 50rem) {
   .nav-desktop {
@@ -572,7 +578,7 @@ select {
   gap: 2rem;
   justify-content: space-between;
   margin-inline: auto;
-  border-bottom: 1px solid #818181;
+  border-bottom: 1px solid #6b6b6b;
 }
 @media (max-width: 50rem) {
   .nav-mobile {
@@ -767,8 +773,9 @@ select {
   height: 100%;
   position: fixed;
   top: 0;
-  display: initial;
+  display: none;
   left: -100%;
+  visibility: hidden;
 }
 .side-menu .side-menu-bg {
   position: absolute;
@@ -974,4 +981,5 @@ input[type=submit] {
 }
 .dark-theme {
   filter: invert(0.95) hue-rotate(180deg);
+  background-color: #f8f7f7;
 }/*# sourceMappingURL=base.css.map */

@@ -2,6 +2,7 @@ const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require("path");
 
+
 module.exports = {
   cache: {
     type: 'filesystem',
@@ -31,10 +32,9 @@ module.exports = {
     ]
   },
   entry: {
-    polyfills: './src/js/polyfills.js',
     index: [
-    './src/js/base.js',
     './src/js/index.js',
+    './src/js/base.js',
     './src/js/measures.js',
     './src/js/state.js',
     './src/js/food.js',
@@ -60,9 +60,10 @@ module.exports = {
       prefix: 'process.env.'
     }),
     new HtmlWebpackPlugin({
-      template: './src/html/index.html',
+      template: './index.html',
       filename: 'index.html',
       inject: 'body',
+      favicon: './favicon.svg'
     }),
   ],
   optimization: {

@@ -1,3 +1,4 @@
+import 'babel-polyfill';
 import { DOMelements } from "./base";
 import "../scss/base.scss"
 import { updateFoodPage } from "./food";
