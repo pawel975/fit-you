@@ -80,7 +80,7 @@ const createFoodStateRecord = (date, food, servingCount) => {
     let tmpData = getDayData(date);
     food.servingCount = servingCount;
     tmpData.eatenFood.push(food);
-    userDiary.forEach(day => {
+    userDiary.forEach(day => {  
         if (day.date === date) day.eatenFood = tmpData.eatenFood;
     })
     updateState("userHistory", userDiary);
