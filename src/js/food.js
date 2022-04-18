@@ -171,6 +171,8 @@ const updateSearchState = () => {
         addFoodMatchedFood.style.display = "initial";
         addFoodMatchTable.style.display = "flex";
     }
+
+    addFoodSearch.focus();
 }
 
 // diables scroll on body
