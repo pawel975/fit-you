@@ -6,6 +6,8 @@ const { addFoodDiaryTableContainer} = DOMelements
 
 export const createDiaryTable = (foodRecords) => {
 
+    if (!foodRecords) return;
+
     const summaryNutritions = {
         weight:0,
         calories: 0,

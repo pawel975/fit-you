@@ -44,8 +44,12 @@ const fetchFoodData = async () => {
 
 const createFoodOption = (fetchedMatches, matchedFood) => {
     
-    if (fetchedMatches.length === 0) return
-    
+    if (typeof fetchedMatches !== "object" ||
+        fetchedMatches.length === 0 ||
+        !fetchedMatches[0].fdcId) {
+        throw new Error ("Invalid type of argument")
+    }
+
         fetchedMatches.forEach(match => {
             
             const {fdcId, description, brandName, servingSize, foodNutrients} = match
@@ -70,7 +74,6 @@ const createFoodOption = (fetchedMatches, matchedFood) => {
             // Push data fetched from API to array in form of FoodOption instances
             matchedFood.push(new FoodOption(fdcId, description, brandName, servingSize, calories, fat, proteins, carbs, Number(addFoodServingCount.value)))
         })
-
 }
 
 // Create food record in particular day to state
@@ -184,7 +187,7 @@ const enableScroll = () => {
 }
 
 window.addEventListener("DOMContentLoaded", ()=> {
-    
+
     updateFoodPage();
     
     // Handle modal open
@@ -269,3 +272,7 @@ window.addEventListener("DOMContentLoaded", ()=> {
 
 })
 
+export const exportedForTestingFood = {
+    createDiaryTable,
+    createFoodOption,
+}

@@ -61,13 +61,13 @@ const updateParamsSummary = () => {
         ){
             summaryContainer.innerHTML = 
             `<div>
-            <p>Fill all fields to see your daily caloric demand</p>
+                <p>Fill all fields to see your daily caloric demand</p>
             </div>`;
             return
         } else {
             summaryContainer.innerHTML =
             `<div>
-            <p>To <span>${goal}</span>, your daily calories demand is <span>${dailyBMR}</span> kcal</p>
+                <p>To <span>${goal}</span>, your daily calories demand is <span>${dailyBMR}</span> kcal</p>
             </div>`;
         }
     }

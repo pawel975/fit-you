@@ -33,6 +33,7 @@ module.exports = {
   },
   entry: {
     index: [
+    'babel-polyfill',
     './src/js/index.js',
     './src/js/base.js',
     './src/js/measures.js',

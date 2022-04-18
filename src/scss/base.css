@@ -121,15 +121,15 @@ select {
 }
 
 .text-contrast {
-  color: #41a046;
+  color: rgb(65, 160, 70);
 }
 
 .text-dark {
-  color: #29285f;
+  color: rgb(41, 40, 95);
 }
 
 .text-light {
-  color: #f8f7f7;
+  color: rgb(248, 247, 247);
 }
 
 .fs-900 {
@@ -193,9 +193,9 @@ select {
   width: fit-content;
   cursor: pointer;
   padding: 0.2rem 0.5rem;
-  color: #29285f;
+  color: rgb(41, 40, 95);
   font-size: 1.5rem;
-  border: 2px solid #29285f;
+  border: 2px solid rgb(41, 40, 95);
   border-radius: 5rem;
 }
 @media (max-width: 50rem) {
@@ -205,8 +205,8 @@ select {
   }
 }
 #choose-day .single-day-date[aria-selected=true] {
-  background-color: #29285f;
-  color: #f8f7f7;
+  background-color: rgb(41, 40, 95);
+  color: rgb(248, 247, 247);
 }
 
 #main-home {
@@ -251,7 +251,7 @@ select {
   }
 }
 #main-home #summary-container #daily-summary div:first-child {
-  color: #6b6b6b;
+  color: rgb(107, 107, 107);
   font-size: 2rem;
 }
 @media (max-width: 50rem) {
@@ -269,17 +269,17 @@ select {
   }
 }
 #main-home #summary-container #daily-summary div:first-child span:first-child {
-  color: #41a046;
+  color: rgb(65, 160, 70);
 }
 #main-home #summary-container #daily-summary div:first-child span:nth-child(3) {
-  color: #29285f;
+  color: rgb(41, 40, 95);
 }
 #main-home #summary-container #daily-summary div:nth-child(1n+3) {
   display: inline-flex;
   flex-direction: column;
   padding-right: 1rem;
   font-size: 1.25rem;
-  color: #6b6b6b;
+  color: rgb(107, 107, 107);
 }
 @media (max-width: 50rem) {
   #main-home #summary-container #daily-summary div:nth-child(1n+3) {
@@ -288,7 +288,7 @@ select {
 }
 #main-home #summary-container #daily-summary div:nth-child(1n+3) span {
   font-size: 3rem;
-  color: #29285f;
+  color: rgb(41, 40, 95);
 }
 @media (max-width: 50rem) {
   #main-home #summary-container #daily-summary div:nth-child(1n+3) span {
@@ -299,7 +299,7 @@ select {
   width: 80%;
   position: relative;
   display: flex;
-  background-color: #c8c8c8;
+  background-color: rgb(200, 200, 200);
   border-radius: 5rem;
   overflow: hidden;
   height: 1.25rem;
@@ -314,12 +314,12 @@ select {
   width: 0%;
   max-width: 100%;
   height: 100%;
-  background-color: #41a046;
+  background-color: rgb(65, 160, 70);
 }
 #main-home #summary-container #daily-summary #pbar-container #bar-progress-crossed-limit {
   display: flex;
   z-index: 2;
-  background-color: #e94b4b;
+  background-color: rgb(233, 75, 75);
 }
 #main-home #history-chart {
   width: 50%;
@@ -377,7 +377,7 @@ select {
   }
 }
 #main-measures #section-container #user-params-container form label {
-  color: #29285f;
+  color: rgb(41, 40, 95);
   font-size: 1.5rem;
   width: 100%;
   text-align: left;
@@ -391,7 +391,7 @@ select {
   border-radius: 3rem;
   display: grid;
   place-items: center;
-  background-color: #29285f;
+  background-color: rgb(41, 40, 95);
   height: 100%;
 }
 #main-measures #section-container #params-summary-container div p {
@@ -399,13 +399,13 @@ select {
   width: 100%;
   text-align: center;
   font-size: 4rem;
-  color: #f8f7f7;
+  color: rgb(248, 247, 247);
   line-height: 1.1;
   font-weight: 900;
 }
 #main-measures #section-container #params-summary-container div span {
   font-family: inherit;
-  color: #41a046;
+  color: rgb(65, 160, 70);
 }
 
 #main-food {
@@ -433,7 +433,7 @@ select {
 }
 #main-motivation #motivation-quotes {
   position: relative;
-  border-block: 1px solid #c8c8c8;
+  border-block: 1px solid rgb(200, 200, 200);
   margin: auto;
   margin-top: 3rem;
 }
@@ -444,7 +444,7 @@ select {
 #main-motivation #motivation-quotes #author {
   margin-top: 1rem;
   text-align: right;
-  color: #41a046;
+  color: rgb(65, 160, 70);
   font-size: 2rem;
 }
 #main-motivation #motivation-quotes #refresh {
@@ -459,7 +459,7 @@ select {
   top: 1rem;
   right: 1rem;
   position: absolute;
-  color: #41a046;
+  color: rgb(65, 160, 70);
 }
 #main-motivation #motivation-quotes #refresh .svg-inline--fa.fa-w-16 {
   width: 1.5rem;
@@ -473,7 +473,7 @@ select {
   list-style: disc;
 }
 #main-motivation #benefits ul ::marker {
-  color: #41a046;
+  color: rgb(65, 160, 70);
 }
 
 .toggle-theme-switch {
@@ -489,8 +489,8 @@ select {
   width: 4rem;
   height: 2rem;
   border-radius: 5rem;
-  background-color: #29285f;
-  border: 1px solid #29285f;
+  background-color: rgb(41, 40, 95);
+  border: 1px solid rgb(41, 40, 95);
 }
 .toggle-theme-switch .check::before {
   background-image: url("../img/sun-solid.svg");
@@ -502,7 +502,7 @@ select {
   height: 100%;
   aspect-ratio: 1;
   border-radius: 50%;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   transform: translate(0, -50%);
   left: 0%;
   top: 50%;
@@ -511,7 +511,7 @@ select {
   background-image: url("../img/moon-solid.svg");
   content: "";
   transform: translate(-100%, -50%);
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   left: 100%;
 }
 
@@ -526,15 +526,15 @@ select {
   border-collapse: collapse;
 }
 #diary-table table thead {
-  background-color: #29285f;
-  color: white;
+  background-color: rgb(41, 40, 95);
+  color: rgb(255, 255, 255);
   font-weight: 900;
 }
 #diary-table table thead tr td:first-child {
   min-width: 12rem;
 }
 #diary-table table tbody tr td {
-  border-bottom: 1px solid #c8c8c8;
+  border-bottom: 1px solid rgb(200, 200, 200);
   min-width: 5rem;
   flex: 1;
 }
@@ -552,8 +552,8 @@ select {
   font-weight: bold;
 }
 #diary-table table tbody tr:last-child td:first-child {
-  background-color: #29285f;
-  color: white;
+  background-color: rgb(41, 40, 95);
+  color: rgb(255, 255, 255);
 }
 
 .nav-desktop {
@@ -562,7 +562,7 @@ select {
   align-items: center;
   justify-content: space-around;
   margin-inline: auto;
-  border-bottom: 1px solid #6b6b6b;
+  border-bottom: 1px solid rgb(107, 107, 107);
 }
 @media (max-width: 50rem) {
   .nav-desktop {
@@ -578,7 +578,7 @@ select {
   gap: 2rem;
   justify-content: space-between;
   margin-inline: auto;
-  border-bottom: 1px solid #6b6b6b;
+  border-bottom: 1px solid rgb(107, 107, 107);
 }
 @media (max-width: 50rem) {
   .nav-mobile {
@@ -591,7 +591,7 @@ select {
 .nav-mobile .svg-inline--fa.fa-w-14 {
   width: 1.5rem;
   height: 2rem;
-  color: #29285f;
+  color: rgb(41, 40, 95);
 }
 .nav-mobile .side-menu-open {
   border: none;
@@ -626,7 +626,7 @@ select {
   height: fit-content;
   border: none;
   background-color: transparent;
-  color: #29285f;
+  color: rgb(41, 40, 95);
   font-size: 1.5rem;
   font-weight: 700;
   text-align: center;
@@ -634,12 +634,12 @@ select {
   padding-block: 1rem;
 }
 .nav-tab-area button[aria-selected=true] {
-  background-color: #29285f;
-  color: #f8f7f7;
+  background-color: rgb(41, 40, 95);
+  color: rgb(248, 247, 247);
 }
 .nav-tab-area button:hover {
-  background-color: #c8c8c8;
-  color: #29285f;
+  background-color: rgb(200, 200, 200);
+  color: rgb(41, 40, 95);
 }
 
 .modal-wrapper {
@@ -666,7 +666,7 @@ select {
   left: 50%;
   top: 50%;
   border-radius: 1rem;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -694,7 +694,7 @@ select {
 }
 .modal-wrapper .modal-section #modal-close-container button .svg-inline--fa.fa-w-16 {
   width: 2rem;
-  color: #29285f;
+  color: rgb(41, 40, 95);
   height: 100%;
 }
 .modal-wrapper .modal-section form {
@@ -719,19 +719,19 @@ select {
   width: 100%;
   text-align: left;
   background-color: transparent;
-  color: #29285f;
+  color: rgb(41, 40, 95);
   border: none;
-  border-bottom: 1px solid #c8c8c8;
+  border-bottom: 1px solid rgb(200, 200, 200);
   cursor: pointer;
 }
 .modal-wrapper .modal-section #matched-food #food-options button:hover {
-  background-color: #c8c8c8;
-  color: #29285f;
+  background-color: rgb(200, 200, 200);
+  color: rgb(41, 40, 95);
   padding-left: 1rem;
 }
 .modal-wrapper .modal-section #matched-food #food-options button[aria-selected=true] {
-  background-color: #29285f;
-  color: white;
+  background-color: rgb(41, 40, 95);
+  color: rgb(255, 255, 255);
   padding-left: 0.5rem;
 }
 .modal-wrapper .modal-section #food-details {
@@ -795,7 +795,7 @@ select {
   width: 70%;
   height: 100vh;
   transition: 0.3s;
-  background-color: #f8f7f7;
+  background-color: rgb(248, 247, 247);
 }
 .side-menu .side-menu-content .side-menu-close {
   display: block;
@@ -807,13 +807,13 @@ select {
   background-color: transparent;
 }
 .side-menu .side-menu-content .side-menu-close .svg-inline--fa.fa-w-16 {
-  color: #29285f;
+  color: rgb(41, 40, 95);
   width: 3rem;
   height: 2rem;
 }
 
 *:focus-visible {
-  outline: 4px double #41a046;
+  outline: 4px double rgb(65, 160, 70);
 }
 
 body {
@@ -823,8 +823,8 @@ body {
   margin-inline: auto;
   width: 100vw;
   min-height: 100vh;
-  background-color: #f8f7f7;
-  color: #29285f;
+  background-color: rgb(248, 247, 247);
+  color: rgb(41, 40, 95);
 }
 
 /* ----------------- */
@@ -834,7 +834,7 @@ h2 {
   margin-top: 3rem;
   font-size: 4rem;
   font-family: "Dongle", sans-serif;
-  color: #41a046;
+  color: rgb(65, 160, 70);
   text-align: center;
 }
 @media (max-width: 50rem) {
@@ -848,37 +848,37 @@ h3 {
 }
 
 input, .dropdown {
-  color: #29285f;
+  color: rgb(41, 40, 95);
   font-size: 1.25rem;
   width: clamp(10rem, 100%, 20rem);
   height: 3rem;
   border-radius: 50rem;
-  border: 3px solid #29285f;
+  border: 3px solid rgb(41, 40, 95);
   text-align: right;
   padding-right: 1rem;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
 }
 
 input[type=submit] {
   margin-top: 1rem;
   text-align: center;
-  background-color: #29285f;
-  border-color: #29285f;
-  color: #f8f7f7;
+  background-color: rgb(41, 40, 95);
+  border-color: rgb(41, 40, 95);
+  color: rgb(248, 247, 247);
   font-family: "Dongle", sans-serif;
   font-size: 2rem;
   cursor: pointer;
 }
 
 .dropdown select:hover {
-  background-color: #41a046;
-  color: #f8f7f7;
+  background-color: rgb(65, 160, 70);
+  color: rgb(248, 247, 247);
 }
 
 .empty-user-params-info {
   margin: auto;
   margin-top: 3rem;
-  color: #41a046;
+  color: rgb(65, 160, 70);
   font-weight: 900;
   display: flex;
   align-items: center;
@@ -920,7 +920,7 @@ input[type=submit] {
 }
 
 .empty-search-food-state-info {
-  color: #41a046;
+  color: rgb(65, 160, 70);
   font-weight: 900;
   display: flex;
   flex-direction: column;
@@ -949,7 +949,7 @@ input[type=submit] {
 }
 
 ::-webkit-scrollbar-track {
-  background: #e6e6e6;
+  background: rgb(230, 230, 230);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -957,18 +957,17 @@ input[type=submit] {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #29285f;
+  background-color: rgb(41, 40, 95);
 }
 
 .loader {
-  z-index: 2;
   display: none;
-  margin: auto;
+  margin-top: 5rem;
   width: 5rem;
   height: 5rem;
   border-radius: 50%;
-  border: 0.6rem solid #c8c8c8;
-  border-top: 0.6rem solid #41a046;
+  border: 0.6rem solid rgb(200, 200, 200);
+  border-top: 0.6rem solid rgb(65, 160, 70);
   -webkit-animation: spin 0.6s linear infinite;
           animation: spin 0.6s linear infinite;
 }
@@ -992,5 +991,5 @@ input[type=submit] {
 }
 .dark-theme {
   filter: invert(0.95) hue-rotate(180deg);
-  background-color: #f8f7f7;
+  background-color: rgb(248, 247, 247);
 }/*# sourceMappingURL=base.css.map */
