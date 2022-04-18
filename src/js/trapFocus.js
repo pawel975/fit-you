@@ -1,18 +1,18 @@
 
-let firstFocusableEl;
-let lastFocusableEl;
-const KEYCODE_TAB = 9;
+// let firstFocusableEl;
+// let lastFocusableEl;
+// const KEYCODE_TAB = 9;
 
 export const trapFocus = (element, firstElementFocusIndex = 0) => {
 
-    // Fetch all elements to focus
-    const focusableEls = element.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="number"]:not([disabled]), input[type="submit"], input[type="checkbox"]:not([disabled]), select:not([disabled])');
-    firstFocusableEl = focusableEls[0];  
-    lastFocusableEl = focusableEls[focusableEls.length - 1];
+    // // Fetch all elements to focus
+    // const focusableEls = element.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="number"]:not([disabled]), input[type="submit"], input[type="checkbox"]:not([disabled]), select:not([disabled])');
+    // firstFocusableEl = focusableEls[0];  
+    // lastFocusableEl = focusableEls[focusableEls.length - 1];
 
-    focusableEls[firstElementFocusIndex].focus();
+    // focusableEls[firstElementFocusIndex].focus();
 
-    element.addEventListener('keydown', handleTab);
+    // element.addEventListener('keydown', handleTab);
 }
 
 const handleTab = (e) => {

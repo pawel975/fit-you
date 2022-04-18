@@ -19,7 +19,10 @@ export const makeAreaTabable = (tabList) => {
 
         button.addEventListener("keydown", (e) => {
 
-            if (e.code !== keyUp && e.code !== keyDown && e.code !== keyLeft && e.code !== keyRight) return
+            if (e.code !== keyUp && 
+                e.code !== keyDown && 
+                e.code !== keyLeft && 
+                e.code !== keyRight) return
 
             e.preventDefault()
 
