@@ -245,6 +245,9 @@ window.addEventListener("DOMContentLoaded", ()=> {
         }
         clearAddFoodModal();
 
+        // Set focus on add food button after closing add food modal
+        addFoodBtn.focus();
+
         enableScroll();
     })
     
