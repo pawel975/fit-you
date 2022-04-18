@@ -171,8 +171,6 @@ const updateSearchState = () => {
         addFoodMatchedFood.style.display = "initial";
         addFoodMatchTable.style.display = "flex";
     }
-
-    addFoodSearch.focus();
 }
 
 // diables scroll on body
@@ -216,6 +214,7 @@ window.addEventListener("DOMContentLoaded", ()=> {
 
         // Traps focus into modal
         trapFocus(addFoodModal, 1);
+        addFoodSearch.focus();
     }) 
     
     addFoodServingCount.addEventListener("input", (e) => {
