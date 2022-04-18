@@ -195,6 +195,7 @@ window.addEventListener("DOMContentLoaded", ()=> {
         
         // Traps focus into modal
         trapFocus(addFoodModal, 1);
+        addFoodSearch.focus();
 
         disableScroll();
     })
