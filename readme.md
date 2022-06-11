@@ -39,7 +39,7 @@ App contains fallowing features:
 
 ![motivation page](https://user-images.githubusercontent.com/74624831/173192149-9f41f1af-77ae-4ebc-a46f-3e8d4a6debcd.png)
 
-![measures](https://user-images.githubusercontent.com/74624831/173192167-1373ace7-702c-4817-a4c0-fc7b9a25fa68.png)
+![measures](https://user-images.githubusercontent.com/74624831/173192200-8751012f-6b5f-4baf-8bec-74cb85232263.png)
 
 ![dark mode](https://user-images.githubusercontent.com/74624831/173192176-52bd7206-687c-4bf3-b369-53bfa2a8ae68.png)
 
