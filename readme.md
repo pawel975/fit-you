@@ -41,6 +41,8 @@ App contains fallowing features:
 
 ![measures](https://user-images.githubusercontent.com/74624831/173192200-8751012f-6b5f-4baf-8bec-74cb85232263.png)
 
+![add food modal](https://user-images.githubusercontent.com/74624831/173192475-6e14fdfd-f435-49d1-a5cb-5bc56f2eea56.png)
+
 ![dark mode](https://user-images.githubusercontent.com/74624831/173192176-52bd7206-687c-4bf3-b369-53bfa2a8ae68.png)
 
 
