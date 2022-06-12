@@ -75,6 +75,10 @@ input[type=submit] {
   cursor: pointer;
 }
 
+input:disabled {
+  opacity: 0.7;
+}
+
 .dropdown select:hover{
   background-color: variables.$clr-contrast;
   color: variables.$clr-light;

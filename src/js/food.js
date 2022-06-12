@@ -138,6 +138,7 @@ const renderMatches = async () => {
 
                 if (choosedFood) {
                     addFoodFinish.disabled = false;
+                    addFoodServingCount.disabled = false;
                 } else {
                     addFoodFinish.disabled = true;
                 }
@@ -193,6 +194,10 @@ window.addEventListener("DOMContentLoaded", ()=> {
     // Handle modal open
     addFoodBtn.addEventListener("click", () => {
         choosedFood = undefined; 
+
+        // disable serving count because no food is choosen
+        addFoodServingCount.disabled = true;
+        
         addFoodModal.style.display = "initial";
         document.body.classList.add("disable-scroll");
         
