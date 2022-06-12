@@ -225,7 +225,7 @@ window.addEventListener("DOMContentLoaded", ()=> {
         e.preventDefault();
     
         // If servings field is empty or less than 1, disable finish adding button
-        if ((addFoodServingCount.value).length === 0 || addFoodServingCount.value < 1) {
+        if ((addFoodServingCount.value).length === 0 || addFoodServingCount.value < 0.1) {
             addFoodFinish.disabled = true;
         } else {
             addFoodFinish.disabled = false;
