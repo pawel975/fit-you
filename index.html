@@ -9,6 +9,11 @@
     <title>FitYou</title>
 </head>
 <body>
+
+    <div role="dialog" class="loading-screen">
+        <div class="loader"></div>
+    </div>
+    
     <nav class="nav-desktop">
         <h1 tabindex="0" class="fit-you-logo fs-800 ff-headers text-left text-contrast" style="padding: 0">FitYou</h1>
         <div class="nav-tab-area desktop-menu" role="tablist">
@@ -244,7 +249,7 @@
 
             <div class="loader"></div>
 
-            <div id="matched-food">
+            <div id="matched-food" tabindex="-1">
                 <div id="food-options">
                     <!-- Here will be created food matches from search form -->
                 </div>
